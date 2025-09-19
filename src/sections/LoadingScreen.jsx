@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 import SearchingEyes from "./SearchingEyes";
 import SearchBox from "./SearchBox";
 
-const CrazyLoadingScreen = ({ onComplete }) => {
+const LoadingScreen = ({ onComplete }) => {
   const [loadingStage, setLoadingStage] = useState('searching');
   const [searchText, setSearchText] = useState('');
   const [eyesLookDirection, setEyesLookDirection] = useState({ x: 0, y: 0 });
   const [blinkLeft, setBlinkLeft] = useState(false);
   const [blinkRight, setBlinkRight] = useState(false);
 
-  const fullSearchText = "www.aji-creative.dev";
+  const fullSearchText = "https://cybrox-eta.vercel.app/";
 
   useEffect(() => {
     const eyeMovement = setInterval(() => {
@@ -66,4 +66,4 @@ const CrazyLoadingScreen = ({ onComplete }) => {
   );
 };
 
-export default CrazyLoadingScreen;
+export default LoadingScreen;

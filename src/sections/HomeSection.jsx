@@ -36,7 +36,7 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <GlitchText>AJISAFE</GlitchText>
+          <GlitchText>CYBROX</GlitchText>
         </motion.h1>
 
         <motion.h2
@@ -74,7 +74,6 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
         )}
       </div>
 
-   
       {showElements && (
         <motion.div
           className="mt-12 flex flex-wrap justify-center gap-4 px-4 z-10"
@@ -103,16 +102,17 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
         </motion.div>
       )}
 
-     
       {showElements && (
         <motion.div
-          className="mt-8 w-64 h-44 border-2 border-white bg-black bg-opacity-70 p-4 z-10 
-                     lg:absolute lg:right-8 lg:top-1/2 lg:transform lg:-translate-y-1/2 lg:w-48 lg:h-40"
+          className="relative mt-6 w-56 border-2 border-white 
+                     bg-black bg-opacity-70 p-4 z-10 
+                     lg:absolute lg:right-8 lg:top-1/2 lg:transform lg:-translate-y-1/2 
+                     lg:w-64 lg:aspect-square overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5 }}
         >
-          <div className="text-white font-mono text-xs space-y-2">
+          <div className="text-white font-mono text-xs sm:text-sm md:text-base space-y-2">
             <div>NAME: AJISAFE IBRAHIM</div>
             <div>ROLE: DEVELOPER</div>
             <div>STATUS: AVAILABLE</div>
@@ -121,14 +121,13 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
           </div>
 
           <motion.div
-            className="absolute top-0 left-0 w-full h-0.5 bg-white"
-            animate={{ y: [0, 156, 0] }}
+            className="absolute left-0 w-full h-0.5 bg-white"
+            animate={{ top: ["0%", "100%", "0%"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           />
         </motion.div>
       )}
 
-      
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
         animate={{ y: [0, 8, 0] }}
