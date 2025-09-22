@@ -23,7 +23,7 @@ const PersonalityMatrix = ({ isActive, onClose }) => {
     <motion.div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center p-4"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
     >
-      <motion.div className="bg-white p-6 w-full max-w-2xl relative"
+      <motion.div className="bg-white text-black p-6 w-full max-w-2xl relative"
         initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }}
       >
         <button onClick={onClose} className="absolute top-2 right-2 text-black text-xl font-bold">×</button>

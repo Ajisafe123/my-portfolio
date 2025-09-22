@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 import { Mail, MessageCircle, Github, Linkedin } from "lucide-react";
 import GlitchText from "../ui/GlitchText";
 import ScrollReveal from "../ui/ScrollReveal";
@@ -13,7 +13,7 @@ const ContactSection = forwardRef((props, ref) => {
   const contactMethods = [
     {
       type: "EMAIL",
-      content: "AjisafeIbrahim@creative-dev.com",
+      content: "ajisafeibrahim54@gmail.com",
       icon: <Mail size={28} />,
       description: "Direct Communication Channel",
       action: () => setActiveModal("terminal"),
@@ -30,14 +30,14 @@ const ContactSection = forwardRef((props, ref) => {
       content: "Code Repository",
       icon: <Github size={28} />,
       description: "Development Portfolio",
-      action: () => window.open("https://github.com", "_blank"),
+      action: () => window.open("https://github.com/Ajisafe123", "_blank"),
     },
     {
       type: "LINKEDIN",
       content: "Professional Network",
       icon: <Linkedin size={28} />,
       description: "Business Connection",
-      action: () => window.open("https://linkedin.com", "_blank"),
+      action: () => window.open("www.linkedin.com/in/ajisafe-ibrahim-8862a425b", "_blank"),
     },
   ];
 
@@ -131,7 +131,6 @@ const ContactSection = forwardRef((props, ref) => {
       </div>
 
     
-      <AnimatePresence>
         <TerminalInterface
           isActive={activeModal === "terminal"}
           onClose={() => setActiveModal(null)}
@@ -140,7 +139,6 @@ const ContactSection = forwardRef((props, ref) => {
           isActive={activeModal === "form"}
           onClose={() => setActiveModal(null)}
         />
-      </AnimatePresence>
     </div>
   );
 });

@@ -10,12 +10,22 @@ const ProjectsSection = forwardRef((props, ref) => {
   const [showLaunchModal, setShowLaunchModal] = useState(false);
 
   const projects = [
-    { title: "NeuroStream AI", tech: "React • TensorFlow.js • WebGL", desc: "Real-time brain-computer interface...", year: "2024", status: "Live", demo: "https://neurostream-demo.vercel.app" },
-    { title: "CryptoVault 3D", tech: "Three.js • Web3 • Solidity", desc: "3D cryptocurrency portfolio visualizer...", year: "2023", status: "Live", demo: "https://cryptovault-3d.netlify.app" },
-    { title: "TimeWarp Editor", tech: "React • FFmpeg.wasm • WebGL", desc: "Browser-based video editor with AI...", year: "2024", status: "Beta", demo: "https://timewarp-editor.vercel.app" },
-    { title: "SoundScape VR", tech: "A-Frame • Web Audio API • ML5", desc: "VR music creation platform...", year: "2023", status: "Live", demo: "https://soundscape-vr.netlify.app" },
-    { title: "DataFlow Matrix", tech: "D3.js • React • WebSockets", desc: "Real-time data visualization dashboard...", year: "2024", status: "Enterprise", demo: "https://dataflow-matrix.vercel.app" },
-    { title: "MoodLight IoT", tech: "Node.js • Arduino • React Native", desc: "Smart home lighting system...", year: "2023", status: "Live", demo: "https://moodlight-iot.netlify.app" }
+    { 
+      title: "Libro Seek", 
+      tech: "HTML • CSS • JavaScript", 
+      desc: "A sleek online platform that allows users to browse and read books effortlessly, designed for a smooth and enjoyable reading experience.", 
+      year: "2025", 
+      status: "Live", 
+      demo: "https://libro-seek.vercel.app/" 
+    },
+    { 
+      title: "My Portfolio", 
+      tech: "React + Vite • Tailwind CSS • Framer Motion", 
+      desc: "A modern, responsive portfolio showcasing my web development projects, skills, and personal achievements, built with React and interactive animations.", 
+      year: "2025", 
+      status: "Live", 
+      demo: "https://ajisafe.vercel.app/" 
+    }
   ];
 
   const handleLaunchProject = (project) => { 
@@ -33,13 +43,13 @@ const ProjectsSection = forwardRef((props, ref) => {
   };
 
   return (
-    <div ref={ref} id="projects" className="min-h-screen bg-white text-black p-8 relative">
+    <div ref={ref} id="projects" className="min-h-screen bg-black p-8 relative">
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal direction="up">
-          <h2 className="text-6xl font-black mb-4 text-center">
+          <h2 className="text-6xl text-white font-black mb-4 text-center">
             <GlitchText>PROJECTS</GlitchText>
           </h2>
-          <div className="text-center text-lg font-mono mb-12">
+          <div className="text-center text-white text-lg font-mono mb-12">
             CLICK TO LAUNCH • ALL PROJECTS FULLY INTERACTIVE
           </div>
         </ScrollReveal>

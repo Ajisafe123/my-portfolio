@@ -57,7 +57,7 @@ const SkillsSection = forwardRef((props, ref) => {
   return (
     <div
       id="skills"
-      ref={ref} // ✅ forwardRef is applied here
+      ref={ref} 
       className="min-h-screen bg-black text-white p-8 flex items-center"
     >
       <div className="max-w-7xl mx-auto w-full">

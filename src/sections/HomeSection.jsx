@@ -36,7 +36,7 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <GlitchText>CYBROX</GlitchText>
+          <GlitchText>AJISAFE</GlitchText>
         </motion.h1>
 
         <motion.h2
@@ -104,7 +104,7 @@ const HomeSection = forwardRef(({ scrollYProgress, scrollToSection }, ref) => {
 
       {showElements && (
         <motion.div
-          className="relative mt-6 w-56 border-2 border-white 
+          className="relative mt-6 w-56 md:h-47 border-2 border-white 
                      bg-black bg-opacity-70 p-4 z-10 
                      lg:absolute lg:right-8 lg:top-1/2 lg:transform lg:-translate-y-1/2 
                      lg:w-64 lg:aspect-square overflow-hidden"

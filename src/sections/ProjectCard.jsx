@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index, onLaunch }) => {
 
   return (
     <motion.div
-      className="relative h-96 bg-white border-4 border-black cursor-pointer group overflow-hidden"
+      className="relative h-96 bg-black border-4 border-white text-white cursor-pointer group overflow-hidden"
       whileHover={{ scale: 1.02, rotateY: 5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -84,11 +84,11 @@ const ProjectCard = ({ project, index, onLaunch }) => {
 
         
         <div className="flex space-x-2">
-          <motion.button className="flex-1 bg-black text-white py-3 px-4 font-mono text-sm border-2 border-black hover:bg-white hover:text-black transition-all duration-300"
+          <motion.button className="flex-1 bg-white text-black py-3 px-4 font-mono text-sm border-2 border-white hover:bg-black hover:text-white transition-all duration-300"
             whileHover={{ scale:1.02, rotateX:5 }} whileTap={{ scale:0.98 }}>
             <GlitchText>LAUNCH PROJECT</GlitchText>
           </motion.button>
-          <motion.button className="bg-white text-black py-3 px-4 border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
+          <motion.button className="bg-white text-black py-3 px-4 border-2 border-white hover:bg-black hover:text-white transition-all duration-300"
             whileHover={{ scale:1.1, rotate:5 }} whileTap={{ scale:0.9 }}>↗</motion.button>
         </div>
 

@@ -47,7 +47,7 @@ const MobileNav = ({
         >
           
           <motion.div
-            className="absolute inset-0 border-2 border-black rounded-full"
+            className="absolute inset-0 border-2 border-white  rounded-full"
             animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />

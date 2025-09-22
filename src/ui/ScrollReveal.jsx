@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 
-const CrazyScrollReveal = ({ children, direction = "up" }) => {
+const ScrollReveal = ({ children, direction = "up" }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
 
@@ -40,4 +40,4 @@ const CrazyScrollReveal = ({ children, direction = "up" }) => {
   );
 };
 
-export default CrazyScrollReveal;
+export default ScrollReveal;

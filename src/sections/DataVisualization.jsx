@@ -4,18 +4,18 @@ import GlitchText from "../ui/GlitchText";
 
 const DataVisualization = ({ title, value, unit, description, isActive }) => {
   return (
-    <motion.div className="bg-white border-4 border-black p-4 cursor-pointer relative overflow-hidden"
+    <motion.div className="bg-black border-4 border-white p-4 cursor-pointer relative overflow-hidden"
       whileHover={{ scale: 1.02, rotateX: 5 }}
     >
       {isActive && Array.from({ length: 15 }).map((_, i) => (
-        <motion.div key={i} className="absolute w-0.5 h-6 bg-black opacity-20" style={{ left: `${i * 6}%`, top: 0 }}
+        <motion.div key={i} className="absolute w-0.5 h-5 bg-white opacity-20" style={{ left: `${i * 6}%`, top: 0 }}
           animate={{ y: [0, 80] }} transition={{ duration: 1, delay: i * 0.1, repeat: Infinity }}
         />
       ))}
 
       <div className="relative z-10">
         <motion.div className="text-3xl font-black mb-1"
-          animate={isActive ? { textShadow: ["0 0 0 #000", "0 0 8px #000", "0 0 0 #000"] } : {}}
+          animate={isActive ? { textShadow: ["0 0 0 #fff", "0 0 8px #fff", "0 0 0 #fff"] } : {}}
           transition={{ duration: 0.5, repeat: Infinity }}
         >
           {value}{unit}
