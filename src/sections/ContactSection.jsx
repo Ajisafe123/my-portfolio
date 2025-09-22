@@ -4,20 +4,12 @@ import { Mail, MessageCircle, Github, Linkedin } from "lucide-react";
 import GlitchText from "../ui/GlitchText";
 import ScrollReveal from "../ui/ScrollReveal";
 import HologramContactCard from "./HologramContactCard";
-import TerminalInterface from "./TerminalInterface";
 import ContactForm from "./ContactForm";
 
 const ContactSection = forwardRef((props, ref) => {
   const [activeModal, setActiveModal] = useState(null);
 
   const contactMethods = [
-    {
-      type: "EMAIL",
-      content: "ajisafeibrahim54@gmail.com",
-      icon: <Mail size={28} />,
-      description: "Direct Communication Channel",
-      action: () => setActiveModal("terminal"),
-    },
     {
       type: "MESSAGE",
       content: "Send Direct Message",
@@ -130,11 +122,6 @@ const ContactSection = forwardRef((props, ref) => {
         </ScrollReveal>
       </div>
 
-    
-        <TerminalInterface
-          isActive={activeModal === "terminal"}
-          onClose={() => setActiveModal(null)}
-        />
         <ContactForm
           isActive={activeModal === "form"}
           onClose={() => setActiveModal(null)}
