@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const RadialProgress = ({ level, color }) => {
-  const radius = 32; // slightly bigger
+  const radius = 32;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (level / 100) * circumference;
 
@@ -145,8 +145,8 @@ const AboutStackSection = forwardRef((props, ref) => {
         transition={{ duration: 0.8 }}
         className="w-full lg:w-[42%] bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg p-6 shadow-lg"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center text-purple-400">
-          TECH STACK
+        <h2 className="h1-text text-2xl font-bold mb-4 text-center text-purple-400">
+          MY TECH STACK
         </h2>
         <div className="flex justify-center gap-2 mb-5 flex-wrap">
           {["all", "frontend", "backend", "database", "tools"].map((cat) => (
@@ -172,7 +172,7 @@ const AboutStackSection = forwardRef((props, ref) => {
         transition={{ duration: 0.8 }}
         className="w-full lg:w-[45%] space-y-5 relative"
       >
-        <h2 className="text-4xl font-extrabold text-purple-400">ABOUT ME</h2>
+        <h2 className="h1-text text-4xl font-extrabold text-purple-400">ABOUT ME</h2>
         <p className="text-gray-300 text-base leading-relaxed">
           Hey, I’m <span className="text-white font-semi-bold">Ajisafe Ibrahim</span> — a
           third-year Computer Science with Education student who loves blending

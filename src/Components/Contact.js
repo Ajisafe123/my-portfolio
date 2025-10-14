@@ -116,7 +116,7 @@ const ContactForm = () => {
     <section className="relative bg-black text-gray-100 py-16 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold">
+          <h1 className="h1-text text-4xl md:text-5xl font-extrabold">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-600">
               GET IN TOUCH
             </span>

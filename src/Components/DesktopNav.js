@@ -16,7 +16,6 @@ const DesktopNav = ({
   }, []);
 
   return (
-    // span full width and center the inner container — guarantees pixel-perfect centering
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -28,7 +27,6 @@ const DesktopNav = ({
           animate={{ padding: scrolled ? "8px 16px" : "12px 20px" }}
           className="relative backdrop-blur-2xl bg-white/5 rounded-full border border-white/10 shadow-2xl flex items-center justify-center"
         >
-          {/* Orbs / background effects */}
           <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
             <motion.div
               className="absolute w-32 h-32 rounded-full bg-blue-500/20"
@@ -44,7 +42,6 @@ const DesktopNav = ({
             />
           </div>
 
-          {/* Logo */}
           <motion.div
             className="flex items-center gap-3 pr-6 border-r border-white/10"
             whileHover={{ scale: 1.05 }}
@@ -56,18 +53,17 @@ const DesktopNav = ({
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
               <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"
-                style={{ filter: "blur(8px)", opacity: 0.5 }}
+                className="absolute inset-1 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"
+                style={{ filter: "blur(3px)", opacity: 0.5 }}
                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
             </div>
-            <div className="text-white font-bold text-sm tracking-widest">
+            <div className="h1-text text-white font-bold text-sm tracking-widest">
               AJISAFE
             </div>
           </motion.div>
 
-          {/* Nav Items */}
           <div className="flex items-center gap-1 px-4">
             {Array.isArray(sections) &&
               sections.map((section, index) => {
@@ -90,7 +86,6 @@ const DesktopNav = ({
               })}
           </div>
 
-          {/* Status */}
           <div className="flex items-center gap-2 pl-6 border-l border-white/10">
             <motion.div
               className="w-2 h-2 rounded-full bg-emerald-400"

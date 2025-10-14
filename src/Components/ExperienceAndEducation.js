@@ -193,10 +193,10 @@ const ExperienceAndEducation = () => {
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600">
+            <span className="h1-text bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600">
               EXPERIENCE
             </span>
-            <span className="text-white"> & EDUCATION</span>
+            <span className="h1-text text-white"> & EDUCATION</span>
           </h2>
           <p className="text-gray-500 mt-2">
             Scroll or use the arrows to explore my journey.

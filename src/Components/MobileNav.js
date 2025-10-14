@@ -23,7 +23,7 @@ const MobileNav = ({
       <motion.button
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.92 }}
-        className="flex items-center justify-center w-12 h-12 rounded-sm bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 text-white shadow-xl focus:outline-none"
+        className="flex items-center justify-center w-12 h-12 rounded-sm text-white shadow-xl focus:outline-none"
       >
         {open ? <X size={24} /> : <Menu size={24} />}
       </motion.button>
@@ -41,7 +41,7 @@ const MobileNav = ({
             <div className="flex flex-col p-2">
               {sections.map((section) => {
                 const key = section.toLowerCase();
-                const Icon = ICONS[key] || Home; // ✅ fixed line
+                const Icon = ICONS[key] || Home;
                 const isActive = activeSection === section;
 
                 return (

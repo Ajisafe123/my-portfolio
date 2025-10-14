@@ -111,7 +111,7 @@ const Projects = () => {
           </span>
         </motion.div>
 
-        <h1 className="text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6 flex-wrap">
+        <h1 className="h1-text text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6 flex-wrap">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
             Selected
           </span>
@@ -152,7 +152,6 @@ const Projects = () => {
   );
 };
 
-// 🟣 Responsive fix applied to card (height + padding)
 const ProjectCard = ({
   project,
   index,
@@ -178,7 +177,6 @@ const ProjectCard = ({
           style={{ filter: "blur(40px)" }}
         />
 
-        {/* 🖼 Image */}
         <div className="relative h-52 sm:h-56 overflow-hidden">
           <motion.img
             src={project.image}
@@ -191,7 +189,6 @@ const ProjectCard = ({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-          {/* Category label */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -205,7 +202,6 @@ const ProjectCard = ({
             </div>
           </motion.div>
 
-          {/* Action buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
@@ -235,8 +231,6 @@ const ProjectCard = ({
             </motion.a>
           </motion.div>
         </div>
-
-        {/* 📝 Content */}
         <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
           <div>
             <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
@@ -260,8 +254,6 @@ const ProjectCard = ({
               </motion.span>
             ))}
           </div>
-
-          {/* Status and details */}
           <div className="flex items-center justify-between pt-4 border-t border-white/10">
             <span className="text-xs text-gray-500">{project.status}</span>
             <motion.div
@@ -278,7 +270,6 @@ const ProjectCard = ({
   );
 };
 
-// Modal stays same
 const ProjectModal = ({ project, onClose }) => {
   return (
     <motion.div

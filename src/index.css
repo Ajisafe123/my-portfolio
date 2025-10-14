@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.hero-text{
+.h1-text{
     font-family: "Crimson Text", serif;
     font-weight: 700;
     font-style: italic;
