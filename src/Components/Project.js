@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Code, ArrowDownLeftFromSquareIcon } from "lucide-react";
-import libroseek from "./assets/libroseek.png";
-import focusflow from "./assets/focusflow.png";
-import cscAi from "./assets/csc-ai.png";
-import schoolManagement from "./assets/school-management-system.png";
-import myPortfolio from "./assets/my-portfolio.png";
-import hostelConnects from "./assets/hostel-connects.png";
+import libroseek from "../assets/libroseek.png";
+import focusflow from "../assets/focusflow.png";
+import cscAi from "../assets/csc-ai.png";
+import schoolManagement from "../assets/school-management-system.png";
+import myPortfolio from "../assets/my-portfolio.png";
+import hostelConnects from "../assets/hostel-connects.png";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
