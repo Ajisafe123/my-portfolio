@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Code, Sparkles } from "lucide-react";
-
-import libroseek from "./Assets/libroseek.png";
-import FocusFlow from "./Assets/FocusFlow.png";
-import cscAi from "./Assets/csc Ai.png";
-import SchoolManagement from "./Assets/School management system.png";
-import MyPortfolio from "./Assets/My portfolio.png";
-import HostelConnects from "./Assets/Hostel Connets.png";
+import libroseek from "./assets/libroseek.png";
+import focusflow from "./assets/focusflow.png";
+import cscAi from "./assets/csc-ai.png";
+import schoolManagement from "./assets/school-management-system.png";
+import myPortfolio from "./assets/my-portfolio.png";
+import hostelConnects from "./assets/hostel-connects.png";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -22,7 +21,7 @@ const Projects = () => {
       image: libroseek,
       category: "Web App",
       tools: ["React", "FastAPI", "PostgreSQL", "TailwindCSS"],
-      liveLink: "libro-seek.vercel.app",
+      liveLink: "https://libro-seek.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
       status: "Available on Google",
       color: "from-blue-500 to-cyan-500",
@@ -32,7 +31,7 @@ const Projects = () => {
       title: "FocusFlow",
       description:
         "A productivity Islamic web app designed to help users manage tasks and stay focused with AI Prayer reminders.",
-      image: FocusFlow,
+      image: focusflow,
       category: "Productivity",
       tools: ["Next.js", "TypeScript", "Postgresql", "Framer Motion"],
       liveLink: "https://example.com",
@@ -58,10 +57,10 @@ const Projects = () => {
       title: "School Management System",
       description:
         "A robust full-stack school portal for handling students, courses, and administrative tasks.",
-      image: SchoolManagement,
+      image: schoolManagement,
       category: "Full Stack",
       tools: ["React", "Django", "SQLite", "Bootstrap"],
-      liveLink: "https://example.com",
+      liveLink: "https://ajisafe.vercel.app/",
       githubLink: "https://github.com/Ajisafe123",
       status: "In Progress",
       color: "from-orange-500 to-red-500",
@@ -71,7 +70,7 @@ const Projects = () => {
       title: "My Portfolio",
       description:
         "A creative personal portfolio built with smooth animations and a modern UI to showcase my skills.",
-      image: MyPortfolio,
+      image: myPortfolio,
       category: "Portfolio",
       tools: ["React", "Framer Motion", "TailwindCSS"],
       liveLink: "https://example.com",
@@ -84,7 +83,7 @@ const Projects = () => {
       title: "Hostels Connect",
       description:
         "A hostel management platform where I handled the full backend logic and API integration.",
-      image: HostelConnects,
+      image: hostelConnects,
       category: "Backend",
       tools: ["FastAPI", "PostgreSQL", "JWT Auth", "Docker"],
       liveLink: "https://example.com",
@@ -112,11 +111,10 @@ const Projects = () => {
           </span>
         </motion.div>
 
-        <h1 className="text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6">
+        <h1 className="text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6 flex-wrap">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
             Selected
           </span>
-          <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             Projects
           </span>
@@ -128,7 +126,8 @@ const Projects = () => {
       </motion.div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 🟣 Responsive grid fix */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -154,6 +153,7 @@ const Projects = () => {
   );
 };
 
+// 🟣 Responsive fix applied to card (height + padding)
 const ProjectCard = ({
   project,
   index,
@@ -171,15 +171,16 @@ const ProjectCard = ({
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
       onClick={onClick}
-      className="group relative cursor-pointer"
+      className="group relative cursor-pointer h-full"
     >
-      <div className="relative h-[450px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10">
+      <div className="relative min-h-[460px] sm:min-h-[480px] md:min-h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex flex-col justify-between">
         <motion.div
           className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
           style={{ filter: "blur(40px)" }}
         />
 
-        <div className="relative h-56 overflow-hidden">
+        {/* 🖼 Image */}
+        <div className="relative h-52 sm:h-56 overflow-hidden">
           <motion.img
             src={project.image}
             alt={project.title}
@@ -191,6 +192,7 @@ const ProjectCard = ({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
+          {/* Category label */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -204,6 +206,7 @@ const ProjectCard = ({
             </div>
           </motion.div>
 
+          {/* Action buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
@@ -234,13 +237,17 @@ const ProjectCard = ({
           </motion.div>
         </div>
 
-        <div className="p-6 space-y-4">
-          <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
-            {project.title}
-          </h3>
-          <p className="text-gray-400 text-sm line-clamp-2">
-            {project.description}
-          </p>
+        {/* 📝 Content */}
+        <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
+          <div>
+            <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
+              {project.title}
+            </h3>
+            <p className="text-gray-400 text-sm md:text-base line-clamp-3">
+              {project.description}
+            </p>
+          </div>
+
           <div className="flex flex-wrap gap-2">
             {project.tools.map((tool, i) => (
               <motion.span
@@ -254,6 +261,8 @@ const ProjectCard = ({
               </motion.span>
             ))}
           </div>
+
+          {/* Status and details */}
           <div className="flex items-center justify-between pt-4 border-t border-white/10">
             <span className="text-xs text-gray-500">{project.status}</span>
             <motion.div
@@ -270,6 +279,7 @@ const ProjectCard = ({
   );
 };
 
+// Modal stays same
 const ProjectModal = ({ project, onClose }) => {
   return (
     <motion.div

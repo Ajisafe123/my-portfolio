@@ -145,27 +145,38 @@ export default function Home() {
         </motion.div>
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 w-full h-40 overflow-hidden pointer-events-none z-10 flex justify-center items-center">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none z-10">
         <div
-          className="absolute top-0 left-0 right-0 h-60 bg-black flex flex-col sm:flex-row gap-6 md:gap-8 justify-center items-center px-4 sm:px-6"
+          className="relative w-full flex flex-wrap justify-center items-center gap-3 sm:gap-5 py-4 sm:py-6 bg-black/90 border-t border-purple-500/20"
           style={{
             borderTopLeftRadius: "70% 100px",
             borderTopRightRadius: "50% 100px",
+            boxShadow: "0 -8px 20px rgba(139,92,246,0.3)",
           }}
         >
-          <div className="flex items-center gap-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
-            <Mail className="text-purple-400 h-6 sm:h-8 w-6 sm:w-8" />
-            <span className="text-gray-300 text-sm sm:text-lg md:text-xl font-medium group-hover:text-white transition-colors duration-300">
-              ajisafe@example.com
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            href="mailto:ajisafeibrahim54@gmail.com"
+            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/10 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
+          >
+            <Mail className="text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide">
+              ajisafeibrahim54@gmail.com
             </span>
-          </div>
+          </motion.a>
 
-          <div className="flex items-center gap-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
-            <Phone className="text-purple-400 h-6 sm:h-8 w-6 sm:w-8" />
-            <span className="text-gray-300 text-sm sm:text-lg md:text-xl font-medium group-hover:text-white transition-colors duration-300">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            href="tel:09056453575"
+            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/10 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
+          >
+            <Phone className="text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide">
               09056453575
             </span>
-          </div>
+          </motion.a>
         </div>
       </div>
     </div>

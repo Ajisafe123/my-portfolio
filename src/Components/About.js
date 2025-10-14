@@ -174,7 +174,7 @@ const AboutStackSection = forwardRef((props, ref) => {
       >
         <h2 className="text-4xl font-extrabold text-purple-400">ABOUT ME</h2>
         <p className="text-gray-300 text-base leading-relaxed">
-          Hey, I’m <span className="text-white font-bold">Ajisafe</span> — a
+          Hey, I’m <span className="text-white font-semi-bold">Ajisafe Ibrahim</span> — a
           third-year Computer Science with Education student who loves blending
           design and technology to build experiences that move.
         </p>
