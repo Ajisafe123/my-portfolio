@@ -73,43 +73,42 @@ const ContactForm = () => {
 
     setStatus({ type: "sending", message: "Sending message..." });
 
-    emailjs
-      .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_TO_YOU,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: "ajisafeibrahim54@gmail.com",
-        },
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          emailjs.send(
-            process.env.REACT_APP_EMAILJS_SERVICE_ID,
-            process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
-            {
-              to_name: formData.name,
-              to_email: formData.email,
-              reply_message: formData.message,
-              from_name: "Ibrahim Ajisafe",
-            },
-            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-          );
+    const contactEmail = emailjs.send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_TO_YOU,
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        time: new Date().toLocaleString(),
+      },
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    );
 
-          setStatus({ type: "success", message: "Message sent successfully!" });
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          setStatus({
-            type: "error",
-            message: "Failed to send message. Try again.",
-          });
-          console.error(error);
-        }
-      );
+    const autoReply = emailjs.send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
+      {
+        to_name: formData.name,
+        to_email: formData.email,
+        reply_message: formData.message,
+        from_name: "Ibrahim Ajisafe",
+      },
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    );
+
+    Promise.all([contactEmail, autoReply])
+      .then(() => {
+        setStatus({ type: "success", message: "Message sent successfully!" });
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error(error);
+        setStatus({
+          type: "error",
+          message: "Failed to send message. Please try again.",
+        });
+      });
   };
 
   return (
@@ -130,7 +129,6 @@ const ContactForm = () => {
         <div className="flex flex-col lg:flex-row gap-8 p-6 md:p-8 rounded-md border border-gray-700">
           <div className="lg:w-1/3 space-y-4">
             <h3 className="text-2xl font-bold text-white mb-2">Contact Info</h3>
-
             {[
               {
                 icon: MailIcon,
@@ -176,7 +174,6 @@ const ContactForm = () => {
                 </div>
               );
             })}
-
             <div className="mt-4 h-40 w-full rounded-md overflow-hidden border border-gray-700">
               <iframe
                 title="Location Map"
@@ -220,7 +217,6 @@ const ContactForm = () => {
                 placeholder="Your Message"
                 className="w-full px-4 py-4 rounded-md bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm"
               />
-
               {status && (
                 <div
                   className={`p-3 rounded-md text-sm font-medium ${
@@ -234,7 +230,6 @@ const ContactForm = () => {
                   {status.message}
                 </div>
               )}
-
               <button
                 type="submit"
                 disabled={status?.type === "sending"}

@@ -15,16 +15,16 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "LibroSeek",
+      title: "Hostels Connect",
       description:
-        "A digital library web app for discovering, reading, and organizing books online seamlessly.",
-      image: libroseek,
-      category: "Web App",
-      tools: ["React", "FastAPI", "PostgreSQL", "TailwindCSS"],
-      liveLink: "https://libro-seek.vercel.app",
+        "A hostel management platform where I handled the full backend logic and API integration.",
+      image: hostelConnects,
+      category: "Backend",
+      tools: ["FastAPI", "PostgreSQL", "JWT Auth", "Docker"],
+      liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
-      status: "Available on Google",
-      color: "from-blue-500 to-cyan-500",
+      status: "Done",
+      color: "from-indigo-500 to-purple-500",
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Projects = () => {
       liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
       status: "In Progress",
-      color: "from-purple-500 to-pink-500",
+      color: "from-green-500 to-emerald-500",
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ const Projects = () => {
       liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
       status: "In progress",
-      color: "from-green-500 to-emerald-500",
+      color: "from-orange-500 to-gray-400",
     },
     {
       id: 4,
@@ -76,20 +76,20 @@ const Projects = () => {
       liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",
-      color: "from-yellow-500 to-orange-500",
+      color: "from-purple-500 to-purple-800",
     },
     {
       id: 6,
-      title: "Hostels Connect",
+      title: "LibroSeek",
       description:
-        "A hostel management platform where I handled the full backend logic and API integration.",
-      image: hostelConnects,
-      category: "Backend",
-      tools: ["FastAPI", "PostgreSQL", "JWT Auth", "Docker"],
-      liveLink: "https://example.com",
+        "A digital library web app for discovering, reading, and organizing books online seamlessly.",
+      image: libroseek,
+      category: "Web App",
+      tools: ["HTML", "CSS", "Gemini API"],
+      liveLink: "https://libro-seek.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
-      status: "Done",
-      color: "from-indigo-500 to-purple-500",
+      status: "Available on Google",
+      color: "from-blue-500 to-cyan-500",
     },
   ];
 

@@ -66,13 +66,13 @@ const AboutStackSection = forwardRef((props, ref) => {
   const skills = [
     {
       name: "React",
-      level: 95,
+      level: 75,
       category: "frontend",
       svgColor: "text-cyan-400",
     },
     {
       name: "Vue.js",
-      level: 90,
+      level: 60,
       category: "frontend",
       svgColor: "text-gray-400",
     },
@@ -84,6 +84,24 @@ const AboutStackSection = forwardRef((props, ref) => {
     },
     {
       name: "TypeScript",
+      level: 68,
+      category: "frontend",
+      svgColor: "text-blue-500",
+    },
+    {
+      name: "HTML",
+      level: 88,
+      category: "frontend",
+      svgColor: "text-blue-500",
+    },
+    {
+      name: "CSS",
+      level: 88,
+      category: "frontend",
+      svgColor: "text-blue-500",
+    },
+    {
+      name: "JavaScript",
       level: 88,
       category: "frontend",
       svgColor: "text-blue-500",
