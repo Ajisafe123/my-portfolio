@@ -9,35 +9,70 @@ import {
   Phone,
 } from "lucide-react";
 
-const RadialBackground = () => (
-  <div className="absolute inset-0 overflow-hidden">
-    <motion.div
-      className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none"
-      animate={{
-        x: ["0%", "50%", "0%"],
-        y: ["0%", "50%", "0%"],
-        scale: [1, 1.2, 1],
-      }}
-      transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.div
-      className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-purple-500/10 blur-[100px] pointer-events-none"
-      animate={{
-        x: ["0%", "-50%", "0%"],
-        y: ["0%", "-50%", "0%"],
-        scale: [1.2, 1, 1.2],
-      }}
-      transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.div
-      className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none"
-      animate={{ y: ["0%", "100%", "0%"], scale: [1, 0.8, 1] }}
-      transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 blur-[150px] pointer-events-none" />
-    <div className="absolute inset-0 bg-slate-900/40" />
-  </div>
+const Snowflake = ({ delay, duration, left }) => (
+  <motion.div
+    className="absolute w-1 h-1 bg-white rounded-full"
+    initial={{ top: "-5%", left: `${left}%`, opacity: 0 }}
+    animate={{
+      top: "105%",
+      opacity: [0, 0.8, 0.6, 0],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  />
 );
+
+const RadialBackground = () => {
+  const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    delay: Math.random() * 10,
+    duration: 10 + Math.random() * 15,
+    left: Math.random() * 100,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none"
+        animate={{
+          x: ["0%", "50%", "0%"],
+          y: ["0%", "50%", "0%"],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-purple-500/10 blur-[100px] pointer-events-none"
+        animate={{
+          x: ["0%", "-50%", "0%"],
+          y: ["0%", "-50%", "0%"],
+          scale: [1.2, 1, 1.2],
+        }}
+        transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none"
+        animate={{ y: ["0%", "100%", "0%"], scale: [1, 0.8, 1] }}
+        transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 blur-[150px] pointer-events-none" />
+      <div className="absolute inset-0 bg-slate-900/40" />
+      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+      {snowflakes.map((flake) => (
+        <Snowflake
+          key={flake.id}
+          delay={flake.delay}
+          duration={flake.duration}
+          left={flake.left}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -60,10 +95,30 @@ export default function Home() {
   };
 
   const socialLinks = [
-    { Icon: Github, href: "#github", name: "GitHub" },
-    { Icon: Linkedin, href: "#linkedin", name: "LinkedIn" },
-    { Icon: Twitter, href: "#twitter", name: "Twitter" },
-    { Icon: Mail, href: "#mail", name: "Mail" },
+    {
+      Icon: Github,
+      href: "https://github.com/username",
+      name: "GitHub",
+      hoverColor: "hover:bg-gray-800",
+    },
+    {
+      Icon: Twitter,
+      href: "https://twitter.com/username",
+      name: "Twitter",
+      hoverColor: "hover:bg-sky-500",
+    },
+    {
+      Icon: Linkedin,
+      href: "https://linkedin.com/in/username",
+      name: "LinkedIn",
+      hoverColor: "hover:bg-blue-700",
+    },
+    {
+      Icon: Mail,
+      href: "ajisafeibrahim54@gmail.com",
+      name: "Dribbble",
+      hoverColor: "hover:bg-pink-500",
+    },
   ];
 
   return (
@@ -90,12 +145,14 @@ export default function Home() {
           transition={{ delay: 0.2 }}
           className="mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-purple-900 border border-white text-white font-medium text-sm md:text-base">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/50 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-800/60 to-purple-600/50 backdrop-blur-md border border-purple-400/30 text-white shadow-lg shadow-purple-500/10">
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
             </span>
-            Open to Work: Developer
+            <span className="text-sm md:text-base font-semibold tracking-wide">
+              Open to Work: Developer
+            </span>
           </div>
         </motion.div>
 
@@ -123,17 +180,19 @@ export default function Home() {
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center gap-6">
-          <button className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-purple-500 text-purple-500 font-bold bg-transparent flex items-center gap-2 group hover:bg-purple-500 hover:text-white transition-all duration-300">
+          <button className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-purple-500 text-white text-[20px] font-bold bg-transparent flex items-center gap-2 group transition-all duration-300">
             Start a Project
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <span className="p-2 rounded-full transition-all duration-300 group-hover:bg-purple-500">
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 text-white group-hover:text-white" />
+            </span>
           </button>
 
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
-            {socialLinks.map(({ Icon, href, name }) => (
+            {socialLinks.map(({ Icon, href, name, hoverColor }) => (
               <motion.a
                 key={href}
                 href={href}
-                className="relative flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white hover:bg-purple-500 hover:text-white transition-colors duration-300 group"
+                className={`relative flex items-center justify-center w-12 h-12 rounded-full bg-white/10 text-white transition-colors duration-300 group ${hoverColor}`}
               >
                 <Icon className="h-6 w-6" />
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full text-xs text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -158,10 +217,10 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             href="mailto:ajisafeibrahim54@gmail.com"
-            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/10 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
+            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/30 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
           >
             <Mail className="text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
-            <span className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide">
+            <span className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide ">
               ajisafeibrahim54@gmail.com
             </span>
           </motion.a>
@@ -170,7 +229,7 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             href="tel:09056453575"
-            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/10 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
+            className="flex items-center gap-2 sm:gap-3 bg-white/5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-sm border border-purple-500/30 shadow-md hover:shadow-purple-500/20 cursor-pointer transition-all duration-300 no-underline"
           >
             <Phone className="text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
             <span className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide">

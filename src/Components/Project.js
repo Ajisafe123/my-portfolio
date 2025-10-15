@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Code, ArrowDownLeftFromSquareIcon } from "lucide-react";
-import libroseek from "../assets/libroseek.png";
-import focusflow from "../assets/focusflow.png";
-import cscAi from "../assets/csc-ai.png";
-import schoolManagement from "../assets/school-management-system.png";
-import myPortfolio from "../assets/my-portfolio.png";
-import hostelConnects from "../assets/hostel-connects.png";
+
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -18,7 +13,8 @@ const Projects = () => {
       title: "Hostels Connect",
       description:
         "A hostel management platform where I handled the full backend logic and API integration.",
-      image: hostelConnects,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486066/Hostel_Connets_taduap.png",
       category: "Backend",
       tools: ["FastAPI", "PostgreSQL", "JWT Auth", "Docker"],
       liveLink: "https://example.com",
@@ -31,7 +27,8 @@ const Projects = () => {
       title: "FocusFlow",
       description:
         "A productivity Islamic web app designed to help users manage tasks and stay focused with AI Prayer reminders.",
-      image: focusflow,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486051/FocusFlow_f9voh0.png",
       category: "Productivity",
       tools: ["Next.js", "TypeScript", "Postgresql", "Framer Motion"],
       liveLink: "https://example.com",
@@ -44,7 +41,8 @@ const Projects = () => {
       title: "CSC AI",
       description:
         "An academic AI-powered chatbot and knowledge base built to assist Computer Science students.",
-      image: cscAi,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486042/csc_Ai_c5vpm6.png",
       category: "AI / Chatbot",
       tools: ["Python", "FastAPI", "React", "OpenAI API"],
       liveLink: "https://example.com",
@@ -57,7 +55,8 @@ const Projects = () => {
       title: "School Management System",
       description:
         "A robust full-stack school portal for handling students, courses, and administrative tasks.",
-      image: schoolManagement,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/School_management_system_boxun5.png",
       category: "Full Stack",
       tools: ["React", "Django", "SQLite", "Bootstrap"],
       liveLink: "https://ajisafe.vercel.app/",
@@ -70,7 +69,8 @@ const Projects = () => {
       title: "My Portfolio",
       description:
         "A creative personal portfolio built with smooth animations and a modern UI to showcase my skills.",
-      image: myPortfolio,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/My_portfolio_stbi1a.png",
       category: "Portfolio",
       tools: ["React", "Framer Motion", "TailwindCSS"],
       liveLink: "https://example.com",
@@ -83,7 +83,8 @@ const Projects = () => {
       title: "LibroSeek",
       description:
         "A digital library web app for discovering, reading, and organizing books online seamlessly.",
-      image: libroseek,
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486123/librookseek_thiprc.png",
       category: "Web App",
       tools: ["HTML", "CSS", "Gemini API"],
       liveLink: "https://libro-seek.vercel.app",
