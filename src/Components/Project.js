@@ -30,7 +30,7 @@ const Projects = () => {
       image:
         "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486051/FocusFlow_f9voh0.png",
       category: "Productivity",
-      tools: ["Next.js", "TypeScript", "Postgresql", "Framer Motion"],
+      tools: ["React.js", "TypeScript", "Postgresql", "Framer Motion"],
       liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
       status: "In Progress",
@@ -72,7 +72,7 @@ const Projects = () => {
       image:
         "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/My_portfolio_stbi1a.png",
       category: "Portfolio",
-      tools: ["React", "Framer Motion", "TailwindCSS"],
+      tools: ["React", "Framer Motion", "TailwindCSS", "Email.js"],
       liveLink: "https://example.com",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",

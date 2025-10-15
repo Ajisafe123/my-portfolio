@@ -9,70 +9,35 @@ import {
   Phone,
 } from "lucide-react";
 
-const Snowflake = ({ delay, duration, left }) => (
-  <motion.div
-    className="absolute w-1 h-1 bg-white rounded-full"
-    initial={{ top: "-5%", left: `${left}%`, opacity: 0 }}
-    animate={{
-      top: "105%",
-      opacity: [0, 0.8, 0.6, 0],
-    }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      ease: "linear",
-    }}
-  />
+const RadialBackground = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    <motion.div
+      className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none"
+      animate={{
+        x: ["0%", "50%", "0%"],
+        y: ["0%", "50%", "0%"],
+        scale: [1, 1.2, 1],
+      }}
+      transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-purple-500/10 blur-[100px] pointer-events-none"
+      animate={{
+        x: ["0%", "-50%", "0%"],
+        y: ["0%", "-50%", "0%"],
+        scale: [1.2, 1, 1.2],
+      }}
+      transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none"
+      animate={{ y: ["0%", "100%", "0%"], scale: [1, 0.8, 1] }}
+      transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 blur-[150px] pointer-events-none" />
+    <div className="absolute inset-0 bg-slate-900/40" />
+  </div>
 );
-
-const RadialBackground = () => {
-  const snowflakes = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    delay: Math.random() * 10,
-    duration: 10 + Math.random() * 15,
-    left: Math.random() * 100,
-  }));
-
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none"
-        animate={{
-          x: ["0%", "50%", "0%"],
-          y: ["0%", "50%", "0%"],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-purple-500/10 blur-[100px] pointer-events-none"
-        animate={{
-          x: ["0%", "-50%", "0%"],
-          y: ["0%", "-50%", "0%"],
-          scale: [1.2, 1, 1.2],
-        }}
-        transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-0 right-0 w-48 sm:w-64 h-48 sm:h-64 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none"
-        animate={{ y: ["0%", "100%", "0%"], scale: [1, 0.8, 1] }}
-        transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 blur-[150px] pointer-events-none" />
-      <div className="absolute inset-0 bg-slate-900/40" />
-      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-      {snowflakes.map((flake) => (
-        <Snowflake
-          key={flake.id}
-          delay={flake.delay}
-          duration={flake.duration}
-          left={flake.left}
-        />
-      ))}
-    </div>
-  );
-};
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -120,6 +85,7 @@ export default function Home() {
       hoverColor: "hover:bg-pink-500",
     },
   ];
+
 
   return (
     <div className="relative w-full min-h-screen font-sans bg-slate-900 overflow-hidden">
