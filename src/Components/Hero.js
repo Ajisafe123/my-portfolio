@@ -9,6 +9,40 @@ import {
   Phone,
 } from "lucide-react";
 
+const Snowflake = ({ delay, duration, left }) => (
+  <motion.div
+    className="absolute w-1 h-1 bg-white rounded-full opacity-60"
+    initial={{ top: "-5%", left: `${left}%` }}
+    animate={{
+      top: "105%",
+      x: [0, 20, -20, 0],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  />
+);
+
+const SnowEffect = () => {
+  const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    delay: Math.random() * 5,
+    duration: 5 + Math.random() * 10,
+    left: Math.random() * 100,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {snowflakes.map((flake) => (
+        <Snowflake key={flake.id} {...flake} />
+      ))}
+    </div>
+  );
+};
+
 const RadialBackground = () => (
   <div className="absolute inset-0 overflow-hidden">
     <motion.div
@@ -35,7 +69,7 @@ const RadialBackground = () => (
       transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
     />
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 blur-[150px] pointer-events-none" />
-    <div className="absolute inset-0 bg-slate-900/40" />
+    <div className="absolute inset-0 bg-slate-900/70" />
   </div>
 );
 
@@ -90,6 +124,7 @@ export default function Home() {
   return (
     <div className="relative w-full min-h-screen font-sans bg-slate-900 overflow-hidden">
       <RadialBackground />
+      <SnowEffect />
 
       <motion.div
         className="absolute inset-0 pointer-events-none"

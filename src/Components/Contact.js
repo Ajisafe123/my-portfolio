@@ -74,7 +74,8 @@ const ContactForm = () => {
 
     setStatus({ type: "sending", message: "Sending message..." });
 
-    const mainEmail = emailjs.send(
+    // Send main email first
+    emailjs.send(
       process.env.REACT_APP_EMAILJS_SERVICE_ID,
       process.env.REACT_APP_EMAILJS_TEMPLATE_TO_YOU,
       {
@@ -84,28 +85,31 @@ const ContactForm = () => {
         to_email: "ajisafeibrahim54@gmail.com",
       },
       process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    );
-
-    const autoReply = emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
-      {
-        to_name: formData.name,
-        to_email: formData.email,
-        reply_message: formData.message,
-        from_name: "Ibrahim Ajisafe",
-      },
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    );
-
-    // Send both emails in parallel
-    Promise.all([mainEmail, autoReply])
+    )
       .then(() => {
+        emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
+          {
+            to_name: formData.name,
+            to_email: formData.email,
+            reply_to: formData.email,
+            user_email: formData.email,
+            message: formData.message,
+            from_name: "Ibrahim Ajisafe",
+          },
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        ).catch((autoReplyError) => {
+          // Log auto-reply error but don't show it to user
+          console.warn("Auto-reply failed:", autoReplyError);
+        });
+
+        // Show success message
         setStatus({ type: "success", message: "Message sent successfully!" });
         setFormData({ name: "", email: "", message: "" });
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Main email failed:", error);
         setStatus({
           type: "error",
           message: "Failed to send message. Please try again.",
@@ -224,13 +228,12 @@ const ContactForm = () => {
 
               {status && (
                 <div
-                  className={`p-3 rounded-md text-sm font-medium ${
-                    status.type === "success"
-                      ? "bg-green-900/50 text-green-300 border border-green-700"
-                      : status.type === "error"
+                  className={`p-3 rounded-md text-sm font-medium ${status.type === "success"
+                    ? "bg-green-900/50 text-green-300 border border-green-700"
+                    : status.type === "error"
                       ? "bg-red-900/50 text-red-300 border border-red-700"
                       : "bg-purple-900/50 text-purple-300 border border-purple-700"
-                  }`}
+                    }`}
                 >
                   {status.message}
                 </div>
@@ -239,11 +242,10 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={status?.type === "sending"}
-                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all ${
-                  status?.type === "sending"
-                    ? "opacity-70 cursor-not-allowed"
-                    : ""
-                }`}
+                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all ${status?.type === "sending"
+                  ? "opacity-70 cursor-not-allowed"
+                  : ""
+                  }`}
               >
                 {status?.type === "sending" ? "Sending..." : "Send Message"}
               </button>

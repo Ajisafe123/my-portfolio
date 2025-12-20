@@ -273,29 +273,37 @@ const ProjectCard = ({
 
 const ProjectModal = ({ project, onClose }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl"
-      onClick={onClose}
-    >
+    <>
+      {/* Backdrop */}
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl"
+        onClick={onClose}
+      />
+
+      {/* Modal sliding from right */}
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/20 shadow-2xl"
+        className="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[500px] md:w-[600px] overflow-y-auto bg-gradient-to-br from-gray-900 via-black to-gray-900 shadow-2xl"
       >
+        {/* Decorative elements */}
+        <div className="absolute top-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
+
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
+          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors group"
         >
-          <span className="text-white text-xl">×</span>
+          <span className="text-white text-2xl group-hover:rotate-90 transition-transform duration-300">×</span>
         </button>
 
-        <div className="relative h-56 sm:h-64 overflow-hidden">
+        <div className="relative h-64 overflow-hidden">
           <img
             src={project.image}
             alt={project.title}
@@ -303,9 +311,9 @@ const ProjectModal = ({ project, onClose }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-          <div className="absolute bottom-4 left-4">
+          <div className="absolute bottom-6 left-6">
             <div
-              className={`px-4 py-1.5 rounded-full bg-gradient-to-r ${project.color} backdrop-blur-xl`}
+              className={`px-4 py-2 rounded-full bg-gradient-to-r ${project.color} backdrop-blur-xl shadow-lg`}
             >
               <span className="text-sm text-white font-bold">
                 {project.category}
@@ -314,65 +322,68 @@ const ProjectModal = ({ project, onClose }) => {
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 space-y-5">
+        <div className="relative p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-3">
               {project.title}
             </h2>
-            <p className="text-gray-400 text-base">{project.description}</p>
+            <p className="text-gray-400 text-base leading-relaxed">{project.description}</p>
           </div>
 
-          <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+          <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <div className="text-sm text-gray-400 font-semibold">
               Status:{" "}
-              <span className="text-white font-bold">{project.status}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold">{project.status}</span>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2">
-              <Code className="w-5 h-5" />
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <Code className="w-5 h-5 text-purple-400" />
               Technologies Used
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.tools.map((tool, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm text-white font-medium"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-sm text-white font-medium hover:border-purple-500/50 transition-colors"
                 >
                   {tool}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 pt-3">
+          <div className="flex flex-col gap-3 pt-4">
             <motion.a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold text-center flex items-center justify-center gap-2 text-sm hover:shadow-lg hover:shadow-blue-500/50 transition-shadow"
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold text-center flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/50 transition-shadow"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-5 h-5" />
               View Live Project
             </motion.a>
             <motion.a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3 rounded-xl bg-white/5 border border-white/20 text-white font-bold text-center flex items-center justify-center gap-2 text-sm hover:bg-white/10 transition-colors"
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              className="w-full py-4 rounded-xl bg-white/5 border border-white/20 text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-5 h-5" />
               View Source Code
             </motion.a>
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </>
   );
 };
 

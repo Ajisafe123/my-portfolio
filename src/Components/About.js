@@ -1,63 +1,20 @@
 import React, { forwardRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const RadialProgress = ({ level, color }) => {
-  const radius = 32;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (level / 100) * circumference;
-
-  return (
-    <div className="relative w-16 h-16">
-      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-        <circle
-          className="text-white/10 stroke-current"
-          strokeWidth="6"
-          cx="50"
-          cy="50"
-          r={radius}
-          fill="transparent"
-        />
-        <motion.circle
-          className={`stroke-current ${color}`}
-          strokeWidth="6"
-          strokeLinecap="round"
-          cx="50"
-          cy="50"
-          r={radius}
-          fill="transparent"
-          strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: offset }}
-          transition={{ duration: 1 }}
-        />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-xs font-bold text-white">{level}%</span>
-      </div>
-    </div>
-  );
-};
-
-const SkillGrid = ({ skills }) => (
-  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 mt-4">
-    <AnimatePresence>
-      {skills.map((skill, index) => (
-        <motion.div
-          key={skill.name}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ delay: index * 0.05 }}
-          className="flex flex-col items-center justify-center text-center"
-        >
-          <RadialProgress level={skill.level} color={skill.svgColor} />
-          <h3 className="text-sm font-semibold mt-1 text-white">
-            {skill.name}
-          </h3>
-        </motion.div>
-      ))}
-    </AnimatePresence>
-  </div>
+const SkillItem = ({ skill, index }) => (
+  <motion.div
+    initial={{ opacity: 0, x: -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ delay: index * 0.02, duration: 0.3 }}
+    whileHover={{ x: 5 }}
+    className="group flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-white/5 transition-all duration-300 cursor-default"
+  >
+    <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${skill.iconBg} group-hover:scale-150 transition-transform duration-300`} />
+    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+      {skill.name}
+    </span>
+  </motion.div>
 );
 
 const AboutStackSection = forwardRef((props, ref) => {
@@ -66,66 +23,64 @@ const AboutStackSection = forwardRef((props, ref) => {
   const skills = [
     {
       name: "React",
-      level: 75,
       category: "frontend",
-      svgColor: "text-cyan-400",
+      iconBg: "from-cyan-500 to-blue-500",
     },
     {
       name: "Vue.js",
-      level: 60,
       category: "frontend",
-      svgColor: "text-gray-400",
+      iconBg: "from-green-500 to-emerald-500",
     },
     {
       name: "Tailwind",
-      level: 92,
       category: "frontend",
-      svgColor: "text-sky-400",
+      iconBg: "from-sky-500 to-cyan-500",
     },
     {
       name: "TypeScript",
-      level: 68,
       category: "frontend",
-      svgColor: "text-blue-500",
+      iconBg: "from-blue-600 to-blue-400",
     },
     {
       name: "HTML",
-      level: 88,
       category: "frontend",
-      svgColor: "text-blue-500",
+      iconBg: "from-orange-500 to-red-500",
     },
     {
       name: "CSS",
-      level: 88,
       category: "frontend",
-      svgColor: "text-blue-500",
+      iconBg: "from-blue-500 to-purple-500",
     },
     {
       name: "JavaScript",
-      level: 88,
       category: "frontend",
-      svgColor: "text-blue-500",
+      iconBg: "from-yellow-500 to-yellow-600",
     },
     {
       name: "FastAPI",
-      level: 84,
       category: "backend",
-      svgColor: "text-yellow-400",
+      iconBg: "from-teal-500 to-green-500",
     },
     {
       name: "PostgreSQL",
-      level: 82,
       category: "database",
-      svgColor: "text-blue-600",
+      iconBg: "from-blue-700 to-blue-500",
     },
     {
       name: "MongoDB",
-      level: 80,
       category: "database",
-      svgColor: "text-green-500",
+      iconBg: "from-green-600 to-green-400",
     },
-    { name: "Docker", level: 75, category: "tools", svgColor: "text-cyan-500" },
-    { name: "Git", level: 85, category: "tools", svgColor: "text-red-500" },
+    {
+      name: "Docker",
+      category: "tools",
+      iconBg: "from-blue-500 to-cyan-500",
+    },
+    {
+      name: "Git",
+      category: "tools",
+      iconBg: "from-orange-600 to-red-600",
+    },
   ];
 
   const filteredSkills =
@@ -166,22 +121,27 @@ const AboutStackSection = forwardRef((props, ref) => {
         <h2 className="h1-text text-2xl font-bold mb-4 text-center text-purple-400">
           MY TECH STACK
         </h2>
-        <div className="flex justify-center gap-2 mb-5 flex-wrap">
+        <div className="flex justify-center gap-2 mb-6 flex-wrap">
           {["all", "frontend", "backend", "database", "tools"].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-[2px] rounded-full text-[11px] border ${
-                selectedCategory === cat
-                  ? "bg-purple-600 border-transparent text-white"
-                  : "border-gray-700 text-gray-400 hover:bg-gray-800"
-              }`}
+              className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-300 ${selectedCategory === cat
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 border-transparent text-white shadow-lg shadow-purple-500/30"
+                : "border-gray-700 text-gray-400 hover:bg-gray-800 hover:border-gray-600"
+                }`}
             >
               {cat.toUpperCase()}
             </button>
           ))}
         </div>
-        <SkillGrid skills={filteredSkills} />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1">
+          <AnimatePresence mode="wait">
+            {filteredSkills.map((skill, index) => (
+              <SkillItem key={skill.name} skill={skill} index={index} />
+            ))}
+          </AnimatePresence>
+        </div>
       </motion.div>
 
       <motion.div
