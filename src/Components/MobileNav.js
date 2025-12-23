@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, UserRound, Cpu, FolderGit2, Mail, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
 const MobileNav = ({
@@ -93,8 +93,8 @@ const MobileNav = ({
                         setOpen(false);
                       }}
                       className={`w-full group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 ${isActive
-                          ? "bg-purple-50 dark:bg-white/10 text-purple-600 dark:text-white shadow-sm"
-                          : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400"
+                        ? "bg-purple-50 dark:bg-white/10 text-purple-600 dark:text-white shadow-sm"
+                        : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400"
                         }`}
                     >
                       <span className="text-xl font-bold capitalize tracking-tight">

@@ -88,7 +88,7 @@ export default function Home() {
 
 
   return (
-    <div className="relative w-full min-h-screen font-sans bg-gray-50 dark:bg-slate-900 overflow-hidden">
+    <div className="relative w-full min-h-screen font-sans bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:bg-slate-900 overflow-hidden">
       <RadialBackground />
 
       <motion.div
@@ -187,7 +187,7 @@ export default function Home() {
           >
             <Mail className="text-purple-600 dark:text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
             <span className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium tracking-wide ">
-              ajisafeibrahim54@gmail.com
+              Email Me
             </span>
           </motion.a>
 
@@ -199,7 +199,7 @@ export default function Home() {
           >
             <Phone className="text-purple-600 dark:text-purple-400 h-4 w-4 sm:h-5 sm:w-5" />
             <span className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm font-medium tracking-wide">
-              09056453575
+              Call Me
             </span>
           </motion.a>
         </div>
