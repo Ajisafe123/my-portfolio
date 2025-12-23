@@ -1,15 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, UserRound, Cpu, FolderGit2, Mail, Briefcase } from "lucide-react";
-
-const ICONS = {
-  home: Home,
-  about: UserRound,
-  services: Briefcase,
-  skills: Cpu,
-  projects: FolderGit2,
-  contact: Mail,
-};
+import { Menu, X, Home, UserRound, Cpu, FolderGit2, Mail, Moon, Sun } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const MobileNav = ({
   sections = ["home", "about", "skills", "projects", "contact"],
@@ -18,124 +10,129 @@ const MobileNav = ({
   scrollToSection = () => { },
 }) => {
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [open]);
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    open: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const itemVariants = {
+    closed: { y: 20, opacity: 0 },
+    open: { y: 0, opacity: 1 }
+  };
 
   return (
-    <div className="lg:hidden fixed top-4 right-4 z-[100]">
-      <motion.button
-        onClick={() => setOpen(!open)}
-        whileTap={{ scale: 0.92 }}
-        className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 text-white shadow-xl focus:outline-none relative z-[101]"
-      >
-        {open ? <X size={24} /> : <Menu size={24} />}
-      </motion.button>
+    <>
+      <div className="lg:hidden fixed top-6 right-6 z-[100]">
+        <motion.button
+          onClick={() => setOpen(!open)}
+          whileTap={{ scale: 0.9 }}
+          className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg backdrop-blur-md border border-white/10 z-50 transition-colors duration-300 ${!open && "bg-gradient-to-tr from-purple-600 to-pink-600 text-white"
+            } ${open && "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white border-gray-200 dark:border-white/10"}`}
+        >
+          <AnimatePresence mode="wait">
+            {open ? <X size={24} key="close" /> : <Menu size={24} key="open" />}
+          </AnimatePresence>
+        </motion.button>
+      </div>
 
       <AnimatePresence>
         {open && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[99]"
-              onClick={() => setOpen(false)}
-            />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[90] lg:hidden bg-white/95 dark:bg-black/95 backdrop-blur-3xl flex flex-col justify-center items-center"
+          >
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+              <div className="absolute -top-[20%] -right-[20%] w-[70%] h-[70%] bg-purple-500/10 rounded-full blur-[100px]" />
+              <div className="absolute -bottom-[20%] -left-[20%] w-[70%] h-[70%] bg-pink-500/10 rounded-full blur-[100px]" />
+            </div>
 
-            {/* Full-screen sidebar */}
-            <motion.div
-              key="menu"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-gradient-to-br from-gray-900 via-black to-gray-900 shadow-2xl z-[100] overflow-hidden"
+            <motion.nav
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="w-full max-w-sm px-6 relative z-10"
             >
-              {/* Decorative background elements */}
-              <div className="absolute top-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl" />
-              <div className="absolute bottom-20 left-10 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl" />
-
-              <div className="relative h-full flex flex-col p-8 pt-24">
-                {/* Header */}
-                <div className="mb-12">
-                  <h2 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
-                    Navigation
-                  </h2>
-                  <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" />
-                </div>
-
-                {/* Navigation items */}
-                <nav className="flex-1 space-y-3">
-                  {sections.map((section, idx) => {
-                    const key = section.toLowerCase();
-                    const Icon = ICONS[key] || Home;
-                    const isActive = activeSection === section;
-
-                    return (
-                      <motion.button
-                        key={section}
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        whileHover={{ x: 10 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => {
-                          scrollToSection(section);
-                          setActiveSection(section);
-                          setOpen(false);
-                        }}
-                        className={`w-full flex items-center gap-4 px-6 py-4 text-left relative rounded-xl transition-all duration-300 group ${isActive ? "text-white" : "text-gray-400 hover:text-white"
-                          }`}
-                      >
-                        {isActive && (
-                          <motion.div
-                            layoutId="active-bg"
-                            className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500/50"
-                            transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 30,
-                            }}
-                          />
-                        )}
-
-                        <div
-                          className={`relative z-10 p-3 rounded-lg transition-all duration-300 ${isActive
-                            ? "bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg shadow-purple-500/50"
-                            : "bg-white/5 group-hover:bg-white/10"
-                            }`}
-                        >
-                          <Icon size={20} />
-                        </div>
-
-                        <span className="relative z-10 capitalize font-bold text-lg tracking-wide">
-                          {section}
-                        </span>
-
-                        {isActive && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="ml-auto w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"
-                          />
-                        )}
-                      </motion.button>
-                    );
-                  })}
-                </nav>
-
-                {/* Footer */}
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <p className="text-gray-500 text-sm text-center">
-                    © 2024 Ajisafe Ibrahim
-                  </p>
-                </div>
+              <div className="space-y-4">
+                {sections.map((section, idx) => {
+                  const isActive = activeSection === section;
+                  return (
+                    <motion.button
+                      key={section}
+                      variants={itemVariants}
+                      transition={{ delay: idx * 0.1 }}
+                      onClick={() => {
+                        scrollToSection(section);
+                        setActiveSection(section);
+                        setOpen(false);
+                      }}
+                      className={`w-full group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 ${isActive
+                          ? "bg-purple-50 dark:bg-white/10 text-purple-600 dark:text-white shadow-sm"
+                          : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400"
+                        }`}
+                    >
+                      <span className="text-xl font-bold capitalize tracking-tight">
+                        {section}
+                      </span>
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeDot"
+                          className="w-2 h-2 rounded-full bg-purple-600 dark:bg-purple-400"
+                        />
+                      )}
+                    </motion.button>
+                  );
+                })}
               </div>
-            </motion.div>
-          </>
+
+              <motion.div
+                variants={itemVariants}
+                transition={{ delay: 0.5 }}
+                className="mt-12 pt-8 border-t border-gray-100 dark:border-white/10 flex flex-col items-center gap-6"
+              >
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/10 transition-all"
+                >
+                  {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
+                  <span className="text-sm font-bold uppercase tracking-wide">Switch to {theme === 'dark' ? 'Light' : 'Dark'}</span>
+                </button>
+
+                <p className="text-gray-400 dark:text-gray-600 text-xs text-center font-medium">
+                  DESIGNED BY AJISAFE
+                </p>
+              </motion.div>
+            </motion.nav>
+          </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

@@ -118,7 +118,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-black text-gray-100 py-16 px-6">
+    <section className="relative bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 py-16 px-6 transition-colors duration-300">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="h1-text text-4xl md:text-5xl font-extrabold">
@@ -126,15 +126,15 @@ const ContactForm = () => {
               GET IN TOUCH
             </span>
           </h1>
-          <p className="text-gray-400 mt-2 text-base">
+          <p className="text-gray-600 dark:text-gray-400 mt-2 text-base">
             Have a project or just want to say hi? Message me below or use my
             email/phone.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 p-6 md:p-8 rounded-md border border-gray-700">
+        <div className="flex flex-col lg:flex-row gap-8 p-6 md:p-8 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent shadow-lg dark:shadow-none">
           <div className="lg:w-1/3 space-y-4">
-            <h3 className="text-2xl font-bold text-white mb-2">Contact Info</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Contact Info</h3>
 
             {[
               {
@@ -160,29 +160,29 @@ const ContactForm = () => {
               return (
                 <div
                   key={index}
-                  className="flex p-3 rounded-md border border-gray-800 hover:border-purple-500 transition-all duration-300"
+                  className="flex p-3 rounded-md border border-gray-200 dark:border-gray-800 hover:border-purple-500 transition-all duration-300"
                 >
                   <Icon className="w-6 h-6 text-purple-500 mt-1 flex-shrink-0" />
                   <div className="ml-3">
-                    <p className="font-semibold text-gray-300 text-sm">
+                    <p className="font-semibold text-gray-700 dark:text-gray-300 text-sm">
                       {item.label}
                     </p>
                     {item.link !== "#" ? (
                       <a
                         href={item.link}
-                        className="text-gray-400 hover:text-purple-500 text-sm"
+                        className="text-gray-600 dark:text-gray-400 hover:text-purple-500 text-sm"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-gray-400 text-sm">{item.value}</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">{item.value}</p>
                     )}
                   </div>
                 </div>
               );
             })}
 
-            <div className="mt-4 h-40 w-full rounded-md overflow-hidden border border-gray-700">
+            <div className="mt-4 h-40 w-full rounded-md overflow-hidden border border-gray-200 dark:border-gray-700">
               <iframe
                 title="Location Map"
                 width="100%"
@@ -197,7 +197,7 @@ const ContactForm = () => {
           </div>
 
           <div className="lg:w-2/3">
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               Send a Message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -207,7 +207,7 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full px-4 py-4 rounded-md bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
               />
               <input
                 type="email"
@@ -215,7 +215,7 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your Email"
-                className="w-full px-4 py-4 rounded-md bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
               />
               <textarea
                 name="message"
@@ -223,7 +223,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Your Message"
-                className="w-full px-4 py-4 rounded-md bg-gray-900 border border-gray-700 text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
               />
 
               {status && (

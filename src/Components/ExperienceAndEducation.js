@@ -146,12 +146,12 @@ const MagneticTimelineCard = ({ item }) => {
 
   return (
     <div className="flex-shrink-0 w-[340px] md:w-[380px] snap-center p-2">
-      <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+      <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-black border border-gray-200 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
         <div
           className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
         ></div>
 
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-100/50 to-transparent dark:from-white/5 dark:to-transparent rounded-bl-full"></div>
 
         <div className="relative p-6 flex flex-col h-full">
           <div className="flex items-start justify-between mb-4">
@@ -160,24 +160,24 @@ const MagneticTimelineCard = ({ item }) => {
             >
               <IconComponent className="w-6 h-6 text-white" />
             </div>
-            <span className="px-3 py-1 text-xs font-semibold text-white/60 bg-white/5 rounded-full border border-white/10">
+            <span className="px-3 py-1 text-xs font-semibold text-gray-600 dark:text-white/60 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10">
               {item.period}
             </span>
           </div>
 
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300">
               {item.title}
             </h3>
             <p className="text-lg font-medium text-purple-400 mb-3">
               {item.company}
             </p>
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
               {item.description}
             </p>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-white/5 flex items-center justify-between">
             <span className="text-xs text-gray-500 uppercase tracking-wider">
               View More
             </span>
@@ -216,22 +216,22 @@ const ExperienceAndEducation = () => {
   }, []);
 
   return (
-    <section className="relative bg-black py-10">
+    <section className="relative bg-gray-50 dark:bg-black py-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <h2 className="h1-text text-4xl md:text-5xl font-extrabold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600">
               EXPERIENCE
             </span>
-            <span className="text-white"> & EDUCATION</span>
+            <span className="text-gray-900 dark:text-white"> & EDUCATION</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
             Scroll or use the arrows to explore my journey.
           </p>
         </div>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-black via-black to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-black via-black to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-gray-50 via-gray-50 to-transparent dark:from-black dark:via-black dark:to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-gray-50 via-gray-50 to-transparent dark:from-black dark:via-black dark:to-transparent pointer-events-none" />
           <div className="absolute inset-y-0 flex justify-between w-full z-20 pointer-events-none px-2">
             <button
               onClick={() => scroll("left")}

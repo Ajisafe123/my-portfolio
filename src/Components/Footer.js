@@ -24,7 +24,7 @@ const Footer = () => {
       "Computer Science",
       "Web Development",
       "UI/UX Design",
-      "Certifications",
+      "Tech Stack",
     ],
     Resources: ["Blog", "Portfolio", "Resume", "Case Studies"],
   };
@@ -57,7 +57,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#080808] text-white overflow-hidden border-t border-purple-800/20 font-sans">
+    <footer className="relative bg-gray-100 dark:bg-[#080808] text-gray-900 dark:text-white overflow-hidden border-t border-gray-200 dark:border-purple-800/20 font-sans transition-colors duration-300">
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <div
           className="absolute inset-0"
@@ -78,7 +78,7 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.1 }}
             >
-              <h4 className="h1-text text-sm font-bold uppercase tracking-widest mb-5 text-purple-500 flex items-center gap-2 pb-1 border-b border-white/10">
+              <h4 className="h1-text text-sm font-bold uppercase tracking-widest mb-5 text-purple-600 dark:text-purple-500 flex items-center gap-2 pb-1 border-b border-gray-200 dark:border-white/10">
                 {category === "Navigation" && <Link2 className="w-4 h-4" />}
                 {category === "Experience" && <Briefcase className="w-4 h-4" />}
                 {category === "Education" && (
@@ -92,7 +92,7 @@ const Footer = () => {
                   <li key={idx}>
                     <motion.a
                       href="#"
-                      className="text-gray-300 text-sm transition-colors hover:text-purple-400 inline-flex items-center"
+                      className="text-gray-600 dark:text-gray-300 text-sm transition-colors hover:text-purple-500 dark:hover:text-purple-400 inline-flex items-center"
                     >
                       {link}
                     </motion.a>
@@ -103,11 +103,11 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-purple-800/30 pt-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-gray-200 dark:border-purple-800/30 pt-8">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <a
               href="mailto:ajisafeibrahim54@gmail.com"
-              className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm border border-purple-500/20 text-xs sm:text-sm font-medium hover:bg-purple-500 hover:text-white transition-all"
+              className="flex items-center gap-2 bg-white dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm border border-gray-200 dark:border-purple-500/20 text-xs sm:text-sm font-medium hover:bg-purple-500 hover:text-white transition-all shadow-sm dark:shadow-none"
             >
               <Mail className="text-purple-400 w-4 h-4" />
               ajisafeibrahim54@gmail.com
@@ -115,7 +115,7 @@ const Footer = () => {
 
             <a
               href="tel:09056453575"
-              className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm border border-purple-500/20 text-xs sm:text-sm font-medium hover:bg-purple-500 hover:text-white transition-all"
+              className="flex items-center gap-2 bg-white dark:bg-white/5 px-3 py-2 rounded-full backdrop-blur-sm border border-gray-200 dark:border-purple-500/20 text-xs sm:text-sm font-medium hover:bg-purple-500 hover:text-white transition-all shadow-sm dark:shadow-none"
             >
               <Phone className="text-purple-400 w-4 h-4" />
               09056453575
@@ -132,7 +132,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   onMouseEnter={() => setHoveredSocial(social.name)}
                   onMouseLeave={() => setHoveredSocial(null)}
-                  className="relative w-10 h-10 rounded-full bg-gray-800/50 border border-gray-700 flex items-center justify-center group overflow-hidden transition-all duration-300"
+                  className="relative w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 flex items-center justify-center group overflow-hidden transition-all duration-300"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -154,11 +154,10 @@ const Footer = () => {
                     />
                   )}
                   <span
-                    className={`relative z-10 ${
-                      hoveredSocial === social.name
-                        ? "text-black"
-                        : "text-gray-300"
-                    }`}
+                    className={`relative z-10 ${hoveredSocial === social.name
+                      ? "text-black"
+                      : "text-gray-600 dark:text-gray-300"
+                      }`}
                   >
                     {social.icon}
                   </span>
@@ -168,10 +167,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <p className="mt-8 flex gap-2 justify-center text-gray-600 text-center text-xs sm:text-sm">
+        <p className="mt-8 flex gap-2 justify-center text-gray-500 dark:text-gray-600 text-center text-xs sm:text-sm">
           © 2025 All Rights Reserved. Crafted with{" "}
           <span className="text-red-500">
-            <Heart/>
+            <Heart />
           </span> and modern code.
         </p>
       </div>

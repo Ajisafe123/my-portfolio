@@ -10,62 +10,20 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Hostels Connect",
-      description:
-        "A hostel management platform where I handled the full backend logic and API integration.",
-      image:
-        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486066/Hostel_Connets_taduap.png",
-      category: "Backend",
-      tools: ["FastAPI", "PostgreSQL", "JWT Auth", "Docker"],
-      liveLink: "https://example.com",
-      githubLink: "https://github.com/Ajisafe123",
-      status: "Done",
-      color: "from-indigo-500 to-purple-500",
-    },
-    {
-      id: 2,
-      title: "FocusFlow",
+      title: "Nibras Al-deen",
       description:
         "A productivity Islamic web app designed to help users manage tasks and stay focused with AI Prayer reminders.",
       image:
         "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486051/FocusFlow_f9voh0.png",
       category: "Productivity",
       tools: ["React.js", "TypeScript", "Postgresql", "Framer Motion"],
-      liveLink: "https://example.com",
+      liveLink: "https://nibrasudeen.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
       status: "In Progress",
       color: "from-green-500 to-emerald-500",
     },
     {
-      id: 3,
-      title: "CSC AI",
-      description:
-        "An academic AI-powered chatbot and knowledge base built to assist Computer Science students.",
-      image:
-        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486042/csc_Ai_c5vpm6.png",
-      category: "AI / Chatbot",
-      tools: ["Python", "FastAPI", "React", "OpenAI API"],
-      liveLink: "https://example.com",
-      githubLink: "https://github.com/Ajisafe123",
-      status: "In progress",
-      color: "from-orange-500 to-gray-400",
-    },
-    {
-      id: 4,
-      title: "School Management System",
-      description:
-        "A robust full-stack school portal for handling students, courses, and administrative tasks.",
-      image:
-        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/School_management_system_boxun5.png",
-      category: "Full Stack",
-      tools: ["React", "Django", "SQLite", "Bootstrap"],
-      liveLink: "https://ajisafe.vercel.app/",
-      githubLink: "https://github.com/Ajisafe123",
-      status: "In Progress",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      id: 5,
+      id: 2,
       title: "My Portfolio",
       description:
         "A creative personal portfolio built with smooth animations and a modern UI to showcase my skills.",
@@ -73,13 +31,13 @@ const Projects = () => {
         "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/My_portfolio_stbi1a.png",
       category: "Portfolio",
       tools: ["React", "Framer Motion", "TailwindCSS", "Email.js"],
-      liveLink: "https://example.com",
+      liveLink: "https://ajisafe,vercel.app",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",
       color: "from-purple-500 to-purple-800",
     },
     {
-      id: 6,
+      id: 3,
       title: "LibroSeek",
       description:
         "A digital library web app for discovering, reading, and organizing books online seamlessly.",
@@ -95,7 +53,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-black py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -103,17 +61,17 @@ const Projects = () => {
         className="max-w-7xl mx-auto mb-16 text-center"
       >
         <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-6 shadow-sm dark:shadow-none"
           whileHover={{ scale: 1.05 }}
         >
           <ArrowDownLeftFromSquareIcon className="w-4 h-4 text-yellow-400" />
-          <span className="text-sm text-gray-400 font-medium">
+          <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
             Featured Work
           </span>
         </motion.div>
 
         <h1 className="h1-text text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6 flex-wrap">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
             Selected
           </span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
@@ -121,7 +79,7 @@ const Projects = () => {
           </span>
         </h1>
 
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
           Explore my latest work in web development, AI, and full-stack systems.
         </p>
       </motion.div>
@@ -172,7 +130,7 @@ const ProjectCard = ({
       onClick={onClick}
       className="group relative cursor-pointer h-full"
     >
-      <div className="relative min-h-[460px] sm:min-h-[480px] md:min-h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex flex-col justify-between">
+      <div className="relative min-h-[460px] sm:min-h-[480px] md:min-h-[500px] rounded-3xl overflow-hidden bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 flex flex-col justify-between shadow-lg dark:shadow-none transition-colors duration-300">
         <motion.div
           className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
           style={{ filter: "blur(40px)" }}
@@ -234,10 +192,10 @@ const ProjectCard = ({
         </div>
         <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
           <div>
-            <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all">
               {project.title}
             </h3>
-            <p className="text-gray-400 text-sm md:text-base line-clamp-3">
+            <p className="text-gray-700 dark:text-gray-400 text-sm md:text-base line-clamp-3">
               {project.description}
             </p>
           </div>
@@ -249,16 +207,16 @@ const ProjectCard = ({
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 + i * 0.05 }}
-                className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 font-medium"
+                className="px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300 font-medium"
               >
                 {tool}
               </motion.span>
             ))}
           </div>
-          <div className="flex items-center justify-between pt-4 border-t border-white/10">
+          <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-white/10">
             <span className="text-xs text-gray-500">{project.status}</span>
             <motion.div
-              className="text-xs text-gray-500 flex items-center gap-1"
+              className="text-xs text-purple-600 dark:text-purple-400 font-medium flex items-center gap-1"
               whileHover={{ x: 5 }}
             >
               <span>View Details</span>
@@ -290,7 +248,7 @@ const ProjectModal = ({ project, onClose }) => {
         exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[500px] md:w-[600px] overflow-y-auto bg-gradient-to-br from-gray-900 via-black to-gray-900 shadow-2xl"
+        className="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[500px] md:w-[600px] overflow-y-auto bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 shadow-2xl"
       >
         {/* Decorative elements */}
         <div className="absolute top-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -298,9 +256,9 @@ const ProjectModal = ({ project, onClose }) => {
 
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors group"
+          className="absolute top-6 left-6 z-10 w-10 h-10 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-xl border border-black/10 dark:border-white/20 flex items-center justify-center hover:bg-black/20 dark:hover:bg-white/20 transition-colors group"
         >
-          <span className="text-white text-2xl group-hover:rotate-90 transition-transform duration-300">×</span>
+          <span className="text-gray-900 dark:text-white text-2xl group-hover:rotate-90 transition-transform duration-300">×</span>
         </button>
 
         <div className="relative h-64 overflow-hidden">
@@ -324,21 +282,21 @@ const ProjectModal = ({ project, onClose }) => {
 
         <div className="relative p-6 sm:p-8 space-y-6">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-gray-400 mb-3">
               {project.title}
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed">{project.description}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">{project.description}</p>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-            <div className="text-sm text-gray-400 font-semibold">
+          <div className="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm">
+            <div className="text-sm text-gray-600 dark:text-gray-400 font-semibold">
               Status:{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold">{project.status}</span>
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <Code className="w-5 h-5 text-purple-400" />
               Technologies Used
             </h3>
@@ -349,7 +307,7 @@ const ProjectModal = ({ project, onClose }) => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 }}
-                  className="px-4 py-2 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-sm text-white font-medium hover:border-purple-500/50 transition-colors"
+                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-purple-500/30 text-sm text-gray-700 dark:text-gray-200 font-medium hover:border-purple-500/50 transition-colors"
                 >
                   {tool}
                 </motion.div>
@@ -373,7 +331,7 @@ const ProjectModal = ({ project, onClose }) => {
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 rounded-xl bg-white/5 border border-white/20 text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+              className="w-full py-4 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

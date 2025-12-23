@@ -1,29 +1,30 @@
 import React, { useRef } from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import Navbar from "./Components/Navbar";
 import HomeSection from "./Components/Hero";
 import AboutSection from "./Components/About";
-import ServicesSection from "./Components/Services";
 import ExperienceSection from "./Components/ExperienceAndEducation";
 import ProjectsSection from "./Components/Project";
+import TechStack from "./Components/TechStack";
 import ContactSection from "./Components/Contact";
 import Footer from "./Components/Footer";
 
 const App = () => {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
-  const servicesRef = useRef(null);
   const projectsRef = useRef(null);
   const experienceRef = useRef(null);
+  const techStackRef = useRef(null);
   const contactRef = useRef(null);
 
-  const sections = ["Home", "About", "Services", "Projects", "Experience", "Contact"];
+  const sections = ["Home", "About", "Projects", "Experience", "Tech Stack", "Contact"];
 
   const sectionRefs = {
     Home: homeRef,
     About: aboutRef,
-    Services: servicesRef,
     Projects: projectsRef,
     Experience: experienceRef,
+    "Tech Stack": techStackRef,
     Contact: contactRef,
   };
 
@@ -35,37 +36,39 @@ const App = () => {
   };
 
   return (
-    <div className="relative overflow-x-hidden scroll-smooth bg-black">
-      <Navbar sections={sections} scrollToSection={scrollToSection} />
+    <ThemeProvider>
+      <div className="relative overflow-x-hidden scroll-smooth bg-white dark:bg-black transition-colors duration-300">
+        <Navbar sections={sections} scrollToSection={scrollToSection} />
 
-      <div className="w-full">
-        <section id="home" ref={homeRef}>
-          <HomeSection />
-        </section>
+        <div className="w-full">
+          <section id="home" ref={homeRef}>
+            <HomeSection />
+          </section>
 
-        <section id="about" ref={aboutRef}>
-          <AboutSection />
-        </section>
+          <section id="about" ref={aboutRef}>
+            <AboutSection />
+          </section>
 
-        <section id="services" ref={servicesRef}>
-          <ServicesSection />
-        </section>
+          <section id="projects" ref={projectsRef}>
+            <ProjectsSection />
+          </section>
 
-        <section id="projects" ref={projectsRef}>
-          <ProjectsSection />
-        </section>
+          <section id="experience" ref={experienceRef}>
+            <ExperienceSection />
+          </section>
 
-        <section id="experience" ref={experienceRef}>
-          <ExperienceSection />
-        </section>
+          <section id="tech-stack" ref={techStackRef}>
+            <TechStack />
+          </section>
 
-        <section id="contact" ref={contactRef}>
-          <ContactSection />
-        </section>
+          <section id="contact" ref={contactRef}>
+            <ContactSection />
+          </section>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

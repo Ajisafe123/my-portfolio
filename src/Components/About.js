@@ -3,17 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const SkillItem = ({ skill, index }) => (
   <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -20 }}
-    transition={{ delay: index * 0.02, duration: 0.3 }}
-    whileHover={{ x: 5 }}
-    className="group flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-white/5 transition-all duration-300 cursor-default"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0 }}
+    transition={{ delay: index * 0.02, duration: 0.2 }}
+    className="group text-center"
   >
-    <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${skill.iconBg} group-hover:scale-150 transition-transform duration-300`} />
-    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+    <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">
       {skill.name}
-    </span>
+    </h3>
   </motion.div>
 );
 
@@ -21,66 +19,18 @@ const AboutStackSection = forwardRef((props, ref) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const skills = [
-    {
-      name: "React",
-      category: "frontend",
-      iconBg: "from-cyan-500 to-blue-500",
-    },
-    {
-      name: "Vue.js",
-      category: "frontend",
-      iconBg: "from-green-500 to-emerald-500",
-    },
-    {
-      name: "Tailwind",
-      category: "frontend",
-      iconBg: "from-sky-500 to-cyan-500",
-    },
-    {
-      name: "TypeScript",
-      category: "frontend",
-      iconBg: "from-blue-600 to-blue-400",
-    },
-    {
-      name: "HTML",
-      category: "frontend",
-      iconBg: "from-orange-500 to-red-500",
-    },
-    {
-      name: "CSS",
-      category: "frontend",
-      iconBg: "from-blue-500 to-purple-500",
-    },
-    {
-      name: "JavaScript",
-      category: "frontend",
-      iconBg: "from-yellow-500 to-yellow-600",
-    },
-    {
-      name: "FastAPI",
-      category: "backend",
-      iconBg: "from-teal-500 to-green-500",
-    },
-    {
-      name: "PostgreSQL",
-      category: "database",
-      iconBg: "from-blue-700 to-blue-500",
-    },
-    {
-      name: "MongoDB",
-      category: "database",
-      iconBg: "from-green-600 to-green-400",
-    },
-    {
-      name: "Docker",
-      category: "tools",
-      iconBg: "from-blue-500 to-cyan-500",
-    },
-    {
-      name: "Git",
-      category: "tools",
-      iconBg: "from-orange-600 to-red-600",
-    },
+    { name: "React", category: "frontend" },
+    { name: "Vue.js", category: "frontend" },
+    { name: "Tailwind", category: "frontend" },
+    { name: "TypeScript", category: "frontend" },
+    { name: "HTML", category: "frontend" },
+    { name: "CSS", category: "frontend" },
+    { name: "JavaScript", category: "frontend" },
+    { name: "FastAPI", category: "backend" },
+    { name: "PostgreSQL", category: "database" },
+    { name: "MongoDB", category: "database" },
+    { name: "Docker", category: "tools" },
+    { name: "Git", category: "tools" },
   ];
 
   const filteredSkills =
@@ -110,13 +60,13 @@ const AboutStackSection = forwardRef((props, ref) => {
     <section
       ref={ref}
       id="about"
-      className="min-h-[70vh] bg-black text-white flex flex-col lg:flex-row items-center justify-center gap-10 py-10 px-6 overflow-hidden"
+      className="min-h-[70vh] bg-white dark:bg-black text-gray-900 dark:text-white flex flex-col lg:flex-row items-center justify-center gap-10 py-10 px-6 overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full lg:w-[42%] bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg p-6 shadow-lg"
+        className="w-full lg:w-[42%] bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-black border border-gray-200 dark:border-gray-800 rounded-lg p-6 shadow-xl dark:shadow-lg transition-colors duration-300"
       >
         <h2 className="h1-text text-2xl font-bold mb-4 text-center text-purple-400">
           MY TECH STACK
@@ -128,14 +78,14 @@ const AboutStackSection = forwardRef((props, ref) => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all duration-300 ${selectedCategory === cat
                 ? "bg-gradient-to-r from-purple-600 to-pink-600 border-transparent text-white shadow-lg shadow-purple-500/30"
-                : "border-gray-700 text-gray-400 hover:bg-gray-800 hover:border-gray-600"
+                : "bg-gray-100 dark:bg-transparent border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600"
                 }`}
             >
               {cat.toUpperCase()}
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 gap-y-6">
           <AnimatePresence mode="wait">
             {filteredSkills.map((skill, index) => (
               <SkillItem key={skill.name} skill={skill} index={index} />
@@ -151,12 +101,12 @@ const AboutStackSection = forwardRef((props, ref) => {
         className="w-full lg:w-[45%] space-y-5 relative"
       >
         <h2 className="h1-text text-4xl font-extrabold text-purple-400">ABOUT ME</h2>
-        <p className="text-gray-300 text-base leading-relaxed">
-          Hey, I’m <span className="text-white font-semi-bold">Ajisafe Ibrahim</span> — a
+        <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+          Hey, I’m <span className="text-purple-600 dark:text-white font-semi-bold">Ajisafe Ibrahim</span> — a
           third-year Computer Science with Education student who loves blending
           design and technology to build experiences that move.
         </p>
-        <p className="text-gray-300 text-base leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
           I’ve spent months mastering frontend and backend development, building
           sleek, performant applications that bring ideas to life.
         </p>
@@ -168,13 +118,13 @@ const AboutStackSection = forwardRef((props, ref) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: card.delay, duration: 0.6 }}
-              className="bg-zinc-900/60 border border-purple-500/20 rounded-md p-4 shadow-md hover:shadow-purple-500/10 transition-shadow"
+              className="bg-gray-50 dark:bg-zinc-900/60 border border-gray-200 dark:border-purple-500/20 rounded-md p-4 shadow-sm hover:shadow-md dark:shadow-md dark:hover:shadow-purple-500/10 transition-all"
             >
-              <h3 className="text-sm font-bold text-purple-400 mb-2">
+              <h3 className="text-sm font-bold text-gray-900 dark:text-purple-400 mb-2">
                 {card.title}
               </h3>
               <motion.p
-                className="text-gray-300 text-xs"
+                className="text-gray-600 dark:text-gray-300 text-xs"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: card.delay + 0.3, duration: 0.8 }}

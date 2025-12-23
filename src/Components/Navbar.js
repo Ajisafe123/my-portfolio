@@ -10,7 +10,7 @@ const Navbar = ({ sections, scrollToSection }) => {
       const scrollY = window.scrollY;
       let current = "Home";
       sections.forEach((section) => {
-        const element = document.getElementById(section.toLowerCase());
+        const element = document.getElementById(section.toLowerCase().replace(/\s+/g, "-"));
         if (element && scrollY >= element.offsetTop - window.innerHeight / 2) {
           current = section;
         }
