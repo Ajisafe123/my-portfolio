@@ -88,7 +88,7 @@ export default function Home() {
 
 
   return (
-    <div className="relative w-full min-h-screen font-sans bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:bg-slate-900 overflow-hidden">
+    <div className="relative w-full min-h-screen font-sans bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 dark:bg-gradient-to-br dark:from-purple-950 dark:via-purple-900 dark:to-indigo-950 overflow-hidden">
       <RadialBackground />
 
       <motion.div

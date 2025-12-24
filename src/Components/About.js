@@ -51,7 +51,7 @@ const AboutStackSection = forwardRef((props, ref) => {
 
         <div className="max-w-3xl mx-auto space-y-6">
           <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            Hey, I’m <span className="text-purple-600 dark:text-white font-bold">Ajisafe Ibrahim</span> — a
+            Hey, I’m <span className="text-purple-600 dark:text-white font-bold">Ajisafe Ibrahim</span>, a
             third-year Computer Science with Education student who loves blending
             design and technology to build experiences that move.
           </p>
