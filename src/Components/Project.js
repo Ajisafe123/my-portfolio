@@ -50,7 +50,8 @@ const Projects = () => {
       title: "E-Attendance System",
       description:
         "Smart attendance system with geofencing and facial recognition technology for secure employee tracking.",
-      image: "/eattendcae.png",
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767200844/ettendance_fivz5m.png",
       category: "Enterprise",
       tools: [
         "Fast API",
@@ -133,13 +134,13 @@ const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
       onMouseLeave={() => setHoveredIndex(null)}
       className="group h-full cursor-pointer"
     >
-      <div className="relative h-full overflow-hidden rounded-2xl flex flex-col shadow-lg hover:shadow-xl transition-all duration-300 border border-sky-100/60 dark:border-sky-900/40 hover:border-primary/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur group">
+      <div className="relative h-full overflow-hidden rounded-3xl flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border border-sky-100/60 dark:border-sky-900/40 hover:border-primary/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur group">
         {/* Image */}
-        <div className="relative flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-100 to-sky-200 dark:from-sky-900/40 dark:via-cyan-900/30 dark:to-sky-900/60 p-3 pb-3">
+        <div className="relative flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-100 to-sky-200 dark:from-sky-900/40 dark:via-cyan-900/30 dark:to-sky-900/60 p-4 pb-4">
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-40 object-cover rounded-xl shadow-md border-2 border-white dark:border-neutral-900 group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 bg-white dark:bg-neutral-900"
+            className="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white dark:border-neutral-900 group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 bg-white dark:bg-neutral-900"
             style={{ boxSizing: "border-box" }}
           />
           {/* Category & Status */}

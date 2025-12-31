@@ -51,7 +51,7 @@ const AboutStackSection = forwardRef((props, ref) => {
             <span className="gradient-text block">Software Developer</span>
           </motion.h2>
         </div>
-        {/* Main Content */}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {/* Text Content */}
           <motion.div
@@ -66,9 +66,10 @@ const AboutStackSection = forwardRef((props, ref) => {
               <span className="font-semibold text-primary dark:text-white">
                 Ajisafe Ibrahim
               </span>
-              , a Software Developer % AI Engineer specializing in full-stack development,
-              AI/ML, and design. I'm a Computer Science student focused on
-              building intelligent web applications that solve real problems.
+              , a Software Developer % AI Engineer specializing in full-stack
+              development, AI/ML, and design. I'm a Computer Science student
+              focused on building intelligent web applications that solve real
+              problems.
             </p>
 
             <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
@@ -138,6 +139,17 @@ const AboutStackSection = forwardRef((props, ref) => {
           </motion.div>
         </div>
       </motion.div>
+      <div className="flex justify-center mb-8 mt-16 sm:mt-0">
+        <div className="p-1 bg-gradient-to-tr from-sky-400 via-blue-500 to-indigo-600 rounded-3xl shadow-xl transform rotate-3 hover:-rotate-6 transition-transform duration-500">
+          <div className="p-1 bg-gradient-to-tr from-blue-400 via-sky-500 to-indigo-500 rounded-3xl">
+            <img
+              src="https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767201221/29b98a76-3590-438f-8037-efff88c2d2d0_l3nubn.jpg"
+              alt="Profile"
+              className="w-48 h-48 object-cover rounded-3xl shadow-lg border-4 border-double border-white dark:border-neutral-800"
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 });

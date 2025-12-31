@@ -51,7 +51,7 @@ const MainApp = () => {
 
   return (
     <ThemeProvider>
-      <div className="relative overflow-x-hidden scroll-smooth bg-white dark:bg-black transition-colors duration-300">
+      <div className="relative overflow-x-hidden scroll-smooth bg-white transition-colors duration-300">
         <Navbar sections={sections} scrollToSection={scrollToSection} />
         <div className="w-full">
           <section id="home" ref={homeRef}>
