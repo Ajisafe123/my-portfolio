@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import { Code2, ChevronDown } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 const DesktopNav = ({
   sections = [],

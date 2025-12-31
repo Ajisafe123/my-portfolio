@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+// Removed react-router-dom
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navbar from "./Components/Navbar";
 import HomeSection from "./Components/Hero";
@@ -10,7 +11,8 @@ import Testimonials from "./Components/Testimonials";
 import ContactSection from "./Components/Contact";
 import Footer from "./Components/Footer";
 
-const App = () => {
+const MainApp = () => {
+  const [showFace, setShowFace] = useState(false);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
@@ -39,10 +41,11 @@ const App = () => {
     Contact: contactRef,
   };
 
-  const scrollToSection = (sectionName) => {
-    const targetRef = sectionRefs[sectionName];
-    if (targetRef?.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Scroll to section function
+  const scrollToSection = (section) => {
+    const ref = sectionRefs[section];
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -50,36 +53,28 @@ const App = () => {
     <ThemeProvider>
       <div className="relative overflow-x-hidden scroll-smooth bg-white dark:bg-black transition-colors duration-300">
         <Navbar sections={sections} scrollToSection={scrollToSection} />
-
         <div className="w-full">
           <section id="home" ref={homeRef}>
             <HomeSection />
           </section>
-
           <section id="about" ref={aboutRef}>
             <AboutSection />
           </section>
-
           <section id="projects" ref={projectsRef}>
             <ProjectsSection />
           </section>
-
           <section id="experience" ref={experienceRef}>
             <ExperienceSection />
           </section>
-
           <section id="tech-stack" ref={techStackRef}>
             <TechStack />
           </section>
-
           <section id="testimonials" ref={testimonialsRef}>
             <Testimonials />
           </section>
-
           <section id="contact" ref={contactRef}>
             <ContactSection />
           </section>
-
           <Footer />
         </div>
       </div>
@@ -87,4 +82,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MainApp;

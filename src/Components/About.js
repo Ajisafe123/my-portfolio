@@ -48,7 +48,7 @@ const AboutStackSection = forwardRef((props, ref) => {
             <span className="block text-neutral-900 dark:text-white mb-1 sm:mb-2">
               About Me
             </span>
-            <span className="gradient-text block">Software Engineer</span>
+            <span className="gradient-text block">Software Developer</span>
           </motion.h2>
         </div>
         {/* Main Content */}
@@ -66,7 +66,7 @@ const AboutStackSection = forwardRef((props, ref) => {
               <span className="font-semibold text-primary dark:text-white">
                 Ajisafe Ibrahim
               </span>
-              , a Software Engineer specializing in full-stack development,
+              , a Software Developer % AI Engineer specializing in full-stack development,
               AI/ML, and design. I'm a Computer Science student focused on
               building intelligent web applications that solve real problems.
             </p>
@@ -92,6 +92,11 @@ const AboutStackSection = forwardRef((props, ref) => {
                 "Framer Motion",
                 "MongoDB",
                 "TailwindCSS",
+                "Python",
+                "Machine Learning",
+                "Vue.js",
+                "Pytorch",
+                "Express.js",
               ].map((skill) => (
                 <motion.span
                   key={skill}
