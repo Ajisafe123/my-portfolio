@@ -68,7 +68,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-800/60 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-neutral-900 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
@@ -92,7 +92,7 @@ const Projects = () => {
             Featured Work
           </motion.div>
 
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 sm:mb-6">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-josefin font-bold mb-4 sm:mb-6">
             <span className="block text-neutral-900 dark:text-white mb-1 sm:mb-2">
               My Projects
             </span>
@@ -154,9 +154,9 @@ const ProjectCard = ({
     >
       <div className="relative h-full overflow-hidden rounded-2xl flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-neutral-700/50 hover:border-primary/40">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-neutral-800/90 dark:via-neutral-850 dark:to-neutral-900/90 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-cyan-50 to-sky-100 dark:from-sky-900/20 dark:via-cyan-900/20 dark:to-sky-900/30 -z-10" />
         {/* Image Container */}
-        <div className="relative h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+        <div className="relative h-56 overflow-hidden bg-sky-200 dark:bg-sky-900/40">
           <motion.img
             src={project.image}
             alt={project.title}
@@ -237,7 +237,7 @@ const ProjectCard = ({
 
         {/* Content */}
         <div className="p-6 flex-1 flex flex-col relative z-10">
-          <h3 className="text-xl font-display font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-josefin font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
             {project.title}
           </h3>
 
@@ -256,7 +256,7 @@ const ProjectCard = ({
               </span>
             ))}
             {project.tools.length > 3 && (
-              <span className="px-2 py-1 rounded text-xs font-medium bg-gradient-to-r from-gray-200/50 to-gray-300/50 dark:from-neutral-700/50 dark:to-neutral-600/50 text-neutral-600 dark:text-neutral-400">
+              <span className="px-2 py-1 rounded text-xs font-medium bg-gradient-to-r from-sky-200/50 to-cyan-200/50 dark:from-sky-900/50 dark:to-cyan-900/50 text-sky-700 dark:text-sky-300">
                 +{project.tools.length - 3}
               </span>
             )}
@@ -291,7 +291,7 @@ const ProjectModal = ({ project, onClose }) => {
           <motion.button
             onClick={onClose}
             whileHover={{ scale: 1.1 }}
-            className="absolute top-6 right-6 z-10 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+            className="absolute top-6 right-6 z-10 p-2 rounded-lg bg-sky-100 dark:bg-sky-900/40 hover:bg-sky-200 dark:hover:bg-sky-900/60 transition-colors"
           >
             <svg
               className="w-6 h-6"
@@ -309,7 +309,7 @@ const ProjectModal = ({ project, onClose }) => {
           </motion.button>
 
           {/* Image */}
-          <div className="relative h-80 bg-neutral-200 dark:bg-neutral-800 overflow-hidden rounded-t-2xl">
+            <div className="relative h-80 bg-sky-200 dark:bg-sky-900/40 overflow-hidden rounded-t-2xl">
             <img
               src={project.image}
               alt={project.title}
@@ -320,7 +320,7 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Content */}
           <div className="p-8 space-y-6">
             <div>
-              <h2 className="text-3xl font-display font-bold text-neutral-900 dark:text-white mb-2">
+              <h2 className="text-3xl font-josefin font-bold text-neutral-900 dark:text-white mb-2">
                 {project.title}
               </h2>
               <p className="text-neutral-600 dark:text-neutral-400">

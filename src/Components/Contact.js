@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 const MapPinIcon = (props) => (
   <svg
@@ -121,18 +122,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-black dark:via-neutral-900 dark:to-neutral-800/50 text-gray-900 dark:text-gray-100 py-16 sm:py-20 px-4 sm:px-6 transition-colors duration-300 overflow-hidden">
+    <section className="relative bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100 py-16 sm:py-20 px-4 sm:px-6 transition-colors duration-300 overflow-hidden">
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-purple-300/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-300/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute top-1/2 right-0 w-72 h-72 bg-pink-300/10 rounded-full blur-[100px] animate-pulse" />
-      </div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
-          <h1 className="h1-text text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-600">
+          <h1 className="h1-text text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-sky-600">
               GET IN TOUCH
             </span>
           </h1>
@@ -142,7 +139,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 p-4 sm:p-6 md:p-8 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-gradient-to-br from-white/80 to-blue-50/60 dark:from-neutral-800/60 dark:to-neutral-900/40 shadow-xl dark:shadow-2xl dark:shadow-purple-900/20 backdrop-blur-xl">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 p-4 sm:p-6 md:p-8 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-white dark:bg-neutral-800/40 shadow-lg">
           <div className="lg:w-1/3 space-y-4">
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Contact Info
@@ -172,9 +169,9 @@ const ContactForm = () => {
               return (
                 <div
                   key={index}
-                  className="flex p-3 rounded-md border border-gray-200 dark:border-gray-800 hover:border-purple-500 transition-all duration-300"
+                  className="flex p-3 rounded-md border border-gray-200 dark:border-gray-800 hover:border-sky-500 transition-all duration-300"
                 >
-                  <Icon className="w-6 h-6 text-purple-500 mt-1 flex-shrink-0" />
+                  <Icon className="w-6 h-6 text-sky-500 mt-1 flex-shrink-0" />
                   <div className="ml-3">
                     <p className="font-semibold text-gray-700 dark:text-gray-300 text-sm">
                       {item.label}
@@ -182,7 +179,7 @@ const ContactForm = () => {
                     {item.link !== "#" ? (
                       <a
                         href={item.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-purple-500 text-xs sm:text-sm break-all"
+                        className="text-gray-600 dark:text-gray-400 hover:text-sky-500 text-xs sm:text-sm break-all"
                       >
                         {item.value}
                       </a>
@@ -221,7 +218,7 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
               />
               <input
                 type="email"
@@ -229,7 +226,7 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your Email"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
               />
               <textarea
                 name="message"
@@ -237,7 +234,7 @@ const ContactForm = () => {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Your Message"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
               />
 
               {status && (
@@ -247,24 +244,26 @@ const ContactForm = () => {
                       ? "bg-green-900/50 text-green-300 border border-green-700"
                       : status.type === "error"
                       ? "bg-red-900/50 text-red-300 border border-red-700"
-                      : "bg-purple-900/50 text-purple-300 border border-purple-700"
+                      : "bg-sky-900/50 text-sky-300 border border-sky-700"
                   }`}
                 >
                   {status.message}
                 </div>
               )}
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={status?.type === "sending"}
-                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all ${
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 transition-all shadow-lg hover:shadow-sky-500/30 ${
                   status?.type === "sending"
                     ? "opacity-70 cursor-not-allowed"
                     : ""
                 }`}
               >
                 {status?.type === "sending" ? "Sending..." : "Send Message"}
-              </button>
+              </motion.button>
             </form>
           </div>
         </div>

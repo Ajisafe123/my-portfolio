@@ -16,7 +16,7 @@ const TechStack = () => {
   const categories = [
     {
       title: "Frontend",
-      icon: <Layout className="w-5 h-5 text-blue-400" />,
+      icon: <Layout className="w-5 h-5 text-sky-400" />,
       skills: [
         "React",
         "Vue",
@@ -25,8 +25,8 @@ const TechStack = () => {
         "JavaScript",
         "TypeScript",
       ],
-      color: "from-blue-500/20 to-cyan-500/20",
-      borderColor: "group-hover:border-blue-500/50",
+      color: "from-sky-500/20 to-cyan-500/20",
+      borderColor: "group-hover:border-sky-500/50",
     },
     {
       title: "Backend",
@@ -44,21 +44,15 @@ const TechStack = () => {
     },
     {
       title: "Tools",
-      icon: <Settings className="w-5 h-5 text-purple-400" />,
+      icon: <Settings className="w-5 h-5 text-sky-400" />,
       skills: ["Git", "VS Code", "Figma"],
-      color: "from-purple-500/20 to-pink-500/20",
-      borderColor: "group-hover:border-purple-500/50",
+      color: "from-sky-500/20 to-cyan-500/20",
+      borderColor: "group-hover:border-sky-500/50",
     },
   ];
 
   return (
-    <div className="min-h-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-800/40 transition-colors duration-300 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-blue-400/10 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-purple-400/10 rounded-full blur-[100px] animate-pulse" />
-      </div>
-
+    <div className="min-h-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-900 transition-colors duration-300 relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -66,9 +60,9 @@ const TechStack = () => {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             <span className="text-gray-900 dark:text-white">my </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500">
               tech stack
             </span>
           </h2>
@@ -146,7 +140,7 @@ const TechStack = () => {
                             initial={{ opacity: 0, y: -5 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: skillIdx * 0.03 }}
-                            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-500/10 dark:to-purple-500/10 text-gray-700 dark:text-gray-300 font-medium text-xs border border-blue-200 dark:border-blue-500/30 hover:border-blue-400 dark:hover:border-blue-400/50 transition-colors"
+                            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-sky-50 to-cyan-50 dark:from-sky-500/10 dark:to-cyan-500/10 text-gray-700 dark:text-gray-300 font-medium text-xs border border-sky-200 dark:border-sky-500/30 hover:border-sky-400 dark:hover:border-sky-400/50 transition-colors"
                           >
                             {skill}
                           </motion.span>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +12,7 @@
 
   body {
     @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-gray-100 transition-colors duration-300;
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: "Josefin Sans", system-ui, sans-serif;
   }
 
   h1,
@@ -21,8 +21,9 @@
   h4,
   h5,
   h6 {
-    @apply font-display font-bold;
+    @apply font-josefin font-bold;
     letter-spacing: -0.02em;
+    line-height: 1.3;
   }
 
   a {
@@ -33,15 +34,15 @@
 /* Component styles */
 @layer components {
   .h1-text {
-    @apply font-display font-bold text-h1;
+    @apply font-josefin font-bold text-h1 leading-tight;
   }
 
   .h2-text {
-    @apply font-display font-bold text-h2;
+    @apply font-josefin font-bold text-h2 leading-tight;
   }
 
   .h3-text {
-    @apply font-display font-semibold text-h3;
+    @apply font-josefin font-semibold text-h3 leading-tight;
   }
 
   /* Buttons */
@@ -54,12 +55,12 @@
   }
 
   .btn-secondary {
-    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-secondary to-secondary/90 hover:from-purple-700 hover:to-purple-700/90 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-secondary to-secondary/90 hover:from-sky-500 hover:to-sky-500/90 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
   }
 
   /* Cards */
   .card {
-    @apply bg-gradient-to-br from-white to-gray-50 dark:from-neutral-800/80 dark:to-neutral-900/80 rounded-xl border border-gray-200/60 dark:border-neutral-700/60 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 backdrop-blur-sm;
+    @apply bg-gradient-to-br from-sky-50 to-cyan-50 dark:from-sky-900/30 dark:to-cyan-900/30 rounded-xl border border-sky-200/60 dark:border-sky-700/40 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 backdrop-blur-sm;
   }
 
   .card-hover {

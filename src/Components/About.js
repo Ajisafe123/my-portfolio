@@ -1,37 +1,6 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 
-const CurvedTopBoardSVG = () => (
-  <svg
-    className="absolute top-0 left-0 w-full h-32 sm:h-48"
-    viewBox="0 0 1200 300"
-    preserveAspectRatio="none"
-    style={{ opacity: 0.8 }}
-  >
-    <defs>
-      <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#6366F1" />
-        <stop offset="100%" stopColor="#EC4899" />
-      </linearGradient>
-    </defs>
-    <path
-      d="M 0 80 Q 300 20 600 80 T 1200 80 L 1200 0 L 0 0 Z"
-      fill="url(#curveGradient)"
-      opacity="0.15"
-    />
-    <path
-      d="M 0 100 Q 400 40 800 100 T 1600 100 L 1600 0 L 0 0 Z"
-      fill="#8B5CF6"
-      opacity="0.1"
-    />
-    <path
-      d="M 0 120 Q 300 60 600 120 T 1200 120 L 1200 0 L 0 0 Z"
-      fill="#6366F1"
-      opacity="0.08"
-    />
-  </svg>
-);
-
 const AboutStackSection = forwardRef((props, ref) => {
   const infoCards = [
     {
@@ -58,19 +27,8 @@ const AboutStackSection = forwardRef((props, ref) => {
     <section
       ref={ref}
       id="about"
-      className="min-h-screen bg-gradient-to-br from-gray-50/50 via-white to-blue-50/30 dark:from-neutral-800/40 dark:via-neutral-900 dark:to-neutral-900/80 text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative"
+      className="min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative"
     >
-      {/* Curved Top Board */}
-      <div className="absolute top-0 left-0 w-full pointer-events-none">
-        <CurvedTopBoardSVG />
-      </div>
-
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -78,19 +36,19 @@ const AboutStackSection = forwardRef((props, ref) => {
         transition={{ duration: 0.8 }}
         className="w-full max-w-5xl mx-auto space-y-10 sm:space-y-12 relative z-10"
       >
-        >{/* Heading */}
+        {/* Heading */}
         <div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 sm:mb-6"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-josefin font-bold mb-4 sm:mb-6"
           >
             <span className="block text-neutral-900 dark:text-white mb-1 sm:mb-2">
               About Me
             </span>
-            <span className="gradient-text block">Developer & Designer</span>
+            <span className="gradient-text block">Software Engineer</span>
           </motion.h2>
         </div>
         {/* Main Content */}
@@ -108,17 +66,16 @@ const AboutStackSection = forwardRef((props, ref) => {
               <span className="font-semibold text-primary dark:text-white">
                 Ajisafe Ibrahim
               </span>
-              , a passionate developer and designer creating beautiful,
-              functional digital experiences. I'm a Computer Science student
-              focused on building modern web applications that solve real
-              problems.
+              , a Software Engineer specializing in full-stack development,
+              AI/ML, and design. I'm a Computer Science student focused on
+              building intelligent web applications that solve real problems.
             </p>
 
             <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-              With expertise in both frontend and backend technologies, I
-              specialize in React, Node.js, and modern design systems. I'm
-              committed to writing clean code, following best practices, and
-              continuously learning new technologies.
+              With expertise in full-stack development, machine learning, and
+              modern design systems, I specialize in React, Node.js, Python, and
+              AI/ML technologies. I'm committed to writing clean code, following
+              best practices, and continuously learning.
             </p>
 
             <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
@@ -139,7 +96,7 @@ const AboutStackSection = forwardRef((props, ref) => {
                 <motion.span
                   key={skill}
                   whileHover={{ scale: 1.05 }}
-                  className="px-4 py-2 bg-primary/10 text-primary dark:text-white rounded-full text-sm font-semibold border border-primary/30"
+                  className="px-4 py-2 bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 rounded-full text-sm font-semibold border border-sky-300/60 dark:border-sky-600/40"
                 >
                   {skill}
                 </motion.span>

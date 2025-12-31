@@ -48,7 +48,7 @@ const MobileNav = ({
           <motion.div className="flex items-center justify-between px-4 py-3 rounded-2xl border-0 dark:bg-transparent dark:border-0">
             {/* Logo */}
             <motion.div className="flex items-center gap-2 group cursor-pointer">
-              <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 flex items-center justify-center overflow-hidden shadow-lg">
+              <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-sky-500 via-cyan-500 to-sky-600 flex items-center justify-center overflow-hidden shadow-lg">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent"
                   animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
@@ -56,7 +56,7 @@ const MobileNav = ({
                 />
                 <Code2 className="w-5 h-5 text-white relative z-10" />
               </div>
-              <motion.div className="h1-text font-black text-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700">
+              <motion.div className="h1-text font-black text-lg text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600">
                 Ajisafe
               </motion.div>
             </motion.div>
@@ -70,7 +70,7 @@ const MobileNav = ({
                 className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${
                   open
                     ? "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white"
-                    : "bg-gradient-to-br from-purple-600 to-pink-600 text-white"
+                    : "bg-gradient-to-br from-sky-500 to-cyan-500 text-white"
                 }`}
               >
                 <AnimatePresence mode="wait">
@@ -130,7 +130,7 @@ const MobileNav = ({
                       }}
                       className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 font-semibold capitalize ${
                         isActive
-                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/20"
+                          ? "bg-gradient-to-r from-sky-600 to-cyan-600 text-white shadow-lg shadow-sky-500/20"
                           : "hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-200"
                       }`}
                     >
@@ -156,7 +156,7 @@ const MobileNav = ({
               >
                 <motion.a
                   href="mailto:ajisafeibrahim54@gmail.com"
-                  className="block w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-center hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-purple-500/30"
+                  className="block w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-sky-600 to-cyan-600 text-white font-bold text-center hover:from-sky-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-sky-500/30"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                 >

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import { Code2 } from "lucide-react";
+import { Code2, ChevronDown } from "lucide-react";
 
 const DesktopNav = ({
   sections = [],
@@ -24,38 +24,35 @@ const DesktopNav = ({
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 hidden md:block pointer-events-none"
     >
-      <div className="pointer-events-auto px-4 md:px-6 lg:px-8 py-3 md:py-4">
-        <motion.div
-          animate={{
-            backgroundColor: scrolled ? "rgba(0, 0, 0, 0)" : "rgba(0, 0, 0, 0)",
-            backdropFilter: scrolled ? "blur(10px)" : "blur(0px)",
-            boxShadow: scrolled ? "0 8px 24px rgba(0, 0, 0, 0.08)" : "none",
-            borderColor: scrolled ? "rgba(229, 231, 235, 0.5)" : "transparent",
-          }}
-          className="max-w-6xl mx-auto rounded-xl border transition-all duration-300"
-        >
-          <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 py-2 md:py-4">
+      <div className="pointer-events-auto px-4 md:px-8 lg:px-12 py-4 md:py-5">
+        <motion.div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between px-6 md:px-8 lg:px-10 py-3 md:py-4">
             {/* Logo */}
             <motion.div
-              className="flex items-center gap-3 group cursor-pointer"
-              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 group cursor-pointer"
+              whileHover={{ scale: 1.1 }}
               onClick={() => scrollToSection("Home")}
             >
-              <div className="relative w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden shadow-md">
+              <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-sky-500 via-cyan-500 to-sky-600 flex items-center justify-center overflow-hidden shadow-lg shadow-sky-500/40 group-hover:shadow-sky-500/60 transition-shadow duration-300">
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                   animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
-                <Code2 className="w-5 md:w-6 h-5 md:h-6 text-white relative z-10" />
+                <Code2 className="w-6 h-6 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <span className="font-display font-bold text-sm md:text-lg text-primary dark:text-white hidden sm:inline-block">
+              <span className="font-josefin font-bold text-lg tracking-wide bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 bg-clip-text text-transparent hidden sm:inline-block group-hover:text-gradient transition-all">
                 Ajisafe
               </span>
             </motion.div>
 
             {/* Navigation Links */}
-            <div className="hidden sm:flex items-center gap-0.5 md:gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {Array.isArray(sections) &&
                 sections.map((section, index) => {
                   const id =
@@ -78,7 +75,15 @@ const DesktopNav = ({
             </div>
 
             {/* Right Side Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white font-semibold text-sm hover:shadow-lg hover:shadow-sky-500/30 transition-all"
+                onClick={() => scrollToSection("Contact")}
+              >
+                Contact
+              </motion.button>
               <ThemeToggle />
             </div>
           </div>
@@ -96,74 +101,68 @@ const NavItem = ({ section, isActive, index, onClick }) => {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 group overflow-hidden ${
-        isActive
-          ? "text-primary dark:text-white"
-          : "text-neutral-900 dark:text-white"
-      }`}
+      className="relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 overflow-hidden group"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.05, duration: 0.4 }}
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.94 }}
+      transition={{ delay: index * 0.08, duration: 0.4 }}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
     >
-      {/* Background gradient */}
+      {/* Background gradient on hover/active */}
       <motion.div
-        className="absolute inset-0 rounded-lg"
+        className="absolute inset-0 rounded-xl"
         animate={{
-          background:
-            isHovered || isActive
-              ? "linear-gradient(135deg, rgb(99, 102, 241, 0.15), rgb(139, 92, 246, 0.15))"
-              : "transparent",
+          background: "transparent",
         }}
         transition={{ duration: 0.3 }}
       />
 
-      {/* Glow effect on hover */}
+      {/* Glow effect */}
       <motion.div
-        className="absolute inset-0 rounded-lg blur-md"
+        className="absolute -inset-1 rounded-xl blur-md"
         animate={{
-          opacity: isHovered || isActive ? 0.5 : 0,
-          background:
-            isActive || isHovered
-              ? "linear-gradient(135deg, rgb(99, 102, 241, 0.2), rgb(139, 92, 246, 0.2))"
-              : "transparent",
+          opacity: 0,
+          background: "transparent",
         }}
         transition={{ duration: 0.3 }}
       />
 
-      {/* Text with shimmer */}
+      {/* Text */}
       <motion.span
-        className="relative z-10 block"
+        className="relative z-10 block text-neutral-900 dark:text-white"
         animate={{
           color: isActive
-            ? "rgb(99, 102, 241)"
+            ? "rgb(14, 165, 233)"
             : isHovered
-            ? "rgb(99, 102, 241)"
+            ? "rgb(14, 165, 233)"
             : "currentColor",
         }}
       >
         {section}
       </motion.span>
 
-      {/* Active indicator */}
+      {/* Active indicator 3D underline with enhanced glow */}
       {isActive && (
         <motion.div
           layoutId="activeDot"
-          className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-primary via-secondary to-primary"
-          initial={{ width: 0 }}
-          animate={{ width: 28 }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 shadow-xl shadow-sky-500/60"
+          initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
+          animate={{ width: 40, scaleX: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 350, damping: 20 }}
         />
       )}
 
-      {/* Hover underline */}
+      {/* Hover 3D underline with enhanced effects */}
       {!isActive && (
         <motion.div
-          className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"
-          initial={{ width: 0 }}
-          animate={{ width: isHovered ? 20 : 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 shadow-lg shadow-sky-400/50"
+          initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
+          animate={{
+            width: isHovered ? 28 : 0,
+            scaleX: isHovered ? 1 : 0.5,
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ type: "spring", stiffness: 280, damping: 20 }}
         />
       )}
     </motion.button>

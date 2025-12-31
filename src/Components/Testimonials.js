@@ -47,13 +47,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-black py-20 transition-colors duration-300">
-      {/* Background */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 -left-40 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
-      </div>
-
+    <section className="relative bg-white dark:bg-neutral-900 py-20 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -61,9 +55,9 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="h1-text text-4xl md:text-5xl font-extrabold mb-4">
+          <h2 className="h1-text text-3xl md:text-4xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what people </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 dark:from-purple-400 dark:via-pink-400 dark:to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 dark:from-sky-400 dark:via-cyan-400 dark:to-sky-500">
               say
             </span>
           </h2>
@@ -78,7 +72,7 @@ const Testimonials = () => {
             {/* Left Arrow */}
             <motion.button
               onClick={prevTestimonial}
-              className="hidden md:flex absolute left-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-500 transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute left-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -138,7 +132,7 @@ const Testimonials = () => {
             {/* Right Arrow */}
             <motion.button
               onClick={nextTestimonial}
-              className="hidden md:flex absolute right-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-500 transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute right-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -154,7 +148,7 @@ const Testimonials = () => {
                 onClick={() => setCurrentIndex(idx)}
                 className={`w-3 h-3 rounded-full transition-all ${
                   idx === currentIndex
-                    ? "bg-purple-600 dark:bg-purple-400 w-8"
+                    ? "bg-sky-500 dark:bg-sky-400 w-8"
                     : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
                 }`}
                 whileHover={{ scale: 1.2 }}
