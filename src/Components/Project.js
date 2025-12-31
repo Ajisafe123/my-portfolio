@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ExternalLink,
-  Github,
-  Code,
-  ArrowDownLeftFromSquareIcon,
-} from "lucide-react";
+import { ExternalLink, Github, Code } from "lucide-react";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -24,7 +19,6 @@ const Projects = () => {
       liveLink: "https://nibrasudeen.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
       status: "In Progress",
-      color: "from-green-500 to-emerald-500",
     },
     {
       id: 2,
@@ -35,10 +29,9 @@ const Projects = () => {
         "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/My_portfolio_stbi1a.png",
       category: "Portfolio",
       tools: ["React", "Framer Motion", "TailwindCSS", "Email.js"],
-      liveLink: "https://ajisafe,vercel.app",
+      liveLink: "https://ajisafe.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",
-      color: "from-purple-500 to-purple-800",
     },
     {
       id: 3,
@@ -51,16 +44,15 @@ const Projects = () => {
       tools: ["HTML", "CSS", "Gemini API"],
       liveLink: "https://libro-seek.vercel.app",
       githubLink: "https://github.com/Ajisafe123",
-      status: "Available on Google",
-      color: "from-blue-500 to-cyan-500",
+      status: "Available",
     },
     {
       id: 4,
       title: "E-Attendance System",
       description:
-        "Smart attendance system with geofencing and facial recognition technology for secure employee tracking and verification.",
+        "Smart attendance system with geofencing and facial recognition technology for secure employee tracking.",
       image: "/eattendcae.png",
-      category: "Enterprise Solution",
+      category: "Enterprise",
       tools: [
         "Fast API",
         "Python",
@@ -72,48 +64,49 @@ const Projects = () => {
       liveLink: "https://e-attendance.com.ng/",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",
-      color: "from-green-500 to-emerald-600",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-black dark:via-gray-950 dark:to-black py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-      {/* Background Elements */}
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-800/60 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden">
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse" />
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto mb-16 text-center relative z-10"
-      >
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header */}
         <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-6 shadow-sm dark:shadow-none"
-          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12 sm:mb-16"
         >
-          <ArrowDownLeftFromSquareIcon className="w-4 h-4 text-purple-500" />
-          <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full badge-primary mb-4 sm:mb-6"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Code className="w-4 h-4" />
             Featured Work
-          </span>
+          </motion.div>
+
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 sm:mb-6">
+            <span className="block text-neutral-900 dark:text-white mb-1 sm:mb-2">
+              My Projects
+            </span>
+            <span className="gradient-text block">Work I'm Proud Of</span>
+          </h2>
+
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto px-2">
+            A collection of recent projects showcasing my skills in full-stack
+            development, design, and problem-solving.
+          </p>
         </motion.div>
 
-        <h1 className="h1-text text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-purple-700 to-gray-900 dark:from-white dark:via-purple-400 dark:to-white">
-            My Selected Projects
-          </span>
-        </h1>
-
-        <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-          Explore my latest and greatest work showcasing my skills in full-stack
-          development.
-        </p>
-      </motion.div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -151,294 +144,227 @@ const ProjectCard = ({
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.12, duration: 0.6, ease: "easeOut" }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
       onClick={onClick}
-      className="group relative cursor-pointer h-full"
+      className="group cursor-pointer h-full"
     >
-      {/* Card Container */}
-      <div className="relative h-full rounded-3xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950 border border-gray-200/60 dark:border-white/8 shadow-lg hover:shadow-2xl dark:hover:shadow-purple-500/25 transition-all duration-500">
+      <div className="relative h-full overflow-hidden rounded-2xl flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200/50 dark:border-neutral-700/50 hover:border-primary/40">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-neutral-800/90 dark:via-neutral-850 dark:to-neutral-900/90 -z-10" />
         {/* Image Container */}
-        <div className="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
-          {/* Image */}
+        <div className="relative h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
           <motion.img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
-            animate={{ scale: isHovered ? 1.12 : 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            animate={{ scale: isHovered ? 1.1 : 1 }}
+            transition={{ duration: 0.6 }}
           />
 
-          {/* Dark Overlay on Hover */}
+          {/* Overlay */}
           <motion.div
             className="absolute inset-0 bg-black/0"
             animate={{
               backgroundColor: isHovered
-                ? "rgba(0, 0, 0, 0.3)"
+                ? "rgba(0, 0, 0, 0.4)"
                 : "rgba(0, 0, 0, 0)",
             }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
           />
 
-          {/* Category Badge - Top Left */}
+          {/* Category Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.12 + 0.2 }}
-            className="absolute top-5 left-5"
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 + 0.2 }}
+            className="absolute top-4 left-4"
           >
-            <div
-              className={`px-5 py-2 rounded-full bg-gradient-to-r ${project.color} text-white text-xs font-black tracking-wider shadow-2xl backdrop-blur-md border border-white/30`}
-            >
+            <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">
               {project.category}
-            </div>
+            </span>
           </motion.div>
 
-          {/* Status Badge - Top Right */}
+          {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.12 + 0.25 }}
-            className="absolute top-5 right-5"
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 + 0.25 }}
+            className="absolute top-4 right-4"
           >
-            <div
-              className={`px-4 py-1.5 rounded-full bg-white/95 dark:bg-white/15 text-xs font-bold text-gray-900 dark:text-white backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg`}
-            >
+            <span className="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-semibold">
               {project.status}
-            </div>
+            </span>
           </motion.div>
 
           {/* Action Buttons - Appear on Hover */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 flex items-center justify-center gap-4 bg-black/20 backdrop-blur-sm"
+            className="absolute inset-0 flex items-end justify-between p-4 bg-gradient-to-t from-black/60 to-transparent"
           >
             <motion.a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-white/95 text-gray-900 font-bold transition-all shadow-xl"
-              whileHover={{ scale: 1.08 }}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-neutral-900 text-sm font-semibold hover:bg-neutral-100 transition-colors"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <ExternalLink className="w-4 h-4" />
-              Live Demo
+              View
             </motion.a>
             <motion.a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold backdrop-blur-md border border-white/40 transition-all shadow-xl"
-              whileHover={{ scale: 1.08 }}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/20 backdrop-blur text-white text-sm font-semibold border border-white/30 hover:bg-white/30 transition-colors"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Github className="w-4 h-4" />
-              Code
             </motion.a>
           </motion.div>
         </div>
 
-        {/* Content Section */}
-        <div className="p-4 sm:p-6 flex flex-col justify-between h-auto sm:h-[260px]">
-          {/* Title & Description */}
-          <div className="space-y-3">
-            <motion.h3
-              className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300"
-              animate={{ scale: isHovered ? 1.02 : 1 }}
-            >
-              {project.title}
-            </motion.h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2 min-h-10">
-              {project.description}
-            </p>
-          </div>
+        {/* Content */}
+        <div className="p-6 flex-1 flex flex-col relative z-10">
+          <h3 className="text-xl font-display font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
 
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent" />
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mb-4 line-clamp-2 flex-1">
+            {project.description}
+          </p>
 
           {/* Tech Stack */}
-          <div className="space-y-3">
-            <p className="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest">
-              Tech Stack
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.tools.slice(0, 4).map((tool, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.12 + i * 0.05 }}
-                  className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-500/15 dark:to-pink-500/15 border border-purple-200/50 dark:border-purple-500/30 text-xs text-gray-700 dark:text-gray-300 font-semibold hover:border-purple-400/70 dark:hover:border-purple-400/50 transition-all"
-                >
-                  {tool}
-                </motion.span>
-              ))}
-              {project.tools.length > 4 && (
-                <span className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 text-xs text-gray-600 dark:text-gray-400 font-semibold border border-gray-300/50 dark:border-white/10">
-                  +{project.tools.length - 4}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="flex gap-4 pt-4">
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline transition-colors"
-            >
-              Live Demo →
-            </a>
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-semibold text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline transition-colors"
-            >
-              View Code →
-            </a>
+          <div className="flex flex-wrap gap-2">
+            {project.tools.slice(0, 3).map((tool, i) => (
+              <span
+                key={i}
+                className="px-2 py-1 rounded text-xs font-medium bg-gradient-to-r from-primary/15 to-secondary/15 text-primary dark:text-primary border border-primary/20 dark:border-primary/30"
+              >
+                {tool}
+              </span>
+            ))}
+            {project.tools.length > 3 && (
+              <span className="px-2 py-1 rounded text-xs font-medium bg-gradient-to-r from-gray-200/50 to-gray-300/50 dark:from-neutral-700/50 dark:to-neutral-600/50 text-neutral-600 dark:text-neutral-400">
+                +{project.tools.length - 3}
+              </span>
+            )}
           </div>
         </div>
       </div>
     </motion.div>
   );
 };
+
 const ProjectModal = ({ project, onClose }) => {
   return (
     <>
-      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xl"
+        className="fixed inset-0 z-50 bg-black/60 backdrop-blur"
         onClick={onClose}
       />
 
-      {/* Modal */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
+        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none p-4"
       >
-        <div className="pointer-events-auto w-full max-w-3xl mx-4 max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-950 dark:to-black shadow-2xl">
-          {/* Header with Image */}
-          <div className="relative h-80 overflow-hidden">
+        <div className="pointer-events-auto w-full max-w-2xl max-h-[90vh] overflow-y-auto card rounded-2xl">
+          {/* Close Button */}
+          <motion.button
+            onClick={onClose}
+            whileHover={{ scale: 1.1 }}
+            className="absolute top-6 right-6 z-10 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </motion.button>
+
+          {/* Image */}
+          <div className="relative h-80 bg-neutral-200 dark:bg-neutral-800 overflow-hidden rounded-t-2xl">
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-
-            {/* Close Button */}
-            <motion.button
-              onClick={onClose}
-              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 transition-colors group z-10"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-white text-2xl font-light group-hover:rotate-90 transition-transform duration-300">
-                ✕
-              </span>
-            </motion.button>
-
-            {/* Category Badge */}
-            <div className="absolute bottom-6 left-6">
-              <div
-                className={`px-4 py-2 rounded-full bg-gradient-to-r ${project.color} shadow-lg backdrop-blur-md`}
-              >
-                <span className="text-sm text-white font-bold">
-                  {project.category}
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Content */}
-          <div className="p-8 md:p-10 space-y-8">
-            {/* Title & Description */}
+          <div className="p-8 space-y-6">
             <div>
-              <h2 className="h1-text text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-3xl font-display font-bold text-neutral-900 dark:text-white mb-2">
                 {project.title}
               </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-neutral-600 dark:text-neutral-400">
                 {project.description}
               </p>
             </div>
 
-            {/* Status */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-500/30">
-              <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                <span className="font-bold">Project Status:</span>{" "}
-                <span
-                  className={`text-transparent bg-clip-text bg-gradient-to-r ${project.color} font-bold`}
-                >
-                  {project.status}
-                </span>
-              </p>
-            </div>
-
-            {/* Technologies */}
+            {/* Tech Stack */}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <div
-                  className={`w-8 h-8 rounded-lg bg-gradient-to-br ${project.color} flex items-center justify-center`}
-                >
-                  <Code className="w-4 h-4 text-white" />
-                </div>
-                Technologies Used
+              <h3 className="text-sm font-semibold text-neutral-900 dark:text-white mb-3 uppercase tracking-wide">
+                Tech Stack
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="flex flex-wrap gap-2">
                 {project.tools.map((tool, i) => (
-                  <motion.div
+                  <span
                     key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className={`px-4 py-3 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800/50 dark:to-gray-900/50 border border-gray-200 dark:border-white/10 text-center font-medium text-sm text-gray-800 dark:text-gray-200 hover:border-purple-400 dark:hover:border-purple-500/50 transition-colors`}
+                    className="px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary text-sm font-medium"
                   >
                     {tool}
-                  </motion.div>
+                  </span>
                 ))}
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <motion.a
+            {/* Links */}
+            <div className="flex gap-4 pt-6 border-t border-neutral-200 dark:border-neutral-700">
+              <a
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex-1 py-4 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white font-bold text-center flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow`}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="btn-primary flex items-center gap-2"
               >
-                <ExternalLink className="w-5 h-5" />
-                View Live Project
-              </motion.a>
-              <motion.a
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+              <a
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-4 px-6 rounded-xl bg-gray-200 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-300 dark:hover:bg-white/20 transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="btn-primary-outline flex items-center gap-2"
               >
-                <Github className="w-5 h-5" />
-                View Source Code
-              </motion.a>
+                <Github className="w-4 h-4" />
+                View Code
+              </a>
             </div>
           </div>
         </div>

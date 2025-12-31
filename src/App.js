@@ -6,7 +6,6 @@ import AboutSection from "./Components/About";
 import ExperienceSection from "./Components/ExperienceAndEducation";
 import ProjectsSection from "./Components/Project";
 import TechStack from "./Components/TechStack";
-import Services from "./Components/Services";
 import Testimonials from "./Components/Testimonials";
 import ContactSection from "./Components/Contact";
 import Footer from "./Components/Footer";
@@ -17,7 +16,6 @@ const App = () => {
   const projectsRef = useRef(null);
   const experienceRef = useRef(null);
   const techStackRef = useRef(null);
-  const servicesRef = useRef(null);
   const testimonialsRef = useRef(null);
   const contactRef = useRef(null);
 
@@ -27,7 +25,6 @@ const App = () => {
     "Projects",
     "Experience",
     "Tech Stack",
-    "Services",
     "Testimonials",
     "Contact",
   ];
@@ -38,7 +35,6 @@ const App = () => {
     Projects: projectsRef,
     Experience: experienceRef,
     "Tech Stack": techStackRef,
-    Services: servicesRef,
     Testimonials: testimonialsRef,
     Contact: contactRef,
   };
@@ -74,10 +70,6 @@ const App = () => {
 
           <section id="tech-stack" ref={techStackRef}>
             <TechStack />
-          </section>
-
-          <section id="services" ref={servicesRef}>
-            <Services />
           </section>
 
           <section id="testimonials" ref={testimonialsRef}>

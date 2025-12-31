@@ -17,13 +17,11 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      icon: <Code2 className="w-6 h-6" />,
+      icon: <Code2 className="w-8 h-8" />,
       title: "Web Development",
       description:
         "Building responsive, fast, and scalable web applications with modern tech stack.",
       color: "from-blue-500 to-cyan-500",
-      bgColor:
-        "from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20",
       details:
         "Full-stack web development including frontend with React, Vue, TypeScript and backend with Node.js, Express, NestJS. Performance optimized, SEO-friendly, and production-ready.",
       features: [
@@ -37,13 +35,11 @@ const Services = () => {
     },
     {
       id: 2,
-      icon: <Palette className="w-6 h-6" />,
+      icon: <Palette className="w-8 h-8" />,
       title: "UI/UX Design",
       description:
         "Crafting beautiful and intuitive user interfaces that users love to interact with.",
       color: "from-purple-500 to-pink-500",
-      bgColor:
-        "from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20",
       details:
         "User-centered design approach creating intuitive, beautiful interfaces with smooth animations and perfect micro-interactions using Framer Motion.",
       features: [
@@ -57,13 +53,11 @@ const Services = () => {
     },
     {
       id: 3,
-      icon: <Zap className="w-6 h-6" />,
+      icon: <Zap className="w-8 h-8" />,
       title: "Performance",
       description:
         "Optimizing applications for speed and efficiency to ensure great user experience.",
       color: "from-yellow-500 to-orange-500",
-      bgColor:
-        "from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20",
       details:
         "Comprehensive performance optimization including code splitting, lazy loading, caching strategies, and monitoring to achieve lightning-fast load times.",
       features: [
@@ -77,13 +71,11 @@ const Services = () => {
     },
     {
       id: 4,
-      icon: <Smartphone className="w-6 h-6" />,
+      icon: <Smartphone className="w-8 h-8" />,
       title: "Responsive Design",
       description:
         "Creating applications that work seamlessly on all devices and screen sizes.",
       color: "from-green-500 to-emerald-500",
-      bgColor:
-        "from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20",
       details:
         "Mobile-first approach ensuring your application looks stunning and functions perfectly across all devices from mobile phones to large desktop screens.",
       features: [
@@ -97,7 +89,7 @@ const Services = () => {
     },
     {
       id: 5,
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-8 h-8" />,
       title: "Team Collaboration",
       description:
         "Working effectively with teams using agile methodologies and best practices.",
@@ -157,7 +149,7 @@ const Services = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 py-20 transition-colors duration-300">
+    <section className="relative bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 py-16 sm:py-20 transition-colors duration-300">
       {/* Background */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]" />
@@ -169,15 +161,15 @@ const Services = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="h1-text text-4xl md:text-5xl font-extrabold mb-4">
+          <h2 className="h1-text text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what i </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600">
               offer
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-2">
             A range of services to help bring your ideas to life with quality
             and innovation.
           </p>
@@ -188,7 +180,7 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full"
         >
           {services.map((service, idx) => (
             <motion.div

@@ -53,16 +53,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-white dark:bg-black border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
+    <footer className="relative bg-gradient-to-br from-neutral-50 to-gray-100 dark:from-neutral-900 dark:to-black border-t border-gray-200/60 dark:border-white/10 transition-colors duration-300 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400/15 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/15 rounded-full blur-[120px] animate-pulse" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         {/* Top Section */}
-        <div className="grid md:grid-cols-3 gap-12 mb-16 pb-12 border-b border-gray-200 dark:border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-16 pb-12 border-b border-gray-200 dark:border-white/10">
           {/* Brand/About */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ const Footer = () => {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                 <Code2 className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-black text-gray-900 dark:text-white">
+              <span className="text-lg sm:text-xl font-black text-gray-900 dark:text-white">
                 Ajisafe Ibrahim
               </span>
             </div>

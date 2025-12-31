@@ -45,9 +45,7 @@ const MobileNav = ({
         className="lg:hidden fixed top-0 left-0 right-0 z-[100] pointer-events-none"
       >
         <div className="pointer-events-auto px-4 py-4">
-          <motion.div
-            className="flex items-center justify-between px-4 py-3 rounded-2xl border-0 dark:bg-transparent dark:border-0"
-          >
+          <motion.div className="flex items-center justify-between px-4 py-3 rounded-2xl border-0 dark:bg-transparent dark:border-0">
             {/* Logo */}
             <motion.div className="flex items-center gap-2 group cursor-pointer">
               <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 flex items-center justify-center overflow-hidden shadow-lg">
@@ -136,9 +134,7 @@ const MobileNav = ({
                           : "hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-200"
                       }`}
                     >
-                      <span>
-                        {section}
-                      </span>
+                      <span>{section}</span>
                       {isActive && (
                         <motion.div
                           layoutId="activeMobileDot"

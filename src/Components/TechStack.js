@@ -52,11 +52,11 @@ const TechStack = () => {
   ];
 
   return (
-    <div className="min-h-auto py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-black transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 dark:from-neutral-900 dark:via-neutral-900/80 dark:to-neutral-800/40 transition-colors duration-300 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-blue-400/10 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-purple-400/10 rounded-full blur-[100px] animate-pulse" />
       </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
@@ -64,15 +64,15 @@ const TechStack = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
             <span className="text-gray-900 dark:text-white">my </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
               tech stack
             </span>
           </h2>
-          <p className="text-base text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto px-2">
             Tools and technologies I use to build amazing applications.
           </p>
         </motion.div>

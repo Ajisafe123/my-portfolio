@@ -75,34 +75,37 @@ const ContactForm = () => {
     setStatus({ type: "sending", message: "Sending message..." });
 
     // Send main email first
-    emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_TO_YOU,
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: "ajisafeibrahim54@gmail.com",
-      },
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    )
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_TO_YOU,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: "ajisafeibrahim54@gmail.com",
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      )
       .then(() => {
-        emailjs.send(
-          process.env.REACT_APP_EMAILJS_SERVICE_ID,
-          process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
-          {
-            to_name: formData.name,
-            to_email: formData.email,
-            reply_to: formData.email,
-            user_email: formData.email,
-            message: formData.message,
-            from_name: "Ibrahim Ajisafe",
-          },
-          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-        ).catch((autoReplyError) => {
-          // Log auto-reply error but don't show it to user
-          console.warn("Auto-reply failed:", autoReplyError);
-        });
+        emailjs
+          .send(
+            process.env.REACT_APP_EMAILJS_SERVICE_ID,
+            process.env.REACT_APP_EMAILJS_TEMPLATE_AUTO_REPLY,
+            {
+              to_name: formData.name,
+              to_email: formData.email,
+              reply_to: formData.email,
+              user_email: formData.email,
+              message: formData.message,
+              from_name: "Ibrahim Ajisafe",
+            },
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+          )
+          .catch((autoReplyError) => {
+            // Log auto-reply error but don't show it to user
+            console.warn("Auto-reply failed:", autoReplyError);
+          });
 
         // Show success message
         setStatus({ type: "success", message: "Message sent successfully!" });
@@ -118,23 +121,32 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 py-16 px-6 transition-colors duration-300">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="h1-text text-4xl md:text-5xl font-extrabold">
+    <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-black dark:via-neutral-900 dark:to-neutral-800/50 text-gray-900 dark:text-gray-100 py-16 sm:py-20 px-4 sm:px-6 transition-colors duration-300 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/3 w-96 h-96 bg-purple-300/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-300/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-1/2 right-0 w-72 h-72 bg-pink-300/10 rounded-full blur-[100px] animate-pulse" />
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="h1-text text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-600">
               GET IN TOUCH
             </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2 text-base">
+          <p className="text-gray-600 dark:text-gray-400 mt-4 text-sm sm:text-base px-2">
             Have a project or just want to say hi? Message me below or use my
             email/phone.
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 p-6 md:p-8 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-transparent shadow-lg dark:shadow-none">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 p-4 sm:p-6 md:p-8 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 bg-gradient-to-br from-white/80 to-blue-50/60 dark:from-neutral-800/60 dark:to-neutral-900/40 shadow-xl dark:shadow-2xl dark:shadow-purple-900/20 backdrop-blur-xl">
           <div className="lg:w-1/3 space-y-4">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Contact Info</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Contact Info
+            </h3>
 
             {[
               {
@@ -170,19 +182,21 @@ const ContactForm = () => {
                     {item.link !== "#" ? (
                       <a
                         href={item.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-purple-500 text-sm"
+                        className="text-gray-600 dark:text-gray-400 hover:text-purple-500 text-xs sm:text-sm break-all"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">{item.value}</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+                        {item.value}
+                      </p>
                     )}
                   </div>
                 </div>
               );
             })}
 
-            <div className="mt-4 h-40 w-full rounded-md overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div className="mt-4 h-48 sm:h-56 lg:h-40 w-full rounded-md overflow-hidden border border-gray-200 dark:border-gray-700">
               <iframe
                 title="Location Map"
                 width="100%"
@@ -197,7 +211,7 @@ const ContactForm = () => {
           </div>
 
           <div className="lg:w-2/3">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Send a Message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -228,12 +242,13 @@ const ContactForm = () => {
 
               {status && (
                 <div
-                  className={`p-3 rounded-md text-sm font-medium ${status.type === "success"
-                    ? "bg-green-900/50 text-green-300 border border-green-700"
-                    : status.type === "error"
+                  className={`p-3 rounded-md text-sm font-medium ${
+                    status.type === "success"
+                      ? "bg-green-900/50 text-green-300 border border-green-700"
+                      : status.type === "error"
                       ? "bg-red-900/50 text-red-300 border border-red-700"
                       : "bg-purple-900/50 text-purple-300 border border-purple-700"
-                    }`}
+                  }`}
                 >
                   {status.message}
                 </div>
@@ -242,10 +257,11 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={status?.type === "sending"}
-                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all ${status?.type === "sending"
-                  ? "opacity-70 cursor-not-allowed"
-                  : ""
-                  }`}
+                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 transition-all ${
+                  status?.type === "sending"
+                    ? "opacity-70 cursor-not-allowed"
+                    : ""
+                }`}
               >
                 {status?.type === "sending" ? "Sending..." : "Send Message"}
               </button>

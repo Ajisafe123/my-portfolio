@@ -1,11 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.h1-text{
-    font-family: "Crimson Text", serif;
-    font-weight: 700;
-    font-style: italic;
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-gray-100 transition-colors duration-300;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .h1-text {
+    @apply font-display font-bold text-h1;
+  }
+
+  .h2-text {
+    @apply font-display font-bold text-h2;
+  }
+
+  .h3-text {
+    @apply font-display font-semibold text-h3;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-primary to-primary/90 hover:from-primary-dark hover:to-primary-dark text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  .btn-primary-outline {
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-transparent border-2 border-primary text-primary hover:bg-gradient-to-r hover:from-primary hover:to-primary/90 hover:text-white hover:border-primary/80 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-secondary to-secondary/90 hover:from-purple-700 hover:to-purple-700/90 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-gradient-to-br from-white to-gray-50 dark:from-neutral-800/80 dark:to-neutral-900/80 rounded-xl border border-gray-200/60 dark:border-neutral-700/60 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 backdrop-blur-sm;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1 cursor-pointer hover:border-primary/40 dark:hover:border-primary/40;
+  }
+
+  .card-glass {
+    @apply backdrop-blur-md bg-white/80 dark:bg-neutral-800/70 border border-gray-200/60 dark:border-neutral-700/50 rounded-xl;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary dark:text-primary;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary/10 text-secondary dark:text-secondary;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-lg bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10;
+  }
+
+  /* Smooth scroll anchor */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    @apply animate-fade-in;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
+  }
 }
