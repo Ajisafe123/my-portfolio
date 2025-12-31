@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 
 const MobileNav = ({
   sections = ["home", "about", "skills", "projects", "contact"],
   activeSection = "home",
-  setActiveSection = () => { },
-  scrollToSection = () => { },
+  setActiveSection = () => {},
+  scrollToSection = () => {},
 }) => {
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (open) {
@@ -20,90 +21,134 @@ const MobileNav = ({
     }
   }, [open]);
 
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      scale: 0.95,
-      transition: {
-        duration: 0.2,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+  const containerVariants = {
+    closed: { opacity: 0 },
+    open: { opacity: 1, transition: { duration: 0.3 } },
   };
 
   const itemVariants = {
-    closed: { y: 20, opacity: 0 },
-    open: { y: 0, opacity: 1 }
+    closed: { opacity: 0, y: 20 },
+    open: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.06, duration: 0.3 },
+    }),
   };
 
   return (
     <>
-      <div className="lg:hidden fixed top-6 right-6 z-[100]">
-        <motion.button
-          onClick={() => setOpen(!open)}
-          whileTap={{ scale: 0.9 }}
-          className={`flex items-center justify-center w-12 h-12 rounded-full shadow-lg backdrop-blur-md border border-white/10 z-50 transition-colors duration-300 ${!open && "bg-gradient-to-tr from-purple-600 to-pink-600 text-white"
-            } ${open && "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white border-gray-200 dark:border-white/10"}`}
-        >
-          <AnimatePresence mode="wait">
-            {open ? <X size={24} key="close" /> : <Menu size={24} key="open" />}
-          </AnimatePresence>
-        </motion.button>
-      </div>
+      {/* Top Bar */}
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="lg:hidden fixed top-0 left-0 right-0 z-[100] pointer-events-none"
+      >
+        <div className="pointer-events-auto px-4 py-4">
+          <motion.div
+            animate={{
+              backgroundColor: open
+                ? "rgba(255, 255, 255, 0.7)"
+                : "rgba(255, 255, 255, 0.5)",
+              backdropFilter: "blur(10px)",
+            }}
+            className="flex items-center justify-between px-4 py-3 rounded-2xl border border-white/20 dark:bg-white/5 dark:border-white/10"
+          >
+            {/* Logo */}
+            <motion.div className="flex items-center gap-2 group cursor-pointer">
+              <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 flex items-center justify-center overflow-hidden shadow-lg">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent"
+                  animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+                <Code2 className="w-5 h-5 text-white relative z-10" />
+              </div>
+              <motion.div className="h1-text font-black text-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700">
+                Ajisafe
+              </motion.div>
+            </motion.div>
 
+            {/* Menu Button & Theme */}
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <motion.button
+                onClick={() => setOpen(!open)}
+                whileTap={{ scale: 0.9 }}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${
+                  open
+                    ? "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white"
+                    : "bg-gradient-to-br from-purple-600 to-pink-600 text-white"
+                }`}
+              >
+                <AnimatePresence mode="wait">
+                  {open ? (
+                    <X size={20} key="close" />
+                  ) : (
+                    <Menu size={20} key="open" />
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] lg:hidden bg-white/95 dark:bg-black/95 backdrop-blur-3xl flex flex-col justify-center items-center"
+            variants={containerVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="fixed inset-0 z-[90] lg:hidden pt-20"
           >
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-              <div className="absolute -top-[20%] -right-[20%] w-[70%] h-[70%] bg-purple-500/10 rounded-full blur-[100px]" />
-              <div className="absolute -bottom-[20%] -left-[20%] w-[70%] h-[70%] bg-pink-500/10 rounded-full blur-[100px]" />
-            </div>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"
+            />
 
-            <motion.nav
-              variants={menuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="w-full max-w-sm px-6 relative z-10"
+            {/* Menu Content */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="relative mx-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden max-h-[calc(100vh-100px)] overflow-y-auto"
             >
-              <div className="space-y-4">
+              {/* Navigation Links */}
+              <div className="px-4 py-6 space-y-2">
                 {sections.map((section, idx) => {
                   const isActive = activeSection === section;
                   return (
                     <motion.button
                       key={section}
+                      custom={idx}
                       variants={itemVariants}
-                      transition={{ delay: idx * 0.1 }}
+                      initial="closed"
+                      animate="open"
                       onClick={() => {
                         scrollToSection(section);
                         setActiveSection(section);
                         setOpen(false);
                       }}
-                      className={`w-full group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 ${isActive
-                        ? "bg-purple-50 dark:bg-white/10 text-purple-600 dark:text-white shadow-sm"
-                        : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400"
-                        }`}
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 ${
+                        isActive
+                          ? "bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-500/20 dark:to-pink-500/20 text-purple-600 dark:text-purple-400"
+                          : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200"
+                      }`}
                     >
-                      <span className="text-xl font-bold capitalize tracking-tight">
+                      <span className="font-semibold capitalize">
                         {section}
                       </span>
                       {isActive && (
                         <motion.div
-                          layoutId="activeDot"
-                          className="w-2 h-2 rounded-full bg-purple-600 dark:bg-purple-400"
+                          layoutId="activeMobileDot"
+                          className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
                         />
                       )}
                     </motion.button>
@@ -111,24 +156,24 @@ const MobileNav = ({
                 })}
               </div>
 
+              {/* CTA Button */}
               <motion.div
+                custom={sections.length}
                 variants={itemVariants}
-                transition={{ delay: 0.5 }}
-                className="mt-12 pt-8 border-t border-gray-100 dark:border-white/10 flex flex-col items-center gap-6"
+                initial="closed"
+                animate="open"
+                className="px-4 py-4 border-t border-gray-200 dark:border-white/10"
               >
-                <button
-                  onClick={toggleTheme}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/10 transition-all"
+                <motion.a
+                  href="mailto:ajisafeibrahim54@gmail.com"
+                  className="block w-full px-4 py-3 rounded-xl bg-gray-100 dark:bg-purple-600 border border-gray-200 dark:border-purple-500/30 text-gray-900 dark:text-white font-semibold text-center hover:bg-gray-200 dark:hover:bg-purple-500 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
-                  <span className="text-sm font-bold uppercase tracking-wide">Switch to {theme === 'dark' ? 'Light' : 'Dark'}</span>
-                </button>
-
-                <p className="text-gray-400 dark:text-gray-600 text-xs text-center font-medium">
-                  DESIGNED BY AJISAFE
-                </p>
+                  Get In Touch
+                </motion.a>
               </motion.div>
-            </motion.nav>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

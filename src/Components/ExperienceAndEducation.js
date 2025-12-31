@@ -1,87 +1,13 @@
-import React, { useRef, useCallback } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Calendar, Briefcase } from "lucide-react";
 
 const Icons = {
-  Developer: (props) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6.75 7.5l3 2.25M6.75 7.5l3 2.25m-3-2.25h14.25m-6.75 2.25h6.75m0 3h-6.75m6.75 3h-6.75m0 3h-6.75m0 3h-6.75M6.75 19.5l3 2.25"
-      />
-    </svg>
-  ),
-  Backend: (props) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M10.5 6a7.5 7.5 0 107.5 7.5H18M13.5 10.5h1.5m-1.5 3h1.5m-1.5 3h1.5"
-      />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-3.5-3.5" />
-    </svg>
-  ),
-  Intern: (props) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3.75 13.5l10.5-10.5m-14.25 10.5h10.5m0-10.5l-10.5 10.5m10.5-10.5v10.5M5.25 21l10.5-10.5m-10.5 10.5h10.5m-10.5-10.5v10.5"
-      />
-    </svg>
-  ),
-  Education: (props) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M4.26 10.14l6-6a1.5 1.5 0 012.28 0l6 6a1.5 1.5 0 010 2.28l-6 6a1.5 1.5 0 01-2.28 0l-6-6a1.5 1.5 0 010-2.28z"
-      />
-    </svg>
-  ),
-  Certificate: (props) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 12.75l3 3 7.5-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-  ),
+  Developer: (props) => <Briefcase {...props} />,
+  Backend: (props) => <Briefcase {...props} />,
+  Intern: (props) => <Briefcase {...props} />,
+  Education: (props) => <Calendar {...props} />,
+  Certificate: (props) => <Calendar {...props} />,
 };
 
 const timelineData = [
@@ -141,142 +67,83 @@ const timelineData = [
   },
 ];
 
-const MagneticTimelineCard = ({ item }) => {
-  const IconComponent = item.icon;
-
-  return (
-    <div className="flex-shrink-0 w-[340px] md:w-[380px] snap-center p-2">
-      <div className="group relative h-full w-full overflow-hidden rounded-2xl bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-black border border-gray-200 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-        ></div>
-
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-gray-100/50 to-transparent dark:from-white/5 dark:to-transparent rounded-bl-full"></div>
-
-        <div className="relative p-6 flex flex-col h-full">
-          <div className="flex items-start justify-between mb-4">
-            <div
-              className={`p-3 rounded-xl bg-gradient-to-br ${item.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}
-            >
-              <IconComponent className="w-6 h-6 text-white" />
-            </div>
-            <span className="px-3 py-1 text-xs font-semibold text-gray-600 dark:text-white/60 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10">
-              {item.period}
-            </span>
-          </div>
-
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300">
-              {item.title}
-            </h3>
-            <p className="text-lg font-medium text-purple-400 mb-3">
-              {item.company}
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              {item.description}
-            </p>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-white/5 flex items-center justify-between">
-            <span className="text-xs text-gray-500 uppercase tracking-wider">
-              View More
-            </span>
-            <svg
-              className="w-5 h-5 text-purple-400 group-hover:translate-x-2 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const ExperienceAndEducation = () => {
-  const scrollRef = useRef(null);
-
-  const scroll = useCallback((direction) => {
-    if (scrollRef.current) {
-      const CARD_SCROLL_DISTANCE = 380 + 48;
-      scrollRef.current.scrollBy({
-        left:
-          direction === "left" ? -CARD_SCROLL_DISTANCE : CARD_SCROLL_DISTANCE,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
   return (
-    <section className="relative bg-gray-50 dark:bg-black py-10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="h1-text text-4xl md:text-5xl font-extrabold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600">
-              EXPERIENCE
+    <section className="relative bg-gray-50 dark:bg-black py-20 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="h1-text text-4xl md:text-5xl font-extrabold mb-3">
+            <span className="text-gray-900 dark:text-white">experience </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600">
+              & education
             </span>
-            <span className="text-gray-900 dark:text-white"> & EDUCATION</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
-            Scroll or use the arrows to explore my journey.
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            My professional journey and educational milestones
           </p>
-        </div>
+        </motion.div>
+
+        {/* Timeline */}
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-gray-50 via-gray-50 to-transparent dark:from-black dark:via-black dark:to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-gray-50 via-gray-50 to-transparent dark:from-black dark:via-black dark:to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 flex justify-between w-full z-20 pointer-events-none px-2">
-            <button
-              onClick={() => scroll("left")}
-              className="my-auto p-4 bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white rounded-full transition-all duration-300 pointer-events-auto shadow-xl hover:scale-110"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* Center line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500 via-pink-500 to-purple-600 dark:from-purple-400 dark:via-pink-400 dark:to-purple-500 rounded-full" />
+
+          <div className="space-y-12">
+            {timelineData.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={`flex gap-8 ${
+                  idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                }`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 19l-7-7 7-7"
-                ></path>
-              </svg>
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="my-auto p-4 bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white rounded-full transition-all duration-300 pointer-events-auto shadow-xl hover:scale-110"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                ></path>
-              </svg>
-            </button>
-          </div>
-          <div
-            ref={scrollRef}
-            className="flex space-x-6 pt-8 pb-8 overflow-x-scroll snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {timelineData.map((item, index) => (
-              <MagneticTimelineCard key={index} item={item} />
+                {/* Content */}
+                <div className="w-1/2">
+                  <div className="bg-white dark:bg-gray-900/80 rounded-xl p-6 border border-gray-200 dark:border-white/10 shadow-md hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all duration-300 group">
+                    <div
+                      className={`p-3 rounded-lg w-fit mb-3 bg-gradient-to-br ${item.color}`}
+                    >
+                      <Calendar className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all">
+                      {item.title}
+                    </h3>
+                    <p
+                      className={`text-sm font-semibold mb-2 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}
+                    >
+                      {item.company}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-1">
+                      <Calendar className="w-3 h-3" /> {item.period}
+                    </p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Timeline dot */}
+                <div className="w-0 flex justify-center">
+                  <motion.div
+                    className={`relative z-10 w-6 h-6 rounded-full bg-white dark:bg-gray-900 border-4 border-purple-500 flex items-center justify-center mt-6`}
+                    whileHover={{ scale: 1.3 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  </motion.div>
+                </div>
+
+                {/* Empty space */}
+                <div className="w-1/2" />
+              </motion.div>
             ))}
           </div>
         </div>

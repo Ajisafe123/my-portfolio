@@ -35,7 +35,7 @@ const RadialBackground = () => (
       transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
     />
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 dark:bg-purple-900/10 blur-[150px] pointer-events-none" />
-    <div className="absolute inset-0 bg-gray-100/40 dark:bg-slate-900/40" />
+    <div className="absolute inset-0 bg-white/0 dark:bg-slate-900/40" />
   </div>
 );
 
@@ -86,9 +86,8 @@ export default function Home() {
     },
   ];
 
-
   return (
-    <div className="relative w-full min-h-screen font-sans bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 dark:bg-gradient-to-br dark:from-purple-950 dark:via-purple-900 dark:to-indigo-950 overflow-hidden">
+    <div className="relative w-full min-h-screen font-sans bg-white dark:bg-gradient-to-br dark:from-purple-900 dark:via-slate-900 dark:to-purple-950 overflow-hidden">
       <RadialBackground />
 
       <motion.div
@@ -111,7 +110,7 @@ export default function Home() {
           transition={{ delay: 0.2 }}
           className="mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-800/60 to-purple-600/50 backdrop-blur-md border border-purple-400/30 text-white dark:text-white shadow-lg shadow-purple-500/10">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-500/80 to-purple-500/60 dark:from-purple-800/60 dark:to-purple-600/50 backdrop-blur-md border border-purple-400/30 text-white dark:text-white shadow-lg shadow-purple-500/10">
             <span className="relative flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
@@ -128,21 +127,19 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, type: "spring", stiffness: 120 }}
         >
-          Crafting{" "}
+          Building{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400">
-            Modern Web Experiences
+            Digital Solutions
           </span>
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 font-light max-w-3xl mx-auto leading-relaxed mb-10"
+          className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-400 font-bold italic max-w-3xl mx-auto leading-relaxed mb-10"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          I design and build scalable web applications combining performance,
-          aesthetics, and interactivity. Let's create something remarkable
-          together.
+          Crafting elegant code and intuitive designs. Let's build something extraordinary.
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center gap-6">

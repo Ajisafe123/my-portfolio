@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Code, ArrowDownLeftFromSquareIcon } from "lucide-react";
-
+import {
+  ExternalLink,
+  Github,
+  Code,
+  ArrowDownLeftFromSquareIcon,
+} from "lucide-react";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -50,41 +54,65 @@ const Projects = () => {
       status: "Available on Google",
       color: "from-blue-500 to-cyan-500",
     },
+    {
+      id: 4,
+      title: "E-Attendance System",
+      description:
+        "Smart attendance system with geofencing and facial recognition technology for secure employee tracking and verification.",
+      image: "/eattendcae.png",
+      category: "Enterprise Solution",
+      tools: [
+        "Fast API",
+        "Python",
+        "MongoDB",
+        "Geofencing",
+        "Face Recognition",
+        "Vue.js",
+      ],
+      liveLink: "https://e-attendance.com.ng/",
+      githubLink: "https://github.com/Ajisafe123",
+      status: "Live",
+      color: "from-green-500 to-emerald-600",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-black py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-black dark:via-gray-950 dark:to-black py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto mb-16 text-center"
+        className="max-w-7xl mx-auto mb-16 text-center relative z-10"
       >
         <motion.div
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-6 shadow-sm dark:shadow-none"
           whileHover={{ scale: 1.05 }}
         >
-          <ArrowDownLeftFromSquareIcon className="w-4 h-4 text-yellow-400" />
+          <ArrowDownLeftFromSquareIcon className="w-4 h-4 text-purple-500" />
           <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
             Featured Work
           </span>
         </motion.div>
 
-        <h1 className="h1-text text-4xl md:text-6xl font-black flex flex-row justify-center gap-[10px] mb-6 flex-wrap">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400">
-            Selected
-          </span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-            Projects
+        <h1 className="h1-text text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-purple-700 to-gray-900 dark:from-white dark:via-purple-400 dark:to-white">
+            My Selected Projects
           </span>
         </h1>
 
         <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-          Explore my latest work in web development, AI, and full-stack systems.
+          Explore my latest and greatest work showcasing my skills in full-stack
+          development.
         </p>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ProjectCard
@@ -122,113 +150,163 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+      transition={{ delay: index * 0.12, duration: 0.6, ease: "easeOut" }}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
       onClick={onClick}
       className="group relative cursor-pointer h-full"
     >
-      <div className="relative min-h-[460px] sm:min-h-[480px] md:min-h-[500px] rounded-3xl overflow-hidden bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 flex flex-col justify-between shadow-lg dark:shadow-none transition-colors duration-300">
-        <motion.div
-          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-          style={{ filter: "blur(40px)" }}
-        />
-
-        <div className="relative h-52 sm:h-56 overflow-hidden">
+      {/* Card Container */}
+      <div className="relative h-full rounded-3xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-950 border border-gray-200/60 dark:border-white/8 shadow-lg hover:shadow-2xl dark:hover:shadow-purple-500/25 transition-all duration-500">
+        {/* Image Container */}
+        <div className="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
+          {/* Image */}
           <motion.img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
-            animate={{
-              scale: isHovered ? 1.1 : 1,
-            }}
-            transition={{ duration: 0.6 }}
+            animate={{ scale: isHovered ? 1.12 : 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
+          {/* Dark Overlay on Hover */}
+          <motion.div
+            className="absolute inset-0 bg-black/0"
+            animate={{
+              backgroundColor: isHovered
+                ? "rgba(0, 0, 0, 0.3)"
+                : "rgba(0, 0, 0, 0)",
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* Category Badge - Top Left */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 + 0.2 }}
-            className="absolute top-4 left-4"
+            transition={{ delay: index * 0.12 + 0.2 }}
+            className="absolute top-5 left-5"
           >
-            <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-xl border border-white/20">
-              <span className="text-xs font-semibold text-white">
-                {project.category}
-              </span>
+            <div
+              className={`px-5 py-2 rounded-full bg-gradient-to-r ${project.color} text-white text-xs font-black tracking-wider shadow-2xl backdrop-blur-md border border-white/30`}
+            >
+              {project.category}
             </div>
           </motion.div>
 
+          {/* Status Badge - Top Right */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            className="absolute top-4 right-4 flex gap-2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.12 + 0.25 }}
+            className="absolute top-5 right-5"
+          >
+            <div
+              className={`px-4 py-1.5 rounded-full bg-white/95 dark:bg-white/15 text-xs font-bold text-gray-900 dark:text-white backdrop-blur-md border border-white/40 dark:border-white/20 shadow-lg`}
+            >
+              {project.status}
+            </div>
+          </motion.div>
+
+          {/* Action Buttons - Appear on Hover */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center gap-4 bg-black/20 backdrop-blur-sm"
           >
             <motion.a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-white/95 text-gray-900 font-bold transition-all shadow-xl"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <ExternalLink className="w-4 h-4 text-white" />
+              <ExternalLink className="w-4 h-4" />
+              Live Demo
             </motion.a>
             <motion.a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold backdrop-blur-md border border-white/40 transition-all shadow-xl"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Github className="w-4 h-4 text-white" />
+              <Github className="w-4 h-4" />
+              Code
             </motion.a>
           </motion.div>
         </div>
-        <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all">
+
+        {/* Content Section */}
+        <div className="p-6 flex flex-col justify-between h-[260px]">
+          {/* Title & Description */}
+          <div className="space-y-3">
+            <motion.h3
+              className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 dark:group-hover:from-purple-400 dark:group-hover:to-pink-400 transition-all duration-300"
+              animate={{ scale: isHovered ? 1.02 : 1 }}
+            >
               {project.title}
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400 text-sm md:text-base line-clamp-3">
+            </motion.h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2 min-h-10">
               {project.description}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {project.tools.map((tool, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 + i * 0.05 }}
-                className="px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-xs text-gray-700 dark:text-gray-300 font-medium"
-              >
-                {tool}
-              </motion.span>
-            ))}
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent" />
+
+          {/* Tech Stack */}
+          <div className="space-y-3">
+            <p className="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest">
+              Tech Stack
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tools.slice(0, 4).map((tool, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.12 + i * 0.05 }}
+                  className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-500/15 dark:to-pink-500/15 border border-purple-200/50 dark:border-purple-500/30 text-xs text-gray-700 dark:text-gray-300 font-semibold hover:border-purple-400/70 dark:hover:border-purple-400/50 transition-all"
+                >
+                  {tool}
+                </motion.span>
+              ))}
+              {project.tools.length > 4 && (
+                <span className="px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 text-xs text-gray-600 dark:text-gray-400 font-semibold border border-gray-300/50 dark:border-white/10">
+                  +{project.tools.length - 4}
+                </span>
+              )}
+            </div>
           </div>
-          <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-white/10">
-            <span className="text-xs text-gray-500">{project.status}</span>
-            <motion.div
-              className="text-xs text-purple-600 dark:text-purple-400 font-medium flex items-center gap-1"
-              whileHover={{ x: 5 }}
+
+          {/* View Details Button */}
+          <motion.button
+            className="mt-3 w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/30 group/btn"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={onClick}
+          >
+            View Details
+            <motion.span
+              animate={{ x: isHovered ? 4 : 0 }}
+              transition={{ duration: 0.3 }}
             >
-              <span>View Details</span>
-              <span>→</span>
-            </motion.div>
-          </div>
+              →
+            </motion.span>
+          </motion.button>
         </div>
       </div>
     </motion.div>
   );
 };
-
 const ProjectModal = ({ project, onClose }) => {
   return (
     <>
@@ -237,107 +315,127 @@ const ProjectModal = ({ project, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl"
+        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xl"
         onClick={onClose}
       />
 
-      {/* Modal sliding from right */}
+      {/* Modal */}
       <motion.div
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[500px] md:w-[600px] overflow-y-auto bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 shadow-2xl"
+        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
       >
-        {/* Decorative elements */}
-        <div className="absolute top-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="pointer-events-auto w-full max-w-3xl mx-4 max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-950 dark:to-black shadow-2xl">
+          {/* Header with Image */}
+          <div className="relative h-80 overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-        <button
-          onClick={onClose}
-          className="absolute top-6 left-6 z-10 w-10 h-10 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-xl border border-black/10 dark:border-white/20 flex items-center justify-center hover:bg-black/20 dark:hover:bg-white/20 transition-colors group"
-        >
-          <span className="text-gray-900 dark:text-white text-2xl group-hover:rotate-90 transition-transform duration-300">×</span>
-        </button>
-
-        <div className="relative h-64 overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-          <div className="absolute bottom-6 left-6">
-            <div
-              className={`px-4 py-2 rounded-full bg-gradient-to-r ${project.color} backdrop-blur-xl shadow-lg`}
+            {/* Close Button */}
+            <motion.button
+              onClick={onClose}
+              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-black/60 transition-colors group z-10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-sm text-white font-bold">
-                {project.category}
+              <span className="text-white text-2xl font-light group-hover:rotate-90 transition-transform duration-300">
+                ✕
               </span>
-            </div>
-          </div>
-        </div>
+            </motion.button>
 
-        <div className="relative p-6 sm:p-8 space-y-6">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-gray-400 mb-3">
-              {project.title}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">{project.description}</p>
-          </div>
-
-          <div className="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm">
-            <div className="text-sm text-gray-600 dark:text-gray-400 font-semibold">
-              Status:{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold">{project.status}</span>
+            {/* Category Badge */}
+            <div className="absolute bottom-6 left-6">
+              <div
+                className={`px-4 py-2 rounded-full bg-gradient-to-r ${project.color} shadow-lg backdrop-blur-md`}
+              >
+                <span className="text-sm text-white font-bold">
+                  {project.category}
+                </span>
+              </div>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <Code className="w-5 h-5 text-purple-400" />
-              Technologies Used
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tools.map((tool, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-purple-500/30 text-sm text-gray-700 dark:text-gray-200 font-medium hover:border-purple-500/50 transition-colors"
+          {/* Content */}
+          <div className="p-8 md:p-10 space-y-8">
+            {/* Title & Description */}
+            <div>
+              <h2 className="h1-text text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+                {project.title}
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Status */}
+            <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-500/30">
+              <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                <span className="font-bold">Project Status:</span>{" "}
+                <span
+                  className={`text-transparent bg-clip-text bg-gradient-to-r ${project.color} font-bold`}
                 >
-                  {tool}
-                </motion.div>
-              ))}
+                  {project.status}
+                </span>
+              </p>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-3 pt-4">
-            <motion.a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold text-center flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/50 transition-shadow"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <ExternalLink className="w-5 h-5" />
-              View Live Project
-            </motion.a>
-            <motion.a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-4 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Github className="w-5 h-5" />
-              View Source Code
-            </motion.a>
+            {/* Technologies */}
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                <div
+                  className={`w-8 h-8 rounded-lg bg-gradient-to-br ${project.color} flex items-center justify-center`}
+                >
+                  <Code className="w-4 h-4 text-white" />
+                </div>
+                Technologies Used
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {project.tools.map((tool, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`px-4 py-3 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800/50 dark:to-gray-900/50 border border-gray-200 dark:border-white/10 text-center font-medium text-sm text-gray-800 dark:text-gray-200 hover:border-purple-400 dark:hover:border-purple-500/50 transition-colors`}
+                  >
+                    {tool}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <motion.a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex-1 py-4 px-6 rounded-xl bg-gradient-to-r ${project.color} text-white font-bold text-center flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ExternalLink className="w-5 h-5" />
+                View Live Project
+              </motion.a>
+              <motion.a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-4 px-6 rounded-xl bg-gray-200 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white font-bold text-center flex items-center justify-center gap-2 hover:bg-gray-300 dark:hover:bg-white/20 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Github className="w-5 h-5" />
+                View Source Code
+              </motion.a>
+            </div>
           </div>
         </div>
       </motion.div>

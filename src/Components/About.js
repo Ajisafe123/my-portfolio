@@ -45,19 +45,33 @@ const AboutStackSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl space-y-8 relative text-center"
+        className="w-full max-w-5xl space-y-8 relative text-left"
       >
-        <h2 className="h1-text text-4xl md:text-5xl font-extrabold text-purple-400">ABOUT ME</h2>
+        <h2 className="h1-text text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 dark:from-purple-400 dark:via-pink-400 dark:to-purple-500">
+          ABOUT ME
+        </h2>
 
-        <div className="max-w-3xl mx-auto space-y-6">
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            Hey, I’m <span className="text-purple-600 dark:text-white font-bold">Ajisafe Ibrahim</span>, a
-            third-year Computer Science with Education student who loves blending
-            design and technology to build experiences that move.
+        <div className="space-y-6">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+            Hey, I'm{" "}
+            <span className="text-purple-600 dark:text-purple-400 font-bold">
+              Ajisafe Ibrahim
+            </span>
+            , a passionate developer and designer who loves crafting beautiful,
+            functional digital experiences. I'm a third-year Computer Science
+            student with a focus on building modern web applications that solve
+            real problems.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            I’ve spent months mastering frontend and backend development, building
-            sleek, performant applications that bring ideas to life.
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+            With expertise in both frontend and backend technologies, I create
+            seamless user experiences combined with robust backend systems. I'm
+            committed to writing clean code, following best practices, and
+            staying updated with the latest technologies.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+            When I'm not coding, I enjoy exploring new design trends,
+            contributing to open source projects, and helping others learn web
+            development.
           </p>
         </div>
 
