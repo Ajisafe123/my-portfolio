@@ -74,7 +74,7 @@ const Projects = () => {
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse" />
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div

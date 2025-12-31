@@ -9,6 +9,65 @@ import {
   Phone,
 } from "lucide-react";
 
+const SVGBackground = () => (
+  <svg
+    className="absolute inset-0 w-full h-full"
+    viewBox="0 0 1200 800"
+    preserveAspectRatio="xMidYMid slice"
+    style={{ opacity: 0.25 }}
+  >
+    <defs>
+      <linearGradient id="wavGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6366F1" />
+        <stop offset="100%" stopColor="#EC4899" />
+      </linearGradient>
+      <filter id="blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      </filter>
+    </defs>
+
+    {/* Organic wave patterns */}
+    <path
+      d="M 0 400 Q 300 350 600 400 T 1200 400 L 1200 800 L 0 800 Z"
+      fill="url(#wavGradient)"
+      opacity="0.3"
+      filter="url(#blur)"
+    />
+    <path
+      d="M 0 500 Q 400 450 800 500 T 1600 500 L 1600 800 L 0 800 Z"
+      fill="#8B5CF6"
+      opacity="0.2"
+      filter="url(#blur)"
+    />
+    <path
+      d="M 0 600 Q 300 580 600 600 T 1200 600 L 1200 800 L 0 800 Z"
+      fill="#6366F1"
+      opacity="0.15"
+      filter="url(#blur)"
+    />
+
+    {/* Diagonal accent lines */}
+    <line
+      x1="0"
+      y1="0"
+      x2="1200"
+      y2="800"
+      stroke="#6366F1"
+      strokeWidth="2"
+      opacity="0.1"
+    />
+    <line
+      x1="1200"
+      y1="0"
+      x2="0"
+      y2="800"
+      stroke="#EC4899"
+      strokeWidth="2"
+      opacity="0.1"
+    />
+  </svg>
+);
+
 const RadialBackground = () => (
   <div className="absolute inset-0 overflow-hidden">
     <motion.div
@@ -90,6 +149,11 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl" />
       </div>
 
+      {/* SVG Background */}
+      <div className="absolute inset-0 text-indigo-500 pointer-events-none">
+        <SVGBackground />
+      </div>
+
       <motion.div
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 md:pt-32 pb-16 sm:pb-20 flex flex-col items-center justify-center min-h-screen"
         initial={{ opacity: 0 }}
@@ -116,11 +180,30 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+          whileHover={{ scale: 1.02 }}
         >
-          <span className="block text-neutral-900 dark:text-white mb-1">
+          <span
+            className="block text-neutral-900 dark:text-white mb-1 drop-shadow-lg"
+            style={{
+              textShadow:
+                "0 10px 30px rgba(99, 102, 241, 0.15), 0 2px 5px rgba(0, 0, 0, 0.1)",
+            }}
+          >
             Creative Developer
           </span>
-          <span className="gradient-text block">& Digital Designer</span>
+          <span
+            className="gradient-text block drop-shadow-lg"
+            style={{
+              background:
+                "linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textShadow: "0 10px 40px rgba(99, 102, 241, 0.3)",
+            }}
+          >
+            & Digital Designer
+          </span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -129,6 +212,10 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
+          style={{
+            letterSpacing: "0.5px",
+            lineHeight: "1.7",
+          }}
         >
           Crafting beautiful, functional digital experiences with modern web
           technologies. Let's transform your ideas into reality.

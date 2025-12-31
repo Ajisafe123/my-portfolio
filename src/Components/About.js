@@ -1,6 +1,37 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 
+const CurvedTopBoardSVG = () => (
+  <svg
+    className="absolute top-0 left-0 w-full h-32 sm:h-48"
+    viewBox="0 0 1200 300"
+    preserveAspectRatio="none"
+    style={{ opacity: 0.8 }}
+  >
+    <defs>
+      <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6366F1" />
+        <stop offset="100%" stopColor="#EC4899" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M 0 80 Q 300 20 600 80 T 1200 80 L 1200 0 L 0 0 Z"
+      fill="url(#curveGradient)"
+      opacity="0.15"
+    />
+    <path
+      d="M 0 100 Q 400 40 800 100 T 1600 100 L 1600 0 L 0 0 Z"
+      fill="#8B5CF6"
+      opacity="0.1"
+    />
+    <path
+      d="M 0 120 Q 300 60 600 120 T 1200 120 L 1200 0 L 0 0 Z"
+      fill="#6366F1"
+      opacity="0.08"
+    />
+  </svg>
+);
+
 const AboutStackSection = forwardRef((props, ref) => {
   const infoCards = [
     {
@@ -27,7 +58,13 @@ const AboutStackSection = forwardRef((props, ref) => {
     <section
       ref={ref}
       id="about"
-      className="min-h-screen bg-gradient-to-br from-gray-50/50 via-white to-blue-50/30 dark:from-neutral-800/40 dark:via-neutral-900 dark:to-neutral-900/80 text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative">
+      className="min-h-screen bg-gradient-to-br from-gray-50/50 via-white to-blue-50/30 dark:from-neutral-800/40 dark:via-neutral-900 dark:to-neutral-900/80 text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative"
+    >
+      {/* Curved Top Board */}
+      <div className="absolute top-0 left-0 w-full pointer-events-none">
+        <CurvedTopBoardSVG />
+      </div>
+
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-pulse" />
@@ -39,9 +76,9 @@ const AboutStackSection = forwardRef((props, ref) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-5xl mx-auto space-y-10 sm:space-y-12 relative z-10">
+        className="w-full max-w-5xl mx-auto space-y-10 sm:space-y-12 relative z-10"
       >
-        {/* Heading */}
+        >{/* Heading */}
         <div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +93,6 @@ const AboutStackSection = forwardRef((props, ref) => {
             <span className="gradient-text block">Developer & Designer</span>
           </motion.h2>
         </div>
-
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {/* Text Content */}
