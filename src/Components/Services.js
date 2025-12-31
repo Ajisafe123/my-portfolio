@@ -188,21 +188,21 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
         >
           {services.map((service, idx) => (
             <motion.div
               key={service.id}
               variants={itemVariants}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="group relative"
+              className="group relative w-full"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity duration-500 blur-xl`}
               />
 
               <div
-                className={`relative h-full bg-gradient-to-br ${service.bgColor} backdrop-blur-xl rounded-2xl p-8 border border-gray-200 dark:border-white/10 hover:border-purple-500/30 dark:hover:border-purple-500/30 transition-all duration-300 shadow-lg dark:shadow-none`}
+                className={`relative h-full bg-gradient-to-br ${service.bgColor} backdrop-blur-xl rounded-2xl p-5 sm:p-8 border border-gray-200 dark:border-white/10 hover:border-purple-500/30 dark:hover:border-purple-500/30 transition-all duration-300 shadow-lg dark:shadow-none`}
               >
                 <div
                   className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}

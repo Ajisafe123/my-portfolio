@@ -98,7 +98,7 @@ export default function Home() {
       />
 
       <motion.div
-        className="relative z-20 max-w-4xl mx-auto px-4 pt-52 md:pt-[170px] pb-24 flex flex-col items-center justify-center text-center"
+        className="relative z-20 max-w-4xl mx-auto px-4 pt-32 sm:pt-40 md:pt-[170px] pb-16 sm:pb-24 flex flex-col items-center justify-center text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: loaded ? 1 : 0 }}
         transition={{ duration: 1 }}
@@ -108,21 +108,21 @@ export default function Home() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-500/80 to-purple-500/60 dark:from-purple-800/60 dark:to-purple-600/50 backdrop-blur-md border border-purple-400/30 text-white dark:text-white shadow-lg shadow-purple-500/10">
-            <span className="relative flex h-3 w-3">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-purple-500/80 to-purple-500/60 dark:from-purple-800/60 dark:to-purple-600/50 backdrop-blur-md border border-purple-400/30 text-white dark:text-white shadow-lg shadow-purple-500/10">
+            <span className="relative flex h-2 sm:h-3 w-2 sm:w-3">
               <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+              <span className="relative inline-flex rounded-full h-2 sm:h-3 w-2 sm:w-3 bg-green-400"></span>
             </span>
-            <span className="text-sm md:text-base font-semibold tracking-wide">
+            <span className="text-xs sm:text-sm md:text-base font-semibold tracking-wide">
               Open to Work: Developer
             </span>
           </div>
         </motion.div>
 
         <motion.h1
-          className="h1-text text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white max-w-full mb-5 leading-tight flex flex-row justify-center gap-[10px] flex-wrap"
+          className="h1-text text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white max-w-full mb-3 sm:mb-5 leading-tight flex flex-row justify-center gap-[10px] flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, type: "spring", stiffness: 120 }}
@@ -134,7 +134,7 @@ export default function Home() {
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-400 font-bold italic max-w-3xl mx-auto leading-relaxed mb-10"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-400 font-bold italic max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}

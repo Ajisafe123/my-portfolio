@@ -245,7 +245,7 @@ const ProjectCard = ({
         </div>
 
         {/* Content Section */}
-        <div className="p-6 flex flex-col justify-between h-[260px]">
+        <div className="p-4 sm:p-6 flex flex-col justify-between h-auto sm:h-[260px]">
           {/* Title & Description */}
           <div className="space-y-3">
             <motion.h3
@@ -287,21 +287,25 @@ const ProjectCard = ({
             </div>
           </div>
 
-          {/* View Details Button */}
-          <motion.button
-            className="mt-3 w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-purple-500/30 group/btn"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={onClick}
-          >
-            View Details
-            <motion.span
-              animate={{ x: isHovered ? 4 : 0 }}
-              transition={{ duration: 0.3 }}
+          {/* Links */}
+          <div className="flex gap-4 pt-4">
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline transition-colors"
             >
-              →
-            </motion.span>
-          </motion.button>
+              Live Demo →
+            </a>
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline transition-colors"
+            >
+              View Code →
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>

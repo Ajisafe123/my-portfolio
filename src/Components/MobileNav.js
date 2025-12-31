@@ -46,13 +46,7 @@ const MobileNav = ({
       >
         <div className="pointer-events-auto px-4 py-4">
           <motion.div
-            animate={{
-              backgroundColor: open
-                ? "rgba(255, 255, 255, 0.7)"
-                : "rgba(255, 255, 255, 0.5)",
-              backdropFilter: "blur(10px)",
-            }}
-            className="flex items-center justify-between px-4 py-3 rounded-2xl border border-white/20 dark:bg-white/5 dark:border-white/10"
+            className="flex items-center justify-between px-4 py-3 rounded-2xl border-0 dark:bg-transparent dark:border-0"
           >
             {/* Logo */}
             <motion.div className="flex items-center gap-2 group cursor-pointer">
@@ -118,10 +112,10 @@ const MobileNav = ({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="relative mx-4 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden max-h-[calc(100vh-100px)] overflow-y-auto"
+              className="relative mx-4 rounded-3xl bg-white dark:bg-gray-950/95 border border-gray-200/50 dark:border-white/10 shadow-2xl overflow-hidden max-h-[calc(100vh-100px)] overflow-y-auto backdrop-blur-sm"
             >
               {/* Navigation Links */}
-              <div className="px-4 py-6 space-y-2">
+              <div className="px-5 py-6 space-y-1">
                 {sections.map((section, idx) => {
                   const isActive = activeSection === section;
                   return (
@@ -136,19 +130,19 @@ const MobileNav = ({
                         setActiveSection(section);
                         setOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 ${
+                      className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 font-semibold capitalize ${
                         isActive
-                          ? "bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-500/20 dark:to-pink-500/20 text-purple-600 dark:text-purple-400"
-                          : "hover:bg-gray-50 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200"
+                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/20"
+                          : "hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-200"
                       }`}
                     >
-                      <span className="font-semibold capitalize">
+                      <span>
                         {section}
                       </span>
                       {isActive && (
                         <motion.div
                           layoutId="activeMobileDot"
-                          className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
+                          className="w-2 h-2 rounded-full bg-white"
                         />
                       )}
                     </motion.button>
@@ -162,13 +156,13 @@ const MobileNav = ({
                 variants={itemVariants}
                 initial="closed"
                 animate="open"
-                className="px-4 py-4 border-t border-gray-200 dark:border-white/10"
+                className="px-5 py-5 border-t border-gray-200/50 dark:border-white/10"
               >
                 <motion.a
                   href="mailto:ajisafeibrahim54@gmail.com"
-                  className="block w-full px-4 py-3 rounded-xl bg-gray-100 dark:bg-purple-600 border border-gray-200 dark:border-purple-500/30 text-gray-900 dark:text-white font-semibold text-center hover:bg-gray-200 dark:hover:bg-purple-500 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="block w-full px-5 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-center hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-purple-500/30"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   Get In Touch
                 </motion.a>
