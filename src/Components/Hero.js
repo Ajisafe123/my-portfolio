@@ -168,7 +168,7 @@ export default function Home() {
 
         {/* Subtitle */}
         <motion.p
-          className="text-lg sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 text-center max-w-3xl mb-10 leading-relaxed px-4 font-bold italic"
+          className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 text-center max-w-3xl mb-10 leading-relaxed px-4 italic"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
