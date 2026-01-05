@@ -128,17 +128,6 @@ export default function Home() {
         animate={{ opacity: loaded ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.1 }}
-          className="mb-8 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-neutral-100 border border-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:border-neutral-800 dark:text-neutral-200 text-base font-medium"
-        >
-          <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-          Available for new opportunities
-        </motion.div>
-
         {/* Main Heading */}
         <motion.div
           className="text-center mb-5"
@@ -179,13 +168,11 @@ export default function Home() {
 
         {/* Subtitle */}
         <motion.p
-          className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 text-center max-w-2xl mb-5 leading-relaxed px-2"
+          className="text-lg sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 text-center max-w-3xl mb-10 leading-relaxed px-4 font-bold italic"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
           style={{
-            letterSpacing: "0.5px",
-            lineHeight: "1.8",
             fontFamily: "'Inter', sans-serif",
           }}
         >
