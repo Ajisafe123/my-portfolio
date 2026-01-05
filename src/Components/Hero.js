@@ -176,9 +176,7 @@ export default function Home() {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          Creating extraordinary digital experiences with cutting-edge
-          technologies, AI/ML solutions, innovative design, and pixel-perfect
-          execution.
+          Creating extraordinary digital experiences through innovative design and cutting-edge technology.
         </motion.p>
 
         {/* CTA Buttons */}
