@@ -9,10 +9,13 @@ import {
   Mail,
   ArrowRight,
   Phone,
+  Star,
 } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
+  const { theme } = useTheme();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const particlesInit = async (main) => {
     await loadSlim(main);
@@ -33,31 +36,32 @@ export default function Home() {
       Icon: Github,
       href: "https://github.com/Ajisafe123",
       name: "GitHub",
+      navigation: true,
       bgColor: "bg-neutral-800 dark:bg-neutral-700 hover:bg-neutral-900",
     },
     {
       Icon: Linkedin,
       href: "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
       name: "LinkedIn",
-      bgColor: "bg-blue-600 hover:bg-blue-700",
+      bgColor: "bg-neutral-800 hover:bg-neutral-900",
     },
     {
       Icon: Twitter,
       href: "https://x.com/code_wit_jeedev?s=21",
       name: "Twitter",
-      bgColor: "bg-sky-500 hover:bg-sky-600",
+      bgColor: "bg-neutral-800 hover:bg-neutral-900",
     },
     {
       Icon: Mail,
       href: "mailto:ajisafeibrahim54@gmail.com",
       name: "Email",
-      bgColor: "bg-accent hover:bg-cyan-600",
+      bgColor: "bg-neutral-800 hover:bg-neutral-900",
     },
   ];
 
   return (
     <div
-      className="relative w-full min-h-screen bg-white dark:bg-neutral-900 overflow-hidden"
+      className="relative w-full min-h-screen bg-white dark:bg-black overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       <Particles
@@ -72,10 +76,10 @@ export default function Home() {
           fpsLimit: 120,
           particles: {
             color: {
-              value: "#0ea5e9",
+              value: theme === "dark" ? "#ffffff" : "#000000",
             },
             links: {
-              color: "#0ea5e9",
+              color: theme === "dark" ? "#ffffff" : "#000000",
               distance: 150,
               enable: true,
               opacity: 0.15,
@@ -114,8 +118,8 @@ export default function Home() {
       />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-sky-400/10 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-cyan-400/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-neutral-200/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-neutral-200/20 to-transparent rounded-full blur-3xl" />
       </div>
 
       <motion.div
@@ -129,9 +133,9 @@ export default function Home() {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.1 }}
-          className="mb-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sky-400/15 border border-sky-400/40 text-sky-600 dark:text-sky-400 text-sm font-medium"
+          className="mb-8 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-neutral-100 border border-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:border-neutral-800 dark:text-neutral-200 text-base font-medium"
         >
-          <span className="text-lg">⭐</span>
+          <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
           Available for new opportunities
         </motion.div>
 
@@ -149,19 +153,28 @@ export default function Home() {
           >
             Software
           </motion.h1>
-          <motion.h2
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-1"
-            style={{
-              fontFamily: "'Josefin Sans', sans-serif",
-              background: "linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-            whileHover={{ scale: 1.02 }}
-          >
-            Developer
-          </motion.h2>
+          <div className="relative inline-block mt-2">
+            {/* Background Layer for 3D effect */}
+            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 transform -skew-x-12 rounded-2xl translate-x-3 translate-y-3" />
+
+            {/* Main Content Layer */}
+            <div className="relative z-10 overflow-hidden transform -skew-x-12 px-10 py-5 bg-gradient-to-br from-neutral-900 via-black to-neutral-900 dark:from-white dark:via-neutral-100 dark:to-neutral-200 border border-neutral-800 dark:border-white/20 rounded-2xl shadow-xl">
+              <motion.h2
+                className="text-4xl sm:text-5xl md:text-6xl font-black m-0 text-white dark:text-neutral-900 leading-none transform skew-x-12 italic tracking-tighter"
+                style={{
+                  fontFamily: "'Josefin Sans', sans-serif",
+                }}
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }}
+              >
+                Developer
+              </motion.h2>
+
+              {/* Shine effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12" />
+            </div>
+          </div>
         </motion.div>
 
         {/* Subtitle */}
@@ -188,10 +201,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <button className="px-8 py-3 rounded-full bg-sky-500 text-white hover:bg-sky-600 font-semibold transition-all hover:shadow-lg font-poppins">
+          <button className="px-8 py-3 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 font-semibold transition-all hover:shadow-lg font-poppins">
             View My Work
           </button>
-          <button className="px-8 py-3 rounded-full bg-sky-400/15 border-2 border-sky-400 text-sky-600 dark:text-sky-400 hover:bg-sky-400/25 font-semibold transition-all">
+          <button className="px-8 py-3 rounded-full bg-transparent border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-100 dark:border-white dark:text-white dark:hover:bg-neutral-800 font-semibold transition-all">
             Get In Touch
           </button>
         </motion.div>
@@ -204,7 +217,7 @@ export default function Home() {
           transition={{ delay: 0.5 }}
         >
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
               1+
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -214,7 +227,7 @@ export default function Home() {
             </p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
               7+
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -224,7 +237,7 @@ export default function Home() {
             </p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
               100%
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -235,31 +248,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="flex flex-col items-center gap-2 text-sky-500 dark:text-sky-400 text-sm font-medium">
-            <span style={{ fontFamily: "'Inter', sans-serif" }}>
-              Scroll to explore
-            </span>
-            <svg
-              className="w-5 h-5 text-sky-500 dark:text-sky-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </motion.div>
+        {/* Scroll Indicator Removed */}
       </motion.div>
     </div>
   );

@@ -25,19 +25,19 @@ const Footer = () => {
       name: "LinkedIn",
       icon: <Linkedin className="w-5 h-5" />,
       url: "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
-      color: "from-blue-600 to-blue-900",
+      color: "from-neutral-700 to-neutral-900",
     },
     {
       name: "Twitter",
       icon: <Twitter className="w-5 h-5" />,
       url: "https://x.com/code_wit_jeedev?s=21",
-      color: "from-sky-500 to-blue-600",
+      color: "from-neutral-700 to-neutral-900",
     },
     {
       name: "Email",
       icon: <Mail className="w-5 h-5" />,
       url: "mailto:ajisafeibrahim54@gmail.com",
-      color: "from-sky-500 to-cyan-600",
+      color: "from-neutral-700 to-neutral-900",
     },
   ];
 
@@ -53,7 +53,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-white dark:bg-neutral-900 border-t border-gray-200/60 dark:border-white/10 transition-colors duration-300 overflow-hidden">
+    <footer className="relative bg-white dark:bg-black border-t border-gray-200/60 dark:border-white/10 transition-colors duration-300 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-16 pb-12 border-b border-gray-200 dark:border-white/10">
@@ -65,8 +65,8 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-white dark:text-neutral-900" />
               </div>
               <span className="text-lg sm:text-xl font-black text-gray-900 dark:text-white">
                 Ajisafe Ibrahim
@@ -94,9 +94,9 @@ const Footer = () => {
                 <li key={idx}>
                   <a
                     href={link.href}
-                    className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors group"
+                    className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-neutral-900 dark:hover:text-white transition-colors group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </a>
                 </li>
@@ -117,34 +117,34 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href="mailto:ajisafeibrahim54@gmail.com"
-                className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 border border-gray-200 dark:border-white/10 hover:border-sky-500/50 transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 border border-gray-200 dark:border-white/10 hover:border-neutral-500/50 transition-colors group"
               >
-                <Mail className="w-5 h-5 text-sky-600 dark:text-sky-400 flex-shrink-0" />
+                <Mail className="w-5 h-5 text-neutral-600 dark:text-neutral-400 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     Email
                   </p>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
                     ajisafeibrahim54@gmail.com
                   </p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex-shrink-0" />
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors flex-shrink-0" />
               </a>
 
               <a
                 href="tel:09056453575"
-                className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 border border-gray-200 dark:border-white/10 hover:border-sky-500/50 transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 border border-gray-200 dark:border-white/10 hover:border-neutral-500/50 transition-colors group"
               >
-                <Phone className="w-5 h-5 text-sky-600 dark:text-sky-400 flex-shrink-0" />
+                <Phone className="w-5 h-5 text-neutral-600 dark:text-neutral-400 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     Phone
                   </p>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
                     +234 905 645 3575
                   </p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors flex-shrink-0" />
+                <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors flex-shrink-0" />
               </a>
             </div>
           </motion.div>
@@ -195,7 +195,7 @@ const Footer = () => {
 
             <motion.button
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-cyan-500 flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+              className="w-10 h-10 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center text-white dark:text-neutral-900 shadow-lg hover:shadow-xl transition-shadow"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               title="Back to top"
@@ -207,7 +207,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Gradient Border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent dark:via-neutral-700" />
     </footer>
   );
 };

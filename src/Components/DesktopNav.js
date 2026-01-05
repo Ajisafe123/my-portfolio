@@ -6,8 +6,8 @@ import { Code2 } from "lucide-react";
 const DesktopNav = ({
   sections = [],
   activeSection = "home",
-  setActiveSection = () => {},
-  scrollToSection = () => {},
+  setActiveSection = () => { },
+  scrollToSection = () => { },
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,7 +33,7 @@ const DesktopNav = ({
               whileHover={{ scale: 1.1 }}
               onClick={() => scrollToSection("Home")}
             >
-              <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-sky-500 via-cyan-500 to-sky-600 flex items-center justify-center overflow-hidden shadow-lg shadow-sky-500/40 group-hover:shadow-sky-500/60 transition-shadow duration-300">
+              <div className="relative w-11 h-11 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center overflow-hidden shadow-lg shadow-neutral-900/20 group-hover:shadow-neutral-900/40 transition-shadow duration-300">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                   animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
@@ -44,9 +44,9 @@ const DesktopNav = ({
                   animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
-                <Code2 className="w-6 h-6 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                <Code2 className="w-6 h-6 text-white dark:text-neutral-900 relative z-10 group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <span className="font-josefin font-bold text-lg tracking-wide bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 bg-clip-text text-transparent hidden sm:inline-block group-hover:text-gradient transition-all">
+              <span className="font-josefin font-bold text-lg tracking-wide text-neutral-900 dark:text-white hidden sm:inline-block transition-all">
                 Ajisafe
               </span>
             </motion.div>
@@ -79,7 +79,7 @@ const DesktopNav = ({
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white font-semibold text-sm hover:shadow-lg hover:shadow-sky-500/30 transition-all"
+                className="px-6 py-2 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-sm hover:shadow-lg transition-all"
                 onClick={() => scrollToSection("Contact")}
               >
                 Contact
@@ -132,10 +132,10 @@ const NavItem = ({ section, isActive, index, onClick }) => {
         className="relative z-10 block text-neutral-900 dark:text-white"
         animate={{
           color: isActive
-            ? "rgb(14, 165, 233)"
+            ? "rgb(23, 23, 23)" // neutral-900
             : isHovered
-            ? "rgb(14, 165, 233)"
-            : "currentColor",
+              ? "rgb(23, 23, 23)"
+              : "currentColor",
         }}
       >
         {section}
@@ -145,7 +145,7 @@ const NavItem = ({ section, isActive, index, onClick }) => {
       {isActive && (
         <motion.div
           layoutId="activeDot"
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 shadow-xl shadow-sky-500/60"
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-neutral-900 dark:bg-white shadow-xl"
           initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
           animate={{ width: 40, scaleX: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
@@ -155,7 +155,7 @@ const NavItem = ({ section, isActive, index, onClick }) => {
       {/* Hover 3D underline with enhanced effects */}
       {!isActive && (
         <motion.div
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 shadow-lg shadow-sky-400/50"
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-neutral-400 dark:bg-neutral-600 shadow-lg"
           initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
           animate={{
             width: isHovered ? 28 : 0,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, User, Palette, Briefcase, Code } from "lucide-react";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,28 +9,28 @@ const Testimonials = () => {
     {
       name: "John Doe",
       role: "Project Manager, TechCorp",
-      image: "👨‍💼",
+      image: <Briefcase className="w-10 h-10 text-neutral-700 dark:text-neutral-300" />,
       text: "Ajisafe delivered an exceptional web application ahead of schedule. His attention to detail and problem-solving skills were outstanding.",
       rating: 5,
     },
     {
       name: "Sarah Smith",
       role: "UI Designer, Creative Studio",
-      image: "👩‍🎨",
+      image: <Palette className="w-10 h-10 text-neutral-700 dark:text-neutral-300" />,
       text: "Working with Ajisafe was seamless. He perfectly translated designs into functional, beautiful code. Highly recommended!",
       rating: 5,
     },
     {
       name: "Mike Johnson",
       role: "CEO, StartUp Inc",
-      image: "👨‍💼",
+      image: <User className="w-10 h-10 text-neutral-700 dark:text-neutral-300" />,
       text: "Ajisafe is a versatile developer who can handle both frontend and backend challenges. He's a great addition to any team.",
       rating: 5,
     },
     {
       name: "Emily Davis",
       role: "Team Lead, Digital Agency",
-      image: "👩‍💻",
+      image: <Code className="w-10 h-10 text-neutral-700 dark:text-neutral-300" />,
       text: "His technical expertise combined with excellent communication makes him a standout developer. A real professional.",
       rating: 5,
     },
@@ -47,7 +47,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative bg-white dark:bg-neutral-900 py-20 transition-colors duration-300">
+    <section className="relative bg-white dark:bg-black py-20 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -57,7 +57,7 @@ const Testimonials = () => {
         >
           <h2 className="h1-text text-3xl md:text-4xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what people </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600 dark:from-sky-400 dark:via-cyan-400 dark:to-sky-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500 dark:from-white dark:via-neutral-400 dark:to-neutral-500">
               say
             </span>
           </h2>
@@ -72,7 +72,7 @@ const Testimonials = () => {
             {/* Left Arrow */}
             <motion.button
               onClick={prevTestimonial}
-              className="hidden md:flex absolute left-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute left-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-700 transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -113,9 +113,7 @@ const Testimonials = () => {
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">
-                      {testimonials[currentIndex].image}
-                    </div>
+                    {testimonials[currentIndex].image}
                     <div>
                       <h3 className="font-bold text-gray-900 dark:text-white">
                         {testimonials[currentIndex].name}
@@ -132,7 +130,7 @@ const Testimonials = () => {
             {/* Right Arrow */}
             <motion.button
               onClick={nextTestimonial}
-              className="hidden md:flex absolute right-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute right-0 z-10 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-white/10 hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-700 transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -146,18 +144,17 @@ const Testimonials = () => {
               <motion.button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  idx === currentIndex
-                    ? "bg-sky-500 dark:bg-sky-400 w-8"
-                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                }`}
+                className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex
+                  ? "bg-neutral-900 dark:bg-white w-8"
+                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                  }`}
                 whileHover={{ scale: 1.2 }}
               />
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

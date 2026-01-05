@@ -68,7 +68,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-900 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-black py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
@@ -85,7 +85,7 @@ const Projects = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full badge-primary mb-4 sm:mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 mb-4 sm:mb-6"
             whileHover={{ scale: 1.05 }}
           >
             <Code className="w-4 h-4" />
@@ -96,7 +96,7 @@ const Projects = () => {
             <span className="block text-neutral-900 dark:text-white mb-1 sm:mb-2">
               My Projects
             </span>
-            <span className="gradient-text block">Work I'm Proud Of</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-white dark:to-neutral-400 block">Work I'm Proud Of</span>
           </h2>
 
           <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto px-2">
@@ -134,18 +134,18 @@ const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
       onMouseLeave={() => setHoveredIndex(null)}
       className="group h-full cursor-pointer"
     >
-      <div className="relative h-full overflow-hidden rounded-3xl flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border border-sky-100/60 dark:border-sky-900/40 hover:border-primary/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur group">
+      <div className="relative h-full overflow-hidden rounded-3xl flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/60 dark:border-neutral-800/40 hover:border-neutral-900/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur group">
         {/* Image */}
-        <div className="relative flex items-center justify-center bg-gradient-to-br from-sky-100 via-cyan-100 to-sky-200 dark:from-sky-900/40 dark:via-cyan-900/30 dark:to-sky-900/60 p-4 pb-4">
+        <div className="relative flex items-center justify-center bg-gradient-to-br from-neutral-100 via-gray-100 to-neutral-200 dark:from-neutral-900/40 dark:via-gray-900/30 dark:to-neutral-900/60 p-4 pb-4">
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white dark:border-neutral-900 group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 bg-white dark:bg-neutral-900"
+            className="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white dark:border-neutral-800 group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 bg-white dark:bg-neutral-900"
             style={{ boxSizing: "border-box" }}
           />
           {/* Category & Status */}
           <div className="absolute top-7 left-7 flex gap-2">
-            <span className="px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold shadow-md">
+            <span className="px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-semibold shadow-md">
               {project.category}
             </span>
             <span className="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-semibold shadow-md">
@@ -155,7 +155,7 @@ const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
         </div>
         {/* Content */}
         <div className="p-3 pt-2 flex-1 flex flex-col relative z-10">
-          <h3 className="text-lg font-josefin font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-primary transition-colors">
+          <h3 className="text-lg font-josefin font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-black dark:group-hover:text-neutral-300 transition-colors">
             {project.title}
           </h3>
           <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mb-2 line-clamp-2 flex-1">
@@ -166,38 +166,36 @@ const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
             {project.tools.slice(0, 3).map((tool, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 rounded text-[11px] font-medium bg-gradient-to-r from-primary/15 to-secondary/15 text-primary dark:text-primary border border-primary/20 dark:border-primary/30 shadow-sm"
+                className="px-2 py-0.5 rounded text-[11px] font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 shadow-sm"
               >
                 {tool}
               </span>
             ))}
             {project.tools.length > 3 && (
-              <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-gradient-to-r from-sky-200/50 to-cyan-200/50 dark:from-sky-900/50 dark:to-cyan-900/50 text-sky-700 dark:text-sky-300 shadow-sm">
+              <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-sm">
                 +{project.tools.length - 3}
               </span>
             )}
           </div>
           {/* Action Buttons */}
-          <div className="flex gap-2 mt-auto">
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gradient-to-r from-primary to-cyan-500 text-white text-xs font-semibold hover:from-primary-dark hover:to-cyan-600 transition-all shadow-md hover:scale-105"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live
-            </a>
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-white text-xs font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all shadow-md hover:scale-105"
-            >
-              <Github className="w-4 h-4" />
-              Code
-            </a>
-          </div>
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all shadow-md hover:scale-105"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Live
+          </a>
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white text-xs font-semibold hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all shadow-md hover:scale-105"
+          >
+            <Github className="w-4 h-4" />
+            Code
+          </a>
         </div>
       </div>
     </motion.div>

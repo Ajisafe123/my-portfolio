@@ -17,7 +17,7 @@ const timelineData = [
     period: "Jan 2023 - Present",
     description:
       "Designing interactive web apps using React, Tailwind, and TypeScript. Focused on clean UI, performance, and UX optimization.",
-    color: "from-sky-600 to-sky-800",
+    color: "from-neutral-700 to-neutral-900",
     icon: Icons.Developer,
   },
   {
@@ -26,7 +26,7 @@ const timelineData = [
     period: "Jan 2022 - May 2022",
     description:
       "Assisted in building internal tools using JavaScript and Python, learned agile processes, and collaborated with cross-functional teams.",
-    color: "from-teal-600 to-teal-800",
+    color: "from-neutral-600 to-neutral-800",
     icon: Icons.Intern,
   },
   {
@@ -35,7 +35,7 @@ const timelineData = [
     period: "2023 - 2027",
     description:
       "Focused on software engineering, algorithms, databases, and system design. Completed multiple full-stack projects.",
-    color: "from-sky-600 to-sky-800",
+    color: "from-neutral-700 to-neutral-900",
     icon: Icons.Education,
   },
   {
@@ -44,7 +44,7 @@ const timelineData = [
     period: "2013 - 2018",
     description:
       "Excelled in science and mathematics with strong computing foundations. Participated in coding competitions and STEM clubs.",
-    color: "from-cyan-600 to-cyan-800",
+    color: "from-neutral-600 to-neutral-800",
     icon: Icons.Education,
   },
   {
@@ -53,25 +53,25 @@ const timelineData = [
     period: "2021",
     description:
       "Completed a course on React, hooks, state management, and modern front-end development best practices.",
-    color: "from-teal-600 to-teal-800",
+    color: "from-neutral-600 to-neutral-800",
     icon: Icons.Certificate,
   },
 ];
 
 const ExperienceAndEducation = () => {
   return (
-    <section className="relative bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white py-20 transition-colors duration-300 overflow-hidden">
+    <section className="relative bg-white dark:bg-black text-neutral-900 dark:text-white py-20 transition-colors duration-300 overflow-hidden">
       {/* Center Animated Gradient Divider Only */}
       <div className="w-full flex flex-col items-center justify-center mb-12 gap-2">
         <div className="relative w-2/3 flex items-center justify-center">
           <div
-            className="absolute left-0 right-0 h-1.5 rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-600 opacity-90 animate-gradient-x"
+            className="absolute left-0 right-0 h-1.5 rounded-full bg-gradient-to-r from-neutral-300 via-neutral-500 to-neutral-700 opacity-90 animate-gradient-x"
             style={{
               backgroundSize: "200% 100%",
               animation: "gradient-x 3s linear infinite",
             }}
           />
-          <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 via-cyan-400 to-sky-600 flex items-center justify-center shadow-xl border-4 border-white dark:border-neutral-900">
+          <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-neutral-800 via-neutral-600 to-neutral-800 flex items-center justify-center shadow-xl border-4 border-white dark:border-neutral-900">
             <Calendar className="w-7 h-7 text-white" />
           </div>
         </div>
@@ -87,7 +87,7 @@ const ExperienceAndEducation = () => {
             <span className="text-neutral-900 dark:text-white">
               experience{" "}
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500">
               & education
             </span>
           </h2>
@@ -108,7 +108,7 @@ const ExperienceAndEducation = () => {
                 transition={{ delay: idx * 0.1 }}
                 className="group"
               >
-                <div className="p-6 rounded-2xl bg-sky-100 dark:bg-sky-900/40 border border-sky-300/60 dark:border-sky-600/40 hover:border-sky-400/70 dark:hover:border-sky-500/70 shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200/60 dark:border-neutral-700/40 hover:border-neutral-300/70 dark:hover:border-neutral-600/70 shadow-sm hover:shadow-lg transition-all duration-300">
                   {/* Icon and Color Bar */}
                   <div className="flex items-start gap-4 mb-4">
                     <div
@@ -117,7 +117,7 @@ const ExperienceAndEducation = () => {
                       <Calendar className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                         {item.title}
                       </h3>
                       <p
@@ -141,14 +141,14 @@ const ExperienceAndEducation = () => {
           {/* Right Column - Vertical Timeline Connector */}
           <div className="hidden lg:flex flex-col items-center justify-center relative">
             <div
-              className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-sky-500 via-cyan-500 to-sky-500 rounded-full"
+              className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-200 dark:from-neutral-800 dark:via-neutral-600 dark:to-neutral-800 rounded-full"
               style={{ minHeight: "400px" }}
             />
             {/* Dots along the timeline */}
             {timelineData.map((_, idx) => (
               <div
                 key={idx}
-                className="w-4 h-4 bg-cyan-400 rounded-full border-2 border-white dark:border-neutral-900 shadow-lg my-8"
+                className="w-4 h-4 bg-neutral-900 dark:bg-white rounded-full border-2 border-white dark:border-neutral-900 shadow-lg my-8"
                 style={{ zIndex: 2 }}
               />
             ))}

@@ -16,7 +16,7 @@ const TechStack = () => {
   const categories = [
     {
       title: "Frontend",
-      icon: <Layout className="w-5 h-5 text-sky-400" />,
+      icon: <Layout className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />,
       skills: [
         "React",
         "Vue",
@@ -25,12 +25,12 @@ const TechStack = () => {
         "JavaScript",
         "TypeScript",
       ],
-      color: "from-sky-500/20 to-cyan-500/20",
-      borderColor: "group-hover:border-sky-500/50",
+      color: "from-neutral-500/20 to-gray-500/20",
+      borderColor: "group-hover:border-neutral-500/50",
     },
     {
       title: "Backend",
-      icon: <Server className="w-5 h-5 text-green-400" />,
+      icon: <Server className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />,
       skills: [
         "Node.js",
         "Express",
@@ -39,20 +39,20 @@ const TechStack = () => {
         "Python",
         "TypeScript",
       ],
-      color: "from-green-500/20 to-emerald-500/20",
-      borderColor: "group-hover:border-green-500/50",
+      color: "from-neutral-500/20 to-gray-500/20",
+      borderColor: "group-hover:border-neutral-500/50",
     },
     {
       title: "Tools",
-      icon: <Settings className="w-5 h-5 text-sky-400" />,
+      icon: <Settings className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />,
       skills: ["Git", "VS Code", "Figma"],
-      color: "from-sky-500/20 to-cyan-500/20",
-      borderColor: "group-hover:border-sky-500/50",
+      color: "from-neutral-500/20 to-gray-500/20",
+      borderColor: "group-hover:border-neutral-500/50",
     },
   ];
 
   return (
-    <div className="min-h-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-900 transition-colors duration-300 relative overflow-hidden">
+    <div className="min-h-auto py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black transition-colors duration-300 relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -62,7 +62,7 @@ const TechStack = () => {
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             <span className="text-gray-900 dark:text-white">my </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500 dark:from-white dark:via-neutral-400 dark:to-neutral-500">
               tech stack
             </span>
           </h2>
@@ -82,11 +82,10 @@ const TechStack = () => {
             >
               <button
                 onClick={() => setExpanded(expanded === idx ? null : idx)}
-                className={`w-full group relative overflow-hidden rounded-lg p-3 border transition-all duration-300 ${
-                  expanded === idx
-                    ? "bg-white dark:bg-gray-900/90 border-blue-300 dark:border-blue-500/50 shadow-md"
-                    : "bg-gray-50 dark:bg-gray-900/50 border-gray-200 dark:border-white/10 hover:bg-white dark:hover:bg-gray-900/60"
-                }`}
+                className={`w-full group relative overflow-hidden rounded-lg p-3 border transition-all duration-300 ${expanded === idx
+                  ? "bg-white dark:bg-neutral-900/90 border-neutral-300 dark:border-neutral-500/50 shadow-md"
+                  : "bg-neutral-50 dark:bg-neutral-900/50 border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-neutral-900/60"
+                  }`}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-50 transition-opacity duration-300`}
@@ -95,20 +94,18 @@ const TechStack = () => {
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`p-2 rounded-lg transition-all duration-300 ${
-                        expanded === idx
-                          ? "bg-blue-100 dark:bg-blue-500/20"
-                          : "bg-gray-100 dark:bg-white/10"
-                      }`}
+                      className={`p-2 rounded-lg transition-all duration-300 ${expanded === idx
+                        ? "bg-neutral-100 dark:bg-neutral-500/20"
+                        : "bg-neutral-100 dark:bg-white/10"
+                        }`}
                     >
                       {category.icon}
                     </div>
                     <h3
-                      className={`font-bold transition-colors duration-300 ${
-                        expanded === idx
-                          ? "text-blue-600 dark:text-blue-400 text-lg"
-                          : "text-gray-900 dark:text-white text-base"
-                      }`}
+                      className={`font-bold transition-colors duration-300 ${expanded === idx
+                        ? "text-neutral-900 dark:text-white text-lg"
+                        : "text-neutral-700 dark:text-neutral-300 text-base"
+                        }`}
                     >
                       {category.title}
                     </h3>
@@ -140,7 +137,7 @@ const TechStack = () => {
                             initial={{ opacity: 0, y: -5 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: skillIdx * 0.03 }}
-                            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-sky-50 to-cyan-50 dark:from-sky-500/10 dark:to-cyan-500/10 text-gray-700 dark:text-gray-300 font-medium text-xs border border-sky-200 dark:border-sky-500/30 hover:border-sky-400 dark:hover:border-sky-400/50 transition-colors"
+                            className="px-3 py-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium text-xs border border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors"
                           >
                             {skill}
                           </motion.span>

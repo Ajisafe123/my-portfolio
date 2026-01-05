@@ -9,6 +9,7 @@ import {
   BarChart3,
   X,
   Check,
+  ArrowRight,
 } from "lucide-react";
 
 const Services = () => {
@@ -21,7 +22,7 @@ const Services = () => {
       title: "Web Development",
       description:
         "Building responsive, fast, and scalable web applications with modern tech stack.",
-      color: "from-sky-500 to-cyan-500",
+      color: "from-neutral-800 to-neutral-600",
       details:
         "Full-stack web development including frontend with React, Vue, TypeScript and backend with Node.js, Express, NestJS. Performance optimized, SEO-friendly, and production-ready.",
       features: [
@@ -39,7 +40,7 @@ const Services = () => {
       title: "UI/UX Design",
       description:
         "Crafting beautiful and intuitive user interfaces that users love to interact with.",
-      color: "from-sky-500 to-cyan-500",
+      color: "from-neutral-800 to-neutral-600",
       details:
         "User-centered design approach creating intuitive, beautiful interfaces with smooth animations and perfect micro-interactions using Framer Motion.",
       features: [
@@ -57,7 +58,7 @@ const Services = () => {
       title: "Performance",
       description:
         "Optimizing applications for speed and efficiency to ensure great user experience.",
-      color: "from-yellow-500 to-orange-500",
+      color: "from-neutral-700 to-neutral-500",
       details:
         "Comprehensive performance optimization including code splitting, lazy loading, caching strategies, and monitoring to achieve lightning-fast load times.",
       features: [
@@ -75,7 +76,7 @@ const Services = () => {
       title: "Responsive Design",
       description:
         "Creating applications that work seamlessly on all devices and screen sizes.",
-      color: "from-green-500 to-emerald-500",
+      color: "from-neutral-800 to-neutral-600",
       details:
         "Mobile-first approach ensuring your application looks stunning and functions perfectly across all devices from mobile phones to large desktop screens.",
       features: [
@@ -93,9 +94,9 @@ const Services = () => {
       title: "Team Collaboration",
       description:
         "Working effectively with teams using agile methodologies and best practices.",
-      color: "from-sky-500 to-cyan-500",
+      color: "from-neutral-800 to-neutral-600",
       bgColor:
-        "from-sky-50 to-cyan-50 dark:from-sky-900/20 dark:to-cyan-900/20",
+        "from-neutral-50 to-gray-50 dark:from-neutral-900/20 dark:to-gray-900/20",
       details:
         "Experienced in agile development, Git workflows, code reviews, documentation, and effective communication with teams and stakeholders.",
       features: [
@@ -113,9 +114,9 @@ const Services = () => {
       title: "Full Stack Solutions",
       description:
         "End-to-end development from frontend interfaces to powerful backend systems.",
-      color: "from-cyan-500 to-sky-500",
+      color: "from-neutral-700 to-neutral-500",
       bgColor:
-        "from-cyan-50 to-sky-50 dark:from-cyan-900/20 dark:to-sky-900/20",
+        "from-neutral-50 to-gray-50 dark:from-neutral-900/20 dark:to-gray-900/20",
       details:
         "Complete application development from database design and backend APIs to beautiful frontend interfaces, ensuring seamless integration and scalability.",
       features: [
@@ -149,7 +150,7 @@ const Services = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 py-16 sm:py-20 transition-colors duration-300">
+    <section className="relative bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-black py-16 sm:py-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -159,7 +160,7 @@ const Services = () => {
         >
           <h2 className="h1-text text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what i </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500">
               offer
             </span>
           </h2>
@@ -188,7 +189,7 @@ const Services = () => {
               />
 
               <div
-                className={`relative h-full bg-gradient-to-br ${service.bgColor} backdrop-blur-xl rounded-2xl p-5 sm:p-8 border border-gray-200 dark:border-white/10 hover:border-sky-500/30 dark:hover:border-sky-500/30 transition-all duration-300 shadow-lg dark:shadow-none`}
+                className={`relative h-full bg-gradient-to-br ${service.bgColor} backdrop-blur-xl rounded-2xl p-5 sm:p-8 border border-gray-200 dark:border-white/10 hover:border-neutral-500/30 dark:hover:border-neutral-500/30 transition-all duration-300 shadow-lg dark:shadow-none`}
               >
                 <div
                   className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}
@@ -196,7 +197,7 @@ const Services = () => {
                   {service.icon}
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-cyan-600 dark:group-hover:from-sky-400 dark:group-hover:to-cyan-400 transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-neutral-600 group-hover:to-neutral-400 dark:group-hover:from-white dark:group-hover:to-neutral-300 transition-all duration-300">
                   {service.title}
                 </h3>
 
@@ -207,11 +208,13 @@ const Services = () => {
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/5">
                   <motion.button
                     onClick={() => setSelectedService(service)}
-                    className="inline-flex items-center gap-2 text-sky-600 dark:text-sky-400 font-semibold text-sm group-hover:gap-3 transition-all hover:text-sky-700 dark:hover:text-sky-300"
+                    className="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 font-semibold text-sm group-hover:gap-3 transition-all hover:text-neutral-900 dark:hover:text-white"
                     whileHover={{ x: 5 }}
                   >
                     View Details
-                    <span>→</span>
+                    <span>
+                      <ArrowRight className="w-4 h-4 ml-1 inline-block" />
+                    </span>
                   </motion.button>
                 </div>
               </div>

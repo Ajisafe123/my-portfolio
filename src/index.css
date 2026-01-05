@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-gray-100 transition-colors duration-300;
+    @apply bg-white dark:bg-black text-neutral-900 dark:text-gray-100 transition-colors duration-300;
     font-family: "Josefin Sans", system-ui, sans-serif;
   }
 
@@ -47,7 +47,7 @@
 
   /* Buttons */
   .btn-primary {
-    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-primary to-primary/90 hover:from-primary-dark hover:to-primary-dark text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-primary hover:bg-neutral-800 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
   }
 
   .btn-primary-outline {
@@ -55,12 +55,12 @@
   }
 
   .btn-secondary {
-    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-secondary to-secondary/90 hover:from-sky-500 hover:to-sky-500/90 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-secondary hover:bg-neutral-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
   }
 
   /* Cards */
   .card {
-    @apply bg-gradient-to-br from-sky-50 to-cyan-50 dark:from-sky-900/30 dark:to-cyan-900/30 rounded-xl border border-sky-200/60 dark:border-sky-700/40 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300 backdrop-blur-sm;
+    @apply bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-300;
   }
 
   .card-hover {
@@ -86,7 +86,7 @@
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500 dark:from-white dark:via-neutral-200 dark:to-neutral-400;
   }
 
   /* Section container */

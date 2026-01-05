@@ -1,24 +1,25 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
+import { Zap, Target, Lightbulb } from "lucide-react";
 
 const AboutStackSection = forwardRef((props, ref) => {
   const infoCards = [
     {
       title: "Experience",
       text: "1+ years of real-world projects and hands-on learning.",
-      icon: "⚡",
+      icon: <Zap className="w-8 h-8 text-yellow-500 fill-yellow-500" />,
       delay: 0.2,
     },
     {
       title: "Projects",
       text: "7+ complete applications built with modern tech stack.",
-      icon: "🎯",
+      icon: <Target className="w-8 h-8 text-red-500" />,
       delay: 0.3,
     },
     {
       title: "Passion",
       text: "Obsessed with beautiful design and clean code.",
-      icon: "💡",
+      icon: <Lightbulb className="w-8 h-8 text-blue-500 fill-blue-500" />,
       delay: 0.4,
     },
   ];
@@ -27,7 +28,7 @@ const AboutStackSection = forwardRef((props, ref) => {
     <section
       ref={ref}
       id="about"
-      className="min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative"
+      className="min-h-screen bg-white dark:bg-black text-neutral-900 dark:text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-300 relative"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -102,7 +103,7 @@ const AboutStackSection = forwardRef((props, ref) => {
                 <motion.span
                   key={skill}
                   whileHover={{ scale: 1.05 }}
-                  className="px-4 py-2 bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 rounded-full text-sm font-semibold border border-sky-300/60 dark:border-sky-600/40"
+                  className="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-full text-sm font-semibold border border-neutral-200 dark:border-neutral-700"
                 >
                   {skill}
                 </motion.span>
@@ -140,8 +141,8 @@ const AboutStackSection = forwardRef((props, ref) => {
         </div>
       </motion.div>
       <div className="flex justify-center mb-8 mt-16 sm:mt-0">
-        <div className="p-1 bg-gradient-to-tr from-sky-400 via-blue-500 to-indigo-600 rounded-3xl shadow-xl transform rotate-3 hover:-rotate-6 transition-transform duration-500">
-          <div className="p-1 bg-gradient-to-tr from-blue-400 via-sky-500 to-indigo-500 rounded-3xl">
+        <div className="p-1 bg-gradient-to-tr from-neutral-200 via-neutral-400 to-neutral-600 dark:from-neutral-800 dark:via-neutral-600 dark:to-neutral-400 rounded-3xl shadow-xl transform rotate-3 hover:-rotate-6 transition-transform duration-500">
+          <div className="p-1 bg-gradient-to-tr from-neutral-100 via-neutral-300 to-neutral-500 dark:from-neutral-700 dark:via-neutral-500 dark:to-neutral-300 rounded-3xl">
             <img
               src="https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767201221/29b98a76-3590-438f-8037-efff88c2d2d0_l3nubn.jpg"
               alt="Profile"

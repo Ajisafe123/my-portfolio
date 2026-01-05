@@ -14,7 +14,7 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         // Check localStorage for saved theme preference
         const savedTheme = localStorage.getItem('portfolio-theme');
-        return savedTheme || 'dark';
+        return savedTheme || 'light';
     });
 
     useEffect(() => {

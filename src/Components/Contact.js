@@ -122,14 +122,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="relative bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100 py-16 sm:py-20 px-4 sm:px-6 transition-colors duration-300 overflow-hidden">
+    <section className="relative bg-white dark:bg-black text-gray-900 dark:text-gray-100 py-16 sm:py-20 px-4 sm:px-6 transition-colors duration-300 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="h1-text text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-sky-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400">
               GET IN TOUCH
             </span>
           </h1>
@@ -169,9 +169,9 @@ const ContactForm = () => {
               return (
                 <div
                   key={index}
-                  className="flex p-3 rounded-md border border-gray-200 dark:border-gray-800 hover:border-sky-500 transition-all duration-300"
+                  className="flex p-3 rounded-md border border-gray-200 dark:border-gray-800 hover:border-neutral-500 transition-all duration-300"
                 >
-                  <Icon className="w-6 h-6 text-sky-500 mt-1 flex-shrink-0" />
+                  <Icon className="w-6 h-6 text-neutral-900 dark:text-white mt-1 flex-shrink-0" />
                   <div className="ml-3">
                     <p className="font-semibold text-gray-700 dark:text-gray-300 text-sm">
                       {item.label}
@@ -179,7 +179,7 @@ const ContactForm = () => {
                     {item.link !== "#" ? (
                       <a
                         href={item.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-sky-500 text-xs sm:text-sm break-all"
+                        className="text-gray-600 dark:text-gray-400 hover:text-neutral-900 dark:hover:text-white text-xs sm:text-sm break-all"
                       >
                         {item.value}
                       </a>
@@ -218,7 +218,7 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent transition text-sm outline-none"
               />
               <input
                 type="email"
@@ -226,7 +226,7 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your Email"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent transition text-sm outline-none"
               />
               <textarea
                 name="message"
@@ -234,18 +234,17 @@ const ContactForm = () => {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Your Message"
-                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition text-sm outline-none"
+                className="w-full px-4 py-4 rounded-md bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent transition text-sm outline-none"
               />
 
               {status && (
                 <div
-                  className={`p-3 rounded-md text-sm font-medium ${
-                    status.type === "success"
-                      ? "bg-green-900/50 text-green-300 border border-green-700"
-                      : status.type === "error"
+                  className={`p-3 rounded-md text-sm font-medium ${status.type === "success"
+                    ? "bg-green-900/50 text-green-300 border border-green-700"
+                    : status.type === "error"
                       ? "bg-red-900/50 text-red-300 border border-red-700"
-                      : "bg-sky-900/50 text-sky-300 border border-sky-700"
-                  }`}
+                      : "bg-neutral-900/50 text-neutral-300 border border-neutral-700"
+                    }`}
                 >
                   {status.message}
                 </div>
@@ -256,11 +255,10 @@ const ContactForm = () => {
                 disabled={status?.type === "sending"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 font-semibold rounded-md text-white bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 transition-all shadow-lg hover:shadow-sky-500/30 ${
-                  status?.type === "sending"
-                    ? "opacity-70 cursor-not-allowed"
-                    : ""
-                }`}
+                className={`w-full py-3 font-semibold rounded-md text-white bg-neutral-900 dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all shadow-lg hover:shadow-xl ${status?.type === "sending"
+                  ? "opacity-70 cursor-not-allowed"
+                  : ""
+                  }`}
               >
                 {status?.type === "sending" ? "Sending..." : "Send Message"}
               </motion.button>
