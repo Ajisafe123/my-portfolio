@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, Code2, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 
@@ -11,7 +11,7 @@ const MobileNav = ({
   scrollToSection = () => { },
 }) => {
   const [open, setOpen] = useState(false);
-  const { theme } = useTheme();
+  /* const { theme } = useTheme(); */
 
   useEffect(() => {
     if (open) {
@@ -35,11 +35,39 @@ const MobileNav = ({
     }),
   };
 
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: <Github className="w-5 h-5" />,
+      url: "https://github.com/Ajisafe123",
+      color: "from-gray-600 to-gray-900",
+    },
+    {
+      name: "LinkedIn",
+      icon: <Linkedin className="w-5 h-5" />,
+      url: "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
+      color: "from-neutral-700 to-neutral-900",
+    },
+    {
+      name: "Twitter",
+      icon: <Twitter className="w-5 h-5" />,
+      url: "https://x.com/code_wit_jeedev?s=21",
+      color: "from-neutral-700 to-neutral-900",
+    },
+    {
+      name: "Email",
+      icon: <Mail className="w-5 h-5" />,
+      url: "mailto:ajisafeibrahim54@gmail.com",
+      color: "from-neutral-700 to-neutral-900",
+    },
+  ];
+
   return (
     <>
       {/* Top Bar */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
+      < motion.div
+        initial={{ y: -100, opacity: 0 }
+        }
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         className="lg:hidden fixed top-0 left-0 right-0 z-[100] pointer-events-none"
@@ -68,8 +96,8 @@ const MobileNav = ({
                 onClick={() => setOpen(!open)}
                 whileTap={{ scale: 0.9 }}
                 className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${open
-                    ? "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white"
-                    : "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
+                  ? "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white"
+                  : "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
                   }`}
               >
                 <AnimatePresence mode="wait">
@@ -83,10 +111,10 @@ const MobileNav = ({
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </motion.div >
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      < AnimatePresence >
         {open && (
           <motion.div
             variants={containerVariants}
@@ -128,8 +156,8 @@ const MobileNav = ({
                         setOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-300 font-semibold capitalize ${isActive
-                          ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg"
-                          : "hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-200"
+                        ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-lg"
+                        : "hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-gray-200"
                         }`}
                     >
                       <span>{section}</span>
@@ -161,10 +189,33 @@ const MobileNav = ({
                   Get In Touch
                 </motion.a>
               </motion.div>
+
+              {/* Social Links */}
+              <motion.div
+                custom={sections.length + 1}
+                variants={itemVariants}
+                initial="closed"
+                animate="open"
+                className="px-5 pb-6 flex items-center justify-center gap-4"
+              >
+                {socialLinks.map((social, idx) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`relative w-10 h-10 rounded-full bg-gradient-to-br ${social.color} flex items-center justify-center text-white shadow-lg`}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence >
     </>
   );
 };

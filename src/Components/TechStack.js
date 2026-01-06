@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Code2,
-  Database,
   Layout,
   Server,
   Settings,
-  Terminal,
   ChevronDown,
 } from "lucide-react";
 

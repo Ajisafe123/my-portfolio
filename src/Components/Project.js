@@ -123,7 +123,7 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
-  const isHovered = hoveredIndex === index;
+  /* const isHovered = hoveredIndex === index; */
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}

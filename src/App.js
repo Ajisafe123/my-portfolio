@@ -12,7 +12,7 @@ import ContactSection from "./Components/Contact";
 import Footer from "./Components/Footer";
 
 const MainApp = () => {
-  const [showFace, setShowFace] = useState(false);
+  /* const [showFace, setShowFace] = useState(false); */
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);

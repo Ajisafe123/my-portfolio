@@ -1,28 +1,7 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { Zap, Target, Lightbulb } from "lucide-react";
 
 const AboutStackSection = forwardRef((props, ref) => {
-  const infoCards = [
-    {
-      title: "Experience",
-      text: "1+ years of real-world projects and hands-on learning.",
-      icon: <Zap className="w-8 h-8 text-yellow-500 fill-yellow-500" />,
-      delay: 0.2,
-    },
-    {
-      title: "Projects",
-      text: "7+ complete applications built with modern tech stack.",
-      icon: <Target className="w-8 h-8 text-red-500" />,
-      delay: 0.3,
-    },
-    {
-      title: "Passion",
-      text: "Obsessed with beautiful design and clean code.",
-      icon: <Lightbulb className="w-8 h-8 text-blue-500 fill-blue-500" />,
-      delay: 0.4,
-    },
-  ];
 
   return (
     <section
@@ -111,33 +90,6 @@ const AboutStackSection = forwardRef((props, ref) => {
             </div>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            {infoCards.map((card) => (
-              <motion.div
-                key={card.title}
-                whileHover={{ scale: 1.02, y: -4 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="card p-6 group"
-              >
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">
-                  {card.icon}
-                </div>
-                <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                  {card.text}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </motion.div>
       <div className="flex justify-center mb-8 mt-16 sm:mt-0">

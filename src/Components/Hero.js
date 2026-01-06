@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  ArrowRight,
-  Phone,
-  Star,
-} from "lucide-react";
+
 import { useTheme } from "../contexts/ThemeContext";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
   const { theme } = useTheme();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const particlesInit = async (main) => {
     await loadSlim(main);
   };
@@ -26,43 +17,9 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const socialLinks = [
-    {
-      Icon: Github,
-      href: "https://github.com/Ajisafe123",
-      name: "GitHub",
-      navigation: true,
-      bgColor: "bg-neutral-800 dark:bg-neutral-700 hover:bg-neutral-900",
-    },
-    {
-      Icon: Linkedin,
-      href: "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
-      name: "LinkedIn",
-      bgColor: "bg-neutral-800 hover:bg-neutral-900",
-    },
-    {
-      Icon: Twitter,
-      href: "https://x.com/code_wit_jeedev?s=21",
-      name: "Twitter",
-      bgColor: "bg-neutral-800 hover:bg-neutral-900",
-    },
-    {
-      Icon: Mail,
-      href: "mailto:ajisafeibrahim54@gmail.com",
-      name: "Email",
-      bgColor: "bg-neutral-800 hover:bg-neutral-900",
-    },
-  ];
-
   return (
     <div
       className="relative w-full min-h-screen bg-white dark:bg-black overflow-hidden"
-      onMouseMove={handleMouseMove}
     >
       <Particles
         id="tsparticles"
@@ -171,7 +128,7 @@ export default function Home() {
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-3 mb-12 px-2"
+          className="flex flex-col sm:flex-row gap-3 mb-8 px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -183,6 +140,7 @@ export default function Home() {
             Get In Touch
           </button>
         </motion.div>
+
 
         {/* Stats Section */}
         <motion.div
