@@ -128,56 +128,46 @@ export default function Home() {
         animate={{ opacity: loaded ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Main Heading */}
         <motion.div
-          className="text-center mb-5"
+          className="flex flex-col items-center justify-center mb-10 gap-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
         >
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-neutral-900 dark:text-white mb-2"
+          {/* Row 1: Software */}
+          <h1
+            className="text-6xl sm:text-7xl md:text-8xl font-bold text-neutral-900 dark:text-white leading-none tracking-tight"
             style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-            whileHover={{ scale: 1.02 }}
           >
             Software
-          </motion.h1>
-          <div className="relative inline-block mt-2">
+          </h1>
+
+          {/* Row 2: Developer (Black Pill Design) */}
+          <div className="relative inline-block transform -rotate-2 hover:rotate-0 transition-transform duration-500 ease-out mt-2">
             {/* Background Layer for 3D effect */}
-            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 transform -skew-x-12 rounded-2xl translate-x-3 translate-y-3" />
+            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 rounded-full translate-x-2 translate-y-2" />
 
             {/* Main Content Layer */}
-            <div className="relative z-10 overflow-hidden transform -skew-x-12 px-10 py-5 bg-gradient-to-br from-neutral-900 via-black to-neutral-900 dark:from-white dark:via-neutral-100 dark:to-neutral-200 border border-neutral-800 dark:border-white/20 rounded-2xl shadow-xl">
+            <div className="relative z-10 overflow-hidden px-12 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-xl border border-neutral-800">
               <motion.h2
-                className="text-4xl sm:text-5xl md:text-6xl font-black m-0 text-white dark:text-neutral-900 leading-none transform skew-x-12 italic tracking-tighter"
+                className="text-5xl sm:text-6xl md:text-7xl font-bold m-0 leading-none italic tracking-tight"
                 style={{
                   fontFamily: "'Josefin Sans', sans-serif",
                 }}
                 initial={{ y: "110%" }}
                 animate={{ y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }}
+                transition={{ delay: 0.3, duration: 0.8 }}
               >
                 Developer
               </motion.h2>
 
-              {/* Shine effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12" />
+              {/* Shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />
             </div>
           </div>
         </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 text-center max-w-3xl mb-10 leading-relaxed px-4 italic"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          Creating extraordinary digital experiences through innovative design and cutting-edge technology.
-        </motion.p>
+
 
         {/* CTA Buttons */}
         <motion.div
