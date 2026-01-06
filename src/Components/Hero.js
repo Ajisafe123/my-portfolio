@@ -233,11 +233,11 @@ export default function Home() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.5 }}
-          className="mr-2 mb-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white px-3 py-1.5 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 text-xs font-bold whitespace-nowrap relative"
+          className="mr-2 mb-2 bg-[#25D366] text-white px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap relative"
         >
           Chat with me!
           {/* Arrow pointing down */}
-          <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white dark:bg-neutral-800 transform rotate-45 border-r border-b border-neutral-200 dark:border-neutral-700"></div>
+          <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-[#25D366] transform rotate-45"></div>
         </motion.div>
 
         {/* WhatsApp Floating Button */}
