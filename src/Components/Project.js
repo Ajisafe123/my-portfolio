@@ -12,7 +12,7 @@ const Projects = () => {
       description:
         "A productivity Islamic web app designed to help users manage tasks and stay focused with AI Prayer reminders.",
       image:
-        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486051/FocusFlow_f9voh0.png",
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767960219/nibrass_xl9vll.png",
       category: "Productivity",
       tools: ["React.js", "TypeScript", "Postgresql", "Framer Motion"],
       liveLink: "https://nibrasudeen.vercel.app",
@@ -25,7 +25,7 @@ const Projects = () => {
       description:
         "A creative personal portfolio built with smooth animations and a modern UI to showcase my skills.",
       image:
-        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1760486107/My_portfolio_stbi1a.png",
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767960204/PORTFOLI_sywyfe.png",
       category: "Portfolio",
       tools: ["React", "Framer Motion", "TailwindCSS", "Email.js"],
       liveLink: "https://ajisafe.vercel.app",
@@ -64,6 +64,45 @@ const Projects = () => {
       liveLink: "https://e-attendance.com.ng/",
       githubLink: "https://github.com/Ajisafe123",
       status: "Live",
+    },
+    {
+      id: 5,
+      title: "DunniStarr",
+      description:
+        "An ecommerce storefront built with Next.js and TypeScript, focused on performance, clean UI, and smooth shopping experience.",
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767960231/DunniStroes_lmzaa0.png",
+      category: "Ecommerce",
+      tools: ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+      liveLink: "https://dunnies-store.onrender.com/",
+      githubLink: "https://github.com/Ajisafe123",
+      status: "Available",
+    },
+    {
+      id: 7,
+      title: "WhatsApp Bot",
+      description:
+        "A reminder WhatsApp bot: tell it what to remember and when — it schedules and sends the reminder automatically.",
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767960249/Screenshot_2026-01-09_113627_nobisk.png",
+      category: "Automation",
+      tools: ["Python", "APScheduler", "SQLite", "Webhooks"],
+      liveLink: "https://wa.me/15551505439",
+      githubLink: "https://github.com/Ajisafe123",
+      status: "Available",
+    },
+    {
+      id: 8,
+      title: "Telegram Bot",
+      description:
+        "A Telegram echo bot that replies with the exact message you send (great for testing and messaging workflows).",
+      image:
+        "https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767960188/tele_vfacvk.png",
+      category: "Automation",
+      tools: ["Python", "python-telegram-bot"],
+      liveLink: "https://web.telegram.org/k/#@ibrahim_py_2026_bot",
+      githubLink: "https://github.com/Ajisafe123",
+      status: "Available",
     },
   ];
 
@@ -124,6 +163,11 @@ const Projects = () => {
 
 const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
   /* const isHovered = hoveredIndex === index; */
+  const isBotProject = String(project.title || "")
+    .toLowerCase()
+    .includes("bot");
+
+  const liveLabel = isBotProject ? "Bot" : "Live";
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -134,68 +178,113 @@ const ProjectCard = ({ project, index, hoveredIndex, setHoveredIndex }) => {
       onMouseLeave={() => setHoveredIndex(null)}
       className="group h-full cursor-pointer"
     >
-      <div className="relative h-full overflow-hidden rounded-3xl flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/60 dark:border-neutral-800/40 hover:border-neutral-900/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur group">
-        {/* Image */}
-        <div className="relative flex items-center justify-center bg-gradient-to-br from-neutral-100 via-gray-100 to-neutral-200 dark:from-neutral-900/40 dark:via-gray-900/30 dark:to-neutral-900/60 p-4 pb-4">
-          <motion.img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white dark:border-neutral-800 group-hover:scale-105 group-hover:rotate-1 transition-transform duration-500 bg-white dark:bg-neutral-900"
-            style={{ boxSizing: "border-box" }}
-          />
-          {/* Category & Status */}
-          <div className="absolute top-7 left-7 flex gap-2">
-            <span className="px-3 py-1 rounded-full bg-neutral-900 text-white text-xs font-semibold shadow-md">
-              {project.category}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-semibold shadow-md">
-              {project.status}
-            </span>
-          </div>
-        </div>
-        {/* Content */}
-        <div className="p-3 pt-2 flex-1 flex flex-col relative z-10">
-          <h3 className="text-lg font-josefin font-bold text-neutral-900 dark:text-white mb-1 group-hover:text-black dark:group-hover:text-neutral-300 transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mb-2 line-clamp-2 flex-1">
-            {project.description}
-          </p>
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-1 mb-2">
-            {project.tools.slice(0, 3).map((tool, i) => (
-              <span
-                key={i}
-                className="px-2 py-0.5 rounded text-[11px] font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 shadow-sm"
-              >
-                {tool}
+      <div className="relative h-full">
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neutral-900/10 via-neutral-500/10 to-transparent dark:from-white/10 dark:via-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="relative h-full overflow-hidden rounded-3xl flex flex-col shadow-xl hover:shadow-2xl transition-all duration-300 border border-neutral-200/70 dark:border-neutral-800/60 bg-white/80 dark:bg-neutral-900/80 backdrop-blur">
+          <div className="relative p-3 sm:p-4">
+            <div className="absolute inset-0 bg-gradient-to-br from-neutral-100 via-gray-100 to-neutral-200 dark:from-neutral-900/40 dark:via-gray-900/30 dark:to-neutral-900/60" />
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="relative w-full h-44 sm:h-56 object-cover rounded-2xl shadow-lg border border-white/70 dark:border-neutral-800/80 group-hover:scale-[1.03] transition-transform duration-500 bg-white dark:bg-neutral-900"
+              style={{ boxSizing: "border-box" }}
+            />
+            <div className="absolute top-7 left-7 flex gap-2">
+              <span className="px-3 py-1 rounded-full bg-neutral-900/90 text-white text-xs font-semibold shadow-md backdrop-blur">
+                {project.category}
               </span>
-            ))}
-            {project.tools.length > 3 && (
-              <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-sm">
-                +{project.tools.length - 3}
+              <span className="px-3 py-1 rounded-full bg-green-500/90 text-white text-xs font-semibold shadow-md backdrop-blur">
+                {project.status}
               </span>
-            )}
+            </div>
           </div>
-          {/* Action Buttons */}
-          <a
-            href={project.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all shadow-md hover:scale-105"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Live
-          </a>
-          <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white text-xs font-semibold hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all shadow-md hover:scale-105"
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </a>
+
+          <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 flex-1 flex flex-col">
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="text-lg font-josefin font-bold text-neutral-900 dark:text-white group-hover:text-black dark:group-hover:text-neutral-200 transition-colors">
+                {project.title}
+              </h3>
+              <div className="flex items-center gap-2">
+                {project.githubLink ? (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white flex items-center justify-center hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                    aria-label="Code"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                ) : null}
+                {project.liveLink ? (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+                    aria-label={liveLabel}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                ) : null}
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mt-2 line-clamp-3 flex-1">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 mt-3 sm:mt-4">
+              {project.tools.slice(0, 4).map((tool, i) => (
+                <span
+                  key={i}
+                  className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200/80 dark:border-neutral-700/80"
+                >
+                  {tool}
+                </span>
+              ))}
+              {project.tools.length > 4 && (
+                <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
+                  +{project.tools.length - 4}
+                </span>
+              )}
+            </div>
+
+            {(project.liveLink || project.githubLink) ? (
+              <div className="mt-3 sm:mt-4 grid grid-cols-2 gap-2">
+                {project.liveLink ? (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-3 py-2 rounded-2xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-bold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    {liveLabel}
+                  </a>
+                ) : (
+                  <div className="px-3 py-2 rounded-2xl bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 text-xs font-bold flex items-center justify-center">
+                    {liveLabel}
+                  </div>
+                )}
+                {project.githubLink ? (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-3 py-2 rounded-2xl bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white text-xs font-bold hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </a>
+                ) : (
+                  <div className="px-3 py-2 rounded-2xl bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 text-xs font-bold flex items-center justify-center">
+                    Code
+                  </div>
+                )}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </motion.div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import { Code2 } from "lucide-react";
+import { Code2, Github } from "lucide-react";
 
 const DesktopNav = ({
   sections = [],
@@ -79,6 +79,15 @@ const DesktopNav = ({
               >
                 Contact
               </motion.button>
+              <motion.a
+                href="/github"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 border border-neutral-900/20 dark:border-white/10 flex items-center justify-center hover:bg-neutral-800 dark:hover:bg-gray-100 transition-colors"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
               <ThemeToggle />
             </div>
           </div>

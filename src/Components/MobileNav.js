@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { X, Code2, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
+
+const TwoLineMenuIcon = ({ size = 20, className = "" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <line x1="4" y1="9" x2="20" y2="9" />
+    <line x1="4" y1="15" x2="20" y2="15" />
+  </svg>
+);
 
 const MobileNav = ({
   sections = ["home", "about", "skills", "projects", "contact"],
@@ -91,20 +109,28 @@ const MobileNav = ({
 
             {/* Menu Button & Theme */}
             <div className="flex items-center gap-2">
+              <motion.a
+                href="/github"
+                whileTap={{ scale: 0.92 }}
+                className="flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 border border-neutral-900/20 dark:border-white/10 hover:bg-neutral-800 dark:hover:bg-gray-100 transition-colors"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </motion.a>
               <ThemeToggle />
               <motion.button
                 onClick={() => setOpen(!open)}
                 whileTap={{ scale: 0.9 }}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg transition-colors duration-300 ${open
-                  ? "bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white"
-                  : "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
+                className={`flex items-center justify-center w-10 h-10 rounded-xl backdrop-blur-sm border border-white/20 transition-colors duration-300 ${open
+                  ? "bg-gray-100/80 dark:bg-white/10 text-gray-900 dark:text-white"
+                  : "bg-white/10 dark:bg-white/10 text-gray-900 dark:text-white hover:bg-white/20"
                   }`}
               >
                 <AnimatePresence mode="wait">
                   {open ? (
                     <X size={20} key="close" />
                   ) : (
-                    <Menu size={20} key="open" />
+                    <TwoLineMenuIcon size={20} key="open" />
                   )}
                 </AnimatePresence>
               </motion.button>

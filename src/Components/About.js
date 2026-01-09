@@ -32,14 +32,33 @@ const AboutStackSection = forwardRef((props, ref) => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-          {/* Text Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Profile Image (right, vertically centered) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-2 space-y-4 sm:space-y-6"
+            className="flex justify-center lg:justify-center order-1 lg:order-2"
+          >
+            <div className="p-1 bg-gradient-to-tr from-neutral-200 via-neutral-400 to-neutral-600 dark:from-neutral-800 dark:via-neutral-600 dark:to-neutral-400 rounded-3xl shadow-xl transform rotate-2 hover:-rotate-3 transition-transform duration-500">
+              <div className="p-1 bg-gradient-to-tr from-neutral-100 via-neutral-300 to-neutral-500 dark:from-neutral-700 dark:via-neutral-500 dark:to-neutral-300 rounded-3xl">
+                <img
+                  src="https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767201221/29b98a76-3590-438f-8037-efff88c2d2d0_l3nubn.jpg"
+                  alt="Profile"
+                  className="w-64 h-72 sm:w-72 sm:h-80 lg:w-[360px] lg:h-[440px] object-cover rounded-3xl shadow-lg border-4 border-double border-white dark:border-neutral-800"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Text Content (right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-4 sm:space-y-6 text-left order-2 lg:order-1"
           >
             <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
               Hey, I'm{" "}
@@ -89,20 +108,8 @@ const AboutStackSection = forwardRef((props, ref) => {
               ))}
             </div>
           </motion.div>
-
         </div>
       </motion.div>
-      <div className="flex justify-center mb-8 mt-16 sm:mt-0">
-        <div className="p-1 bg-gradient-to-tr from-neutral-200 via-neutral-400 to-neutral-600 dark:from-neutral-800 dark:via-neutral-600 dark:to-neutral-400 rounded-3xl shadow-xl transform rotate-3 hover:-rotate-6 transition-transform duration-500">
-          <div className="p-1 bg-gradient-to-tr from-neutral-100 via-neutral-300 to-neutral-500 dark:from-neutral-700 dark:via-neutral-500 dark:to-neutral-300 rounded-3xl">
-            <img
-              src="https://res.cloudinary.com/dlvnjrqh6/image/upload/v1767201221/29b98a76-3590-438f-8037-efff88c2d2d0_l3nubn.jpg"
-              alt="Profile"
-              className="w-48 h-48 object-cover rounded-3xl shadow-lg border-4 border-double border-white dark:border-neutral-800"
-            />
-          </div>
-        </div>
-      </div>
     </section>
   );
 });
