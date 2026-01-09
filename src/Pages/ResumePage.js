@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Download, ArrowLeft, Mail, Github, Linkedin, Twitter, Globe, Phone, Send } from "lucide-react";
+import { ArrowLeft, Download, Mail, Github, Linkedin, Twitter, Globe, Phone } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -10,6 +10,7 @@ import { portfolioProfile } from "../bot/portfolioBot";
 import { timelineData } from "../Components/ExperienceAndEducation";
 
 const ResumePage = () => {
+  const navigate = useNavigate();
   const resumeRef = useRef(null);
   const [exporting, setExporting] = useState(false);
 
@@ -140,6 +141,14 @@ const ResumePage = () => {
       >
         <div className="px-4 md:px-8 lg:px-12 py-4">
           <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="w-11 h-11 rounded-2xl bg-neutral-100 dark:bg-neutral-900/60 border border-neutral-200/70 dark:border-white/10 text-neutral-900 dark:text-white flex items-center justify-center"
+              aria-label="Back"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -203,17 +212,6 @@ const ResumePage = () => {
                   >
                     <Phone className="w-4 h-4" />
                     WhatsApp
-                  </a>
-
-                  <a
-                    href={profile.telegramBot?.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-pdf-link
-                    className="flex items-center gap-2 text-white/90 hover:text-white"
-                  >
-                    <Send className="w-4 h-4" />
-                    Telegram Bot
                   </a>
 
                   <a
@@ -290,8 +288,6 @@ const ResumePage = () => {
                   <div className="mt-2 space-y-2 text-sm">
                     <div className="text-white/90">WhatsApp: {profile.whatsapp}</div>
                     <div className="text-white/90 break-all">{profile.whatsappLink}</div>
-                    <div className="text-white/90">Telegram: {profile.telegramBot?.username}</div>
-                    <div className="text-white/90 break-all">{profile.telegramBot?.link}</div>
                   </div>
                 </div>
               </div>

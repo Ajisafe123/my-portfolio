@@ -369,11 +369,10 @@ export const getBotResponse = (message) => {
     return [
       `WhatsApp (personal): ${p.whatsapp}`,
       `WhatsApp link: ${p.whatsappLink}`,
-      `WhatsApp bot: ${p.whatsappBot}`,
-      `WhatsApp bot link: ${p.whatsappBotLink}`,
-      `Telegram bot: ${p.telegramBot.username}`,
-      `Telegram link: ${p.telegramBot.link}`,
       `GitHub: ${p.socials.github}`,
+      `LinkedIn: ${p.socials.linkedin}`,
+      `Twitter/X: ${p.socials.twitter}`,
+      `Portfolio: ${p.socials.portfolio}`,
       `Email: ${p.email}`
     ].join('\n');
   }
