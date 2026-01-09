@@ -10,7 +10,7 @@ const Icons = {
   Certificate: (props) => <Calendar {...props} />,
 };
 
-const timelineData = [
+export const timelineData = [
   {
     title: "Frontend Developer",
     company: "TechCorp Inc.",

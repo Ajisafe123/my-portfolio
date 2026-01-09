@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Code2, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { X, Code2, FileText, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 
@@ -55,6 +55,12 @@ const MobileNav = ({
 
   const socialLinks = [
     {
+      name: "Resume",
+      icon: <FileText className="w-5 h-5" />,
+      url: "/resume",
+      color: "from-neutral-900 to-neutral-700",
+    },
+    {
       name: "GitHub",
       icon: <Github className="w-5 h-5" />,
       url: "https://github.com/Ajisafe123",
@@ -91,9 +97,17 @@ const MobileNav = ({
         className="lg:hidden fixed top-0 left-0 right-0 z-[100] pointer-events-none"
       >
         <div className="pointer-events-auto px-4 py-4">
-          <motion.div className="flex items-center justify-between px-4 py-3 rounded-2xl border-0 dark:bg-transparent dark:border-0">
+          <motion.div className="flex items-center justify-between px-4 py-3 rounded-full border border-white/50 dark:border-white/10 bg-white/55 dark:bg-gray-950/45 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.14)]">
             {/* Logo */}
-            <motion.div className="flex items-center gap-2 group cursor-pointer">
+            <motion.div
+              className="flex items-center gap-2 group cursor-pointer"
+              onClick={() => {
+                scrollToSection("Home");
+                setActiveSection("Home");
+                setOpen(false);
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
               <div className="relative w-9 h-9 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center overflow-hidden shadow-lg">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent"
@@ -109,21 +123,13 @@ const MobileNav = ({
 
             {/* Menu Button & Theme */}
             <div className="flex items-center gap-2">
-              <motion.a
-                href="/github"
-                whileTap={{ scale: 0.92 }}
-                className="flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 border border-neutral-900/20 dark:border-white/10 hover:bg-neutral-800 dark:hover:bg-gray-100 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </motion.a>
               <ThemeToggle />
               <motion.button
                 onClick={() => setOpen(!open)}
                 whileTap={{ scale: 0.9 }}
-                className={`flex items-center justify-center w-10 h-10 rounded-xl backdrop-blur-sm border border-white/20 transition-colors duration-300 ${open
-                  ? "bg-gray-100/80 dark:bg-white/10 text-gray-900 dark:text-white"
-                  : "bg-white/10 dark:bg-white/10 text-gray-900 dark:text-white hover:bg-white/20"
+                className={`flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200/70 dark:border-white/10 transition-colors duration-300 ${open
+                  ? "bg-gray-200/80 dark:bg-white/15 text-gray-900 dark:text-white"
+                  : "bg-gray-100/90 dark:bg-white/10 text-gray-900 dark:text-white hover:bg-gray-200/80 dark:hover:bg-white/15"
                   }`}
               >
                 <AnimatePresence mode="wait">
@@ -206,6 +212,16 @@ const MobileNav = ({
                 animate="open"
                 className="px-5 py-5 border-t border-gray-200/50 dark:border-white/10"
               >
+                <motion.a
+                  href="/resume"
+                  className="block w-full px-5 py-4 rounded-2xl bg-neutral-100 dark:bg-white/10 text-neutral-900 dark:text-white font-bold text-center hover:bg-neutral-200 dark:hover:bg-white/15 transition-all shadow-lg"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => setOpen(false)}
+                >
+                  View Resume
+                </motion.a>
+                <div className="h-3" />
                 <motion.a
                   href="mailto:ajisafeibrahim54@gmail.com"
                   className="block w-full px-5 py-4 rounded-2xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold text-center hover:bg-black dark:hover:bg-gray-100 transition-all shadow-lg"

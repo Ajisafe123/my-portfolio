@@ -190,7 +190,7 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
             onClick={onViewWork}
             className="px-8 py-3 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 font-semibold transition-all hover:shadow-lg font-poppins"
           >
-            View My Work
+            View Resume
           </button>
           <button
             type="button"

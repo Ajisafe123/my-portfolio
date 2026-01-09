@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import HomeSection from "../Components/Hero";
 import AboutSection from "../Components/About";
@@ -11,6 +12,7 @@ import ContactSection from "../Components/Contact";
 import Footer from "../Components/Footer";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
@@ -67,7 +69,7 @@ const HomePage = () => {
       <div className="w-full">
         <SectionReveal id="home" sectionKey="Home" sectionRef={homeRef}>
           <HomeSection
-            onViewWork={() => scrollToSection("Projects")}
+            onViewWork={() => navigate("/resume")}
             onGetInTouch={() => scrollToSection("Contact")}
           />
         </SectionReveal>
