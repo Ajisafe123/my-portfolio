@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import HomeSection from "../Components/Hero";
@@ -49,18 +48,14 @@ const HomePage = () => {
   };
 
   const SectionReveal = ({ id, sectionKey, sectionRef, children }) => (
-    <motion.section
+    <section
       id={id}
       ref={sectionRef}
-      initial={{ opacity: 0, y: 40, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ type: "spring", stiffness: 140, damping: 22 }}
       className="scroll-mt-24"
       data-section={sectionKey}
     >
       {children}
-    </motion.section>
+    </section>
   );
 
   return (
