@@ -28,7 +28,7 @@ const DesktopNav = ({
               whileHover={{ scale: 1.1 }}
               onClick={() => scrollToSection("Home")}
             >
-              <div className="relative w-11 h-11 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center overflow-hidden shadow-lg shadow-neutral-900/20 group-hover:shadow-neutral-900/40 transition-shadow duration-300">
+              <div className="relative w-11 h-11 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-shadow duration-300">
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                   animate={{ x: ["-100%", "100%"], opacity: [0, 1, 0] }}
@@ -39,7 +39,7 @@ const DesktopNav = ({
                   animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
-                <Code2 className="w-6 h-6 text-white dark:text-neutral-900 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                <Code2 className="w-6 h-6 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <span className="font-josefin font-bold text-lg tracking-wide text-neutral-900 dark:text-white hidden sm:inline-block transition-all">
                 Ajisafe
@@ -74,7 +74,7 @@ const DesktopNav = ({
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-sm hover:shadow-lg transition-all"
+                className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
                 onClick={() => scrollToSection("Contact")}
               >
                 Contact
@@ -83,7 +83,7 @@ const DesktopNav = ({
                 href="/github"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 border border-neutral-900/20 dark:border-white/10 flex items-center justify-center hover:bg-neutral-800 dark:hover:bg-gray-100 transition-colors"
+                className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary text-white border border-primary/20 flex items-center justify-center hover:from-primary-dark hover:to-secondary transition-colors"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
@@ -136,9 +136,9 @@ const NavItem = ({ section, isActive, index, onClick }) => {
         className="relative z-10 block text-neutral-900 dark:text-white"
         animate={{
           color: isActive
-            ? "rgb(23, 23, 23)" // neutral-900
+            ? "rgb(37, 99, 235)" // primary
             : isHovered
-              ? "rgb(23, 23, 23)"
+              ? "rgb(37, 99, 235)"
               : "currentColor",
         }}
       >
@@ -149,7 +149,7 @@ const NavItem = ({ section, isActive, index, onClick }) => {
       {isActive && (
         <motion.div
           layoutId="activeDot"
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-neutral-900 dark:bg-white shadow-xl"
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-gradient-to-r from-primary to-secondary shadow-xl shadow-primary/20"
           initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
           animate={{ width: 40, scaleX: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
@@ -159,7 +159,7 @@ const NavItem = ({ section, isActive, index, onClick }) => {
       {/* Hover 3D underline with enhanced effects */}
       {!isActive && (
         <motion.div
-          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-neutral-400 dark:bg-neutral-600 shadow-lg"
+          className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 rounded-full bg-primary/50 shadow-lg"
           initial={{ width: 0, scaleX: 0.5, opacity: 0 }}
           animate={{
             width: isHovered ? 28 : 0,

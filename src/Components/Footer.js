@@ -65,8 +65,8 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-white dark:text-neutral-900" />
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                <Code2 className="w-6 h-6 text-white" />
               </div>
               <span className="text-lg sm:text-xl font-black text-gray-900 dark:text-white">
                 Ajisafe Ibrahim

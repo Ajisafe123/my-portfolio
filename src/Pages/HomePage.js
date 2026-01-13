@@ -59,7 +59,7 @@ const HomePage = () => {
   );
 
   return (
-    <div className="relative overflow-x-hidden scroll-smooth bg-white transition-colors duration-300">
+    <div className="relative overflow-x-hidden scroll-smooth bg-white dark:bg-black transition-colors duration-300">
       <Navbar sections={sections} scrollToSection={scrollToSection} />
       <div className="w-full">
         <SectionReveal id="home" sectionKey="Home" sectionRef={homeRef}>

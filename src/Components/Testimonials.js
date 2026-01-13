@@ -57,7 +57,7 @@ const Testimonials = () => {
         >
           <h2 className="h1-text text-3xl md:text-4xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what people </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500 dark:from-white dark:via-neutral-400 dark:to-neutral-500">
+            <span className="gradient-text">
               say
             </span>
           </h2>

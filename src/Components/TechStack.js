@@ -59,7 +59,7 @@ const TechStack = () => {
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             <span className="text-gray-900 dark:text-white">my </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500 dark:from-white dark:via-neutral-400 dark:to-neutral-500">
+            <span className="gradient-text">
               tech stack
             </span>
           </h2>

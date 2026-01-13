@@ -87,7 +87,7 @@ const ExperienceAndEducation = () => {
             <span className="text-neutral-900 dark:text-white">
               experience{" "}
             </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500">
+            <span className="gradient-text">
               & education
             </span>
           </h2>

@@ -15,10 +15,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#000000",
-        "primary-dark": "#1a1a1a",
-        secondary: "#333333",
-        accent: "#525252",
+        primary: "#2563EB",
+        "primary-dark": "#1D4ED8",
+        secondary: "#7C3AED",
+        accent: "#06B6D4",
         "neutral-50": "#F9FAFB",
         "neutral-900": "#111827",
       },
@@ -49,8 +49,8 @@ module.exports = {
           "50%": { transform: "translateY(-10px)" },
         },
         glow: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(0, 0, 0, 0.2)" },
-          "50%": { boxShadow: "0 0 30px rgba(0, 0, 0, 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(37, 99, 235, 0.22)" },
+          "50%": { boxShadow: "0 0 30px rgba(37, 99, 235, 0.38)" },
         },
         shimmer: {
           "0%": { backgroundPosition: "-1000px 0" },
@@ -61,7 +61,7 @@ module.exports = {
         "elevation-1": "0 2px 8px rgba(0, 0, 0, 0.1)",
         "elevation-2": "0 8px 24px rgba(0, 0, 0, 0.12)",
         "elevation-3": "0 16px 40px rgba(0, 0, 0, 0.15)",
-        "glow-primary": "0 0 30px rgba(0, 0, 0, 0.2)",
+        "glow-primary": "0 0 30px rgba(37, 99, 235, 0.25)",
         "inset-light": "inset 0 1px 2px rgba(255, 255, 255, 0.5)",
       },
       backdropBlur: {

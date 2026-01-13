@@ -85,10 +85,10 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           fpsLimit: 120,
           particles: {
             color: {
-              value: resolvedTheme === "dark" ? "#ffffff" : "#000000",
+              value: resolvedTheme === "dark" ? "#93C5FD" : "#1D4ED8",
             },
             links: {
-              color: resolvedTheme === "dark" ? "#ffffff" : "#000000",
+              color: resolvedTheme === "dark" ? "#93C5FD" : "#1D4ED8",
               distance: 150,
               enable: true,
               opacity: 0.15,
@@ -127,8 +127,8 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
       />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-neutral-200/20 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-neutral-200/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-primary/20 via-secondary/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/20 via-primary/10 to-transparent rounded-full blur-3xl" />
       </div>
 
       <motion.div
@@ -152,28 +152,72 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           </h1>
 
           {/* Row 2: Developer (Black Pill Design) */}
-          <div className="relative inline-block transform -rotate-2 hover:rotate-0 transition-transform duration-500 ease-out mt-2">
-            {/* Background Layer for 3D effect */}
-            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 rounded-full translate-x-2 translate-y-2" />
-
-            {/* Main Content Layer */}
-            <div className="relative z-10 overflow-hidden px-12 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-xl border border-neutral-800">
-              <motion.h2
-                className="text-5xl sm:text-6xl md:text-7xl font-bold m-0 leading-none italic tracking-tight"
+          <motion.div
+            className="relative inline-block mt-2"
+            style={{ perspective: 1000 }}
+            initial={{ rotateZ: -2 }}
+            whileHover={{ rotateX: 10, rotateY: -14, rotateZ: 0, scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 240, damping: 18 }}
+          >
+            <div className="relative" style={{ transformStyle: "preserve-3d" }}>
+              {/* Deep base shadow */}
+              <div
+                className="absolute inset-0 rounded-full"
                 style={{
-                  fontFamily: "'Josefin Sans', sans-serif",
+                  transform: "translate3d(10px, 12px, -30px)",
                 }}
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
               >
-                Developer
-              </motion.h2>
+                <div className="absolute inset-0 rounded-full bg-neutral-900/15 dark:bg-black/50 blur-[10px]" />
+              </div>
 
-              {/* Shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />
+              {/* Base plate */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  transform: "translate3d(8px, 10px, -12px)",
+                }}
+              >
+                <div className="absolute inset-0 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300/70 dark:border-white/10" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/55 to-transparent dark:from-white/10" />
+              </div>
+
+              {/* Mid plate */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  transform: "translate3d(4px, 5px, -6px)",
+                }}
+              >
+                <div className="absolute inset-0 rounded-full bg-white/70 dark:bg-neutral-900/50 border border-neutral-200/70 dark:border-white/10" />
+              </div>
+
+              {/* Top pill */}
+              <div
+                className="relative z-10 overflow-hidden px-12 py-4 rounded-full border border-primary/25 shadow-2xl"
+                style={{
+                  transform: "translate3d(0px, 0px, 8px)",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/10" />
+
+                <motion.h2
+                  className="relative text-5xl sm:text-6xl md:text-7xl font-bold m-0 leading-none italic tracking-tight text-white"
+                  style={{
+                    fontFamily: "'Josefin Sans', sans-serif",
+                  }}
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                >
+                  Developer
+                </motion.h2>
+
+                {/* Specular highlight */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 opacity-70" />
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
 
@@ -188,14 +232,14 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           <button
             type="button"
             onClick={onViewWork}
-            className="px-8 py-3 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 font-semibold transition-all hover:shadow-lg font-poppins"
+            className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:from-primary-dark hover:to-secondary font-semibold transition-all hover:shadow-lg shadow-primary/20 font-poppins"
           >
             View Resume
           </button>
           <button
             type="button"
             onClick={onGetInTouch}
-            className="px-8 py-3 rounded-full bg-transparent border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-100 dark:border-white dark:text-white dark:hover:bg-neutral-800 font-semibold transition-all"
+            className="px-8 py-3 rounded-full bg-transparent border-2 border-primary text-primary hover:bg-primary/10 dark:text-white dark:border-primary/60 dark:hover:bg-primary/10 font-semibold transition-all"
           >
             Get In Touch
           </button>
@@ -210,7 +254,7 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           transition={{ delay: 0.5 }}
         >
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
               1+
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -220,7 +264,7 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
             </p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
               7+
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -230,7 +274,7 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
             </p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-white dark:to-neutral-400 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
               100%
             </div>
             <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
@@ -251,9 +295,9 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.5 }}
-          className={`mr-2 mb-2 text-white px-3 py-2 rounded-lg shadow-lg text-[11px] sm:text-xs font-bold whitespace-normal max-w-[260px] text-right leading-snug relative ${botMode
-            ? "bg-neutral-900 dark:bg-white dark:text-neutral-900"
-            : "bg-[#25D366]"
+          className={`mr-2 mb-2 px-3 py-2 rounded-2xl shadow-lg text-[11px] sm:text-xs font-bold whitespace-normal max-w-[260px] text-right leading-snug relative border backdrop-blur ${botMode
+            ? "bg-white/90 text-neutral-900 border-neutral-200/70 dark:bg-neutral-900/80 dark:text-white dark:border-white/10"
+            : "bg-[#25D366]/95 text-white border-white/20"
             }`}
         >
           {botMode
@@ -262,8 +306,8 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           {/* Arrow pointing down */}
           <div
             className={`absolute -bottom-1.5 right-6 w-3 h-3 transform rotate-45 ${botMode
-              ? "bg-neutral-900 dark:bg-white"
-              : "bg-[#25D366]"
+              ? "bg-white/90 dark:bg-neutral-900/80"
+              : "bg-[#25D366]/95"
               }`}
           ></div>
         </motion.div>
@@ -273,9 +317,9 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           type="button"
           onClick={handleFloatingClick}
           onDoubleClick={handleFloatingDoubleClick}
-          className={`p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center glow-effect relative z-10 ${botMode
-            ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
-            : "bg-[#25D366] text-white"
+          className={`p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center glow-effect relative z-10 ring-1 ring-black/5 ${botMode
+            ? "bg-gradient-to-r from-primary to-secondary text-white shadow-primary/25"
+            : "bg-[#25D366] text-white shadow-[#25D366]/25"
             }`}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}

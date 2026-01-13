@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Download, Mail, Github, Linkedin, Twitter, Globe, Phone } from "lucide-react";
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 import ThemeToggle from "../Components/ThemeToggle";
@@ -13,6 +12,7 @@ const ResumePage = () => {
   const navigate = useNavigate();
   const resumeRef = useRef(null);
   const [exporting, setExporting] = useState(false);
+  const [compact, setCompact] = useState(true);
 
   const profile = portfolioProfile;
 
@@ -49,80 +49,25 @@ const ResumePage = () => {
     return Object.entries(stack);
   }, [profile.techStack]);
 
+  const maxItems = compact ? 4 : 6;
+
   const handleDownload = async () => {
     if (!resumeRef.current || exporting) return;
 
     try {
       setExporting(true);
 
-      const canvas = await html2canvas(resumeRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-      });
+      const pdf = new jsPDF({ orientation: "p", unit: "pt", format: "a4" });
 
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-
-      const resumeRect = resumeRef.current.getBoundingClientRect();
-      const linkEls = Array.from(
-        resumeRef.current.querySelectorAll('a[data-pdf-link]')
-      );
-
-      const imgProps = pdf.getImageProperties(imgData);
-      const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-      let heightLeft = imgHeight;
-      let position = 0;
-
-      const pxToMm = pdfWidth / canvas.width;
-      const linkBoxes = linkEls
-        .map((el) => {
-          const rect = el.getBoundingClientRect();
-          const xPx = (rect.left - resumeRect.left) * 2;
-          const yPx = (rect.top - resumeRect.top) * 2;
-          const wPx = rect.width * 2;
-          const hPx = rect.height * 2;
-
-          return {
-            url: el.href,
-            xMm: xPx * pxToMm,
-            yMm: yPx * pxToMm,
-            wMm: wPx * pxToMm,
-            hMm: hPx * pxToMm,
-          };
-        })
-        .filter((b) => Boolean(b.url));
-
-      const pageOffsets = [];
-
-      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
-      pageOffsets.push(position);
-      heightLeft -= pdfHeight;
-
-      while (heightLeft > 0) {
-        position = -(imgHeight - heightLeft);
-        pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
-        pageOffsets.push(position);
-        heightLeft -= pdfHeight;
-      }
-
-      linkBoxes.forEach((box) => {
-        pageOffsets.forEach((pageOffset, pageIndex) => {
-          const yOnPage = box.yMm + pageOffset;
-          const y2 = yOnPage + box.hMm;
-          if (y2 <= 0 || yOnPage >= pdfHeight) return;
-
-          const clippedY = Math.max(0, yOnPage);
-          const clippedH = Math.min(pdfHeight, y2) - clippedY;
-
-          pdf.setPage(pageIndex + 1);
-          pdf.link(box.xMm, clippedY, box.wMm, clippedH, { url: box.url });
-        });
+      await pdf.html(resumeRef.current, {
+        margin: [24, 24, 24, 24],
+        autoPaging: "text",
+        html2canvas: {
+          scale: 0.9,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          windowWidth: 1024,
+        },
       });
 
       pdf.save("Ajisafe-Ibrahim-Resume.pdf");
@@ -137,7 +82,7 @@ const ResumePage = () => {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="sticky top-0 z-50"
+        className="sticky top-0 z-50 no-print"
       >
         <div className="px-4 md:px-8 lg:px-12 py-4">
           <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
@@ -150,6 +95,20 @@ const ResumePage = () => {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setCompact((v) => !v)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
+              >
+                {compact ? "Compact" : "Full"}
+              </button>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
+              >
+                Print / Save PDF
+              </button>
               <button
                 type="button"
                 onClick={handleDownload}
@@ -169,7 +128,7 @@ const ResumePage = () => {
         <div className="max-w-6xl mx-auto">
           <div
             ref={resumeRef}
-            className="bg-white text-neutral-900 rounded-3xl shadow-2xl border border-neutral-200/70 overflow-hidden"
+            className={`bg-white text-neutral-900 rounded-3xl shadow-2xl border border-neutral-200/70 overflow-hidden resume-print ${compact ? "resume-compact" : ""}`}
           >
             <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
               <div className="bg-neutral-900 text-white p-7">
@@ -269,15 +228,17 @@ const ResumePage = () => {
                 </div>
 
                 <div className="mt-7">
-                  <div className="text-sm font-bold tracking-wide uppercase text-white/70">
-                    Services
-                  </div>
-                  <div className="mt-2 space-y-2 text-sm">
-                    {(profile.services || []).slice(0, 6).map((s) => (
-                      <div key={s} className="text-white/90">
-                        {s}
-                      </div>
-                    ))}
+                  <div className="resume-compact-hide">
+                    <div className="text-sm font-bold tracking-wide uppercase text-white/70">
+                      Services
+                    </div>
+                    <div className="mt-2 space-y-2 text-sm">
+                      {(profile.services || []).slice(0, maxItems).map((s) => (
+                        <div key={s} className="text-white/90">
+                          {s}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -316,7 +277,7 @@ const ResumePage = () => {
                       Experience
                     </div>
                     <div className="mt-3 space-y-3">
-                      {experienceItems.slice(0, 6).map((item, idx) => (
+                      {experienceItems.slice(0, maxItems).map((item, idx) => (
                         <div
                           key={`${item.title}-${idx}`}
                           className="rounded-2xl border border-neutral-200 p-4"
@@ -341,7 +302,7 @@ const ResumePage = () => {
                       Education & Certifications
                     </div>
                     <div className="mt-3 space-y-3">
-                      {educationItems.slice(0, 6).map((item, idx) => (
+                      {educationItems.slice(0, maxItems).map((item, idx) => (
                         <div
                           key={`${item.title}-${idx}`}
                           className="rounded-2xl border border-neutral-200 p-4"
@@ -374,7 +335,7 @@ const ResumePage = () => {
                             {String(k).replace(/_/g, "/").toUpperCase()}
                           </div>
                           <div className="mt-2 flex flex-wrap gap-2">
-                            {(Array.isArray(v) ? v : []).slice(0, 10).map((item) => (
+                            {(Array.isArray(v) ? v : []).slice(0, compact ? 8 : 10).map((item) => (
                               <span
                                 key={item}
                                 className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200"
@@ -393,7 +354,7 @@ const ResumePage = () => {
                       Selected Projects
                     </div>
                     <div className="mt-3 space-y-3">
-                      {(profile.projects || []).slice(0, 6).map((p) => (
+                      {(profile.projects || []).slice(0, maxItems).map((p) => (
                         <div
                           key={p.title}
                           className="rounded-2xl border border-neutral-200 p-4"
@@ -413,36 +374,38 @@ const ResumePage = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-sm font-bold tracking-wide uppercase text-neutral-500">
-                      Work Process
+                <div className="resume-compact-hide">
+                  <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                      <div className="text-sm font-bold tracking-wide uppercase text-neutral-500">
+                        Work Process
+                      </div>
+                      <div className="mt-3 space-y-2">
+                        {(profile.workProcess || []).slice(0, maxItems).map((s) => (
+                          <div key={s} className="text-sm text-neutral-800">
+                            {s}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="mt-3 space-y-2">
-                      {(profile.workProcess || []).slice(0, 6).map((s) => (
-                        <div key={s} className="text-sm text-neutral-800">
-                          {s}
-                        </div>
-                      ))}
+
+                    <div>
+                      <div className="text-sm font-bold tracking-wide uppercase text-neutral-500">
+                        Why Choose Me
+                      </div>
+                      <div className="mt-3 space-y-2">
+                        {(profile.whyChooseMe || []).slice(0, maxItems).map((s) => (
+                          <div key={s} className="text-sm text-neutral-800">
+                            {s}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <div className="text-sm font-bold tracking-wide uppercase text-neutral-500">
-                      Why Choose Me
-                    </div>
-                    <div className="mt-3 space-y-2">
-                      {(profile.whyChooseMe || []).slice(0, 6).map((s) => (
-                        <div key={s} className="text-sm text-neutral-800">
-                          {s}
-                        </div>
-                      ))}
-                    </div>
+                  <div className="mt-6 text-xs text-neutral-500">
+                    Tip: Use the Print button to Save as PDF with cleaner page breaks.
                   </div>
-                </div>
-
-                <div className="mt-6 text-xs text-neutral-500">
-                  Tip: Use the Download button to export a PDF (links remain clickable).
                 </div>
               </div>
             </div>

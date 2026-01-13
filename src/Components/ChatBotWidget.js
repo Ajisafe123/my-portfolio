@@ -27,6 +27,15 @@ const ChatBotWidget = ({ open, onClose }) => {
     }, 0);
   }, [open, messages.length]);
 
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   const sendMessage = async () => {
     const text = input.trim();
     if (!text || busy) return;
@@ -56,19 +65,30 @@ const ChatBotWidget = ({ open, onClose }) => {
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
-          initial={{ opacity: 0, y: 16, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 16, scale: 0.98 }}
-          transition={{ duration: 0.18 }}
-          className="fixed bottom-24 right-6 z-[60] w-[92vw] max-w-sm"
-          role="dialog"
-          aria-label="Portfolio bot"
-        >
-          <div className="overflow-hidden rounded-3xl border border-gray-200/60 dark:border-white/10 bg-white/90 dark:bg-gray-950/90 backdrop-blur shadow-2xl">
+        <>
+          <motion.button
+            type="button"
+            aria-label="Close chatbot backdrop"
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[59] bg-black/40 backdrop-blur-sm md:hidden"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[60] p-0 md:bottom-24 md:right-6 md:inset-auto md:w-[92vw] md:max-w-sm"
+            role="dialog"
+            aria-label="Portfolio bot"
+          >
+            <div className="h-full overflow-hidden rounded-none md:rounded-3xl border border-gray-200/60 dark:border-white/10 bg-white/95 dark:bg-gray-950/90 backdrop-blur shadow-2xl">
             <div className="px-4 py-3 flex items-center justify-between border-b border-gray-200/60 dark:border-white/10">
               <div className="flex items-center gap-2">
-                <span className="w-9 h-9 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 flex items-center justify-center">
+                <span className="w-9 h-9 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center">
                   <Bot className="w-5 h-5" />
                 </span>
                 <div className="leading-tight">
@@ -86,7 +106,7 @@ const ChatBotWidget = ({ open, onClose }) => {
               </button>
             </div>
 
-            <div ref={listRef} className="max-h-[360px] overflow-y-auto px-4 py-4 space-y-3">
+            <div ref={listRef} className="overflow-y-auto px-4 py-4 space-y-3 h-[calc(100%-132px)] md:h-auto md:max-h-[360px]">
               {messages.map((m, idx) => {
                 const isUser = m.role === 'user';
                 return (
@@ -132,7 +152,7 @@ const ChatBotWidget = ({ open, onClose }) => {
                   type="button"
                   onClick={sendMessage}
                   disabled={busy}
-                  className="w-12 h-12 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 flex items-center justify-center disabled:opacity-60"
+                  className="w-12 h-12 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center disabled:opacity-60"
                   aria-label="Send"
                 >
                   <Send className="w-5 h-5" />
@@ -140,7 +160,8 @@ const ChatBotWidget = ({ open, onClose }) => {
               </div>
             </div>
           </div>
-        </motion.div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

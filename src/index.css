@@ -47,7 +47,7 @@
 
   /* Buttons */
   .btn-primary {
-    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-primary hover:bg-neutral-800 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
   }
 
   .btn-primary-outline {
@@ -55,7 +55,7 @@
   }
 
   .btn-secondary {
-    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-secondary hover:bg-neutral-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
+    @apply px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-secondary hover:bg-primary-dark text-white rounded-lg font-semibold transition-all duration-300 shadow-elevation-1 hover:shadow-elevation-3 active:scale-95 hover:scale-105 hover:-translate-y-0.5;
   }
 
   /* Cards */
@@ -86,7 +86,7 @@
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500 dark:from-white dark:via-neutral-200 dark:to-neutral-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
   }
 
   /* Section container */
@@ -118,4 +118,34 @@
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
   }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-print {
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+  }
+
+  .resume-print * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+.resume-compact {
+  letter-spacing: 0;
+}
+
+.resume-compact .resume-compact-hide {
+  display: none;
 }

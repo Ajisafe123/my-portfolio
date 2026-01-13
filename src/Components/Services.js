@@ -150,7 +150,7 @@ const Services = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-black py-16 sm:py-20 transition-colors duration-300">
+    <section className="relative bg-white dark:bg-black py-16 sm:py-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -160,7 +160,7 @@ const Services = () => {
         >
           <h2 className="h1-text text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
             <span className="text-gray-900 dark:text-white">what i </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-500">
+            <span className="gradient-text">
               offer
             </span>
           </h2>
