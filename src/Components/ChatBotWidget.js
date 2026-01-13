@@ -74,14 +74,14 @@ const ChatBotWidget = ({ open, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-[59] bg-black/40 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-[199] bg-black/40 backdrop-blur-sm md:hidden"
           />
           <motion.div
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-0 z-[60] p-0 md:bottom-24 md:right-6 md:inset-auto md:w-[92vw] md:max-w-sm"
+            className="fixed inset-0 z-[200] p-0 md:bottom-24 md:right-6 md:inset-auto md:w-[92vw] md:max-w-sm"
             role="dialog"
             aria-label="Portfolio bot"
           >

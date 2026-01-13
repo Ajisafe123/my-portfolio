@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, Mail, Github, Linkedin, Twitter, Globe, Phone } from "lucide-react";
+import { ArrowLeft, ChevronDown, Download, Mail, Github, Linkedin, Twitter, Globe, Phone } from "lucide-react";
 import jsPDF from "jspdf";
 
 import ThemeToggle from "../Components/ThemeToggle";
@@ -13,6 +13,8 @@ const ResumePage = () => {
   const resumeRef = useRef(null);
   const [exporting, setExporting] = useState(false);
   const [compact, setCompact] = useState(true);
+  const [actionsOpen, setActionsOpen] = useState(false);
+  const actionsRef = useRef(null);
 
   const profile = portfolioProfile;
 
@@ -49,7 +51,9 @@ const ResumePage = () => {
     return Object.entries(stack);
   }, [profile.techStack]);
 
-  const maxItems = compact ? 4 : 6;
+  const maxItems = compact ? 4 : 999;
+  const maxTechSections = compact ? 4 : 999;
+  const maxTechItems = compact ? 8 : 20;
 
   const handleDownload = async () => {
     if (!resumeRef.current || exporting) return;
@@ -76,6 +80,24 @@ const ResumePage = () => {
     }
   };
 
+  useEffect(() => {
+    if (!actionsOpen) return;
+
+    const onDocClick = (e) => {
+      if (!actionsRef.current) return;
+      if (!actionsRef.current.contains(e.target)) {
+        setActionsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("touchstart", onDocClick);
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("touchstart", onDocClick);
+    };
+  }, [actionsOpen]);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <motion.div
@@ -95,29 +117,81 @@ const ResumePage = () => {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setCompact((v) => !v)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
-              >
-                {compact ? "Compact" : "Full"}
-              </button>
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
-              >
-                Print / Save PDF
-              </button>
-              <button
-                type="button"
-                onClick={handleDownload}
-                disabled={exporting}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-bold disabled:opacity-60"
-              >
-                <Download className="w-4 h-4" />
-                {exporting ? "Exporting..." : "Download PDF"}
-              </button>
+              <div className="hidden sm:flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setCompact((v) => !v)}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
+                >
+                  {compact ? "Compact" : "Full"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
+                >
+                  Print / Save PDF
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDownload}
+                  disabled={exporting}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-bold disabled:opacity-60"
+                >
+                  <Download className="w-4 h-4" />
+                  {exporting ? "Exporting..." : "Download PDF"}
+                </button>
+              </div>
+
+              <div ref={actionsRef} className="relative sm:hidden">
+                <button
+                  type="button"
+                  onClick={() => setActionsOpen((v) => !v)}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900/60 dark:text-white font-bold"
+                  aria-haspopup="menu"
+                  aria-expanded={actionsOpen}
+                >
+                  Actions
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+
+                {actionsOpen && (
+                  <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-neutral-200/70 dark:border-white/10 bg-white dark:bg-neutral-950 shadow-2xl overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCompact((v) => !v);
+                        setActionsOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-3 font-bold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-white/10"
+                    >
+                      {compact ? "Compact" : "Full"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.print();
+                        setActionsOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-3 font-bold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-white/10"
+                    >
+                      Print / Save PDF
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleDownload();
+                        setActionsOpen(false);
+                      }}
+                      disabled={exporting}
+                      className="w-full text-left px-4 py-3 font-bold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-white/10 disabled:opacity-60"
+                    >
+                      {exporting ? "Exporting..." : "Download PDF"}
+                    </button>
+                  </div>
+                )}
+              </div>
+
               <ThemeToggle />
             </div>
           </div>
@@ -289,7 +363,7 @@ const ResumePage = () => {
                           <div className="text-sm font-semibold text-neutral-700 mt-1">
                             {item.company}
                           </div>
-                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed">
+                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed resume-compact-hide">
                             {item.description}
                           </div>
                         </div>
@@ -314,7 +388,7 @@ const ResumePage = () => {
                           <div className="text-sm font-semibold text-neutral-700 mt-1">
                             {item.company}
                           </div>
-                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed">
+                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed resume-compact-hide">
                             {item.description}
                           </div>
                         </div>
@@ -329,13 +403,13 @@ const ResumePage = () => {
                       Tech Stack
                     </div>
                     <div className="mt-3 space-y-4">
-                      {techSections.map(([k, v]) => (
+                      {techSections.slice(0, maxTechSections).map(([k, v]) => (
                         <div key={k}>
                           <div className="text-sm font-bold text-neutral-900">
                             {String(k).replace(/_/g, "/").toUpperCase()}
                           </div>
                           <div className="mt-2 flex flex-wrap gap-2">
-                            {(Array.isArray(v) ? v : []).slice(0, compact ? 8 : 10).map((item) => (
+                            {(Array.isArray(v) ? v : []).slice(0, maxTechItems).map((item) => (
                               <span
                                 key={item}
                                 className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200"
@@ -361,11 +435,11 @@ const ResumePage = () => {
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div className="font-bold text-neutral-900">{p.title}</div>
-                            <div className="text-xs text-neutral-500 text-right break-all">
+                            <div className="text-xs text-neutral-500 text-right break-all resume-compact-hide">
                               {p.liveLink}
                             </div>
                           </div>
-                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed">
+                          <div className="text-sm text-neutral-600 mt-2 leading-relaxed resume-compact-hide">
                             {p.description}
                           </div>
                         </div>

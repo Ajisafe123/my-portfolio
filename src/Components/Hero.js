@@ -144,12 +144,23 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
           transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
         >
           {/* Row 1: Software */}
-          <h1
-            className="text-6xl sm:text-7xl md:text-8xl font-bold text-neutral-900 dark:text-white leading-none tracking-tight"
-            style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-          >
-            Software
-          </h1>
+          <div className="relative inline-block">
+            <div className="absolute -top-5 left-0 sm:-top-6 md:-top-7">
+              <div className="relative inline-block">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg rotate-[-12deg] origin-left">
+                  <span className="text-[10px] sm:text-xs font-black tracking-wider">Ibrahim</span>
+                </div>
+                <div className="absolute -bottom-2 left-3 w-3 h-3 rounded-full bg-white dark:bg-neutral-900 border border-primary/30 shadow" />
+                <div className="absolute -bottom-[3px] left-[15px] w-1 h-1 rounded-full bg-primary/70" />
+              </div>
+            </div>
+            <h1
+              className="text-6xl sm:text-7xl md:text-8xl font-bold text-neutral-900 dark:text-white leading-none tracking-tight"
+              style={{ fontFamily: "'Josefin Sans', sans-serif" }}
+            >
+              Software
+            </h1>
+          </div>
 
           {/* Row 2: Developer (Black Pill Design) */}
           <motion.div
