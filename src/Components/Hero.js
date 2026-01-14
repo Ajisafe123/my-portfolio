@@ -145,13 +145,15 @@ export default function Home({ onViewWork = () => {}, onGetInTouch = () => {} })
         >
           {/* Row 1: Software */}
           <div className="relative inline-block">
-            <div className="absolute -top-5 left-0 sm:-top-6 md:-top-7">
-              <div className="relative inline-block">
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg rotate-[-12deg] origin-left">
+            <div className="absolute -top-6 -left-1 sm:-top-7 sm:-left-2 md:-top-8">
+              <div className="relative inline-block rotate-[-12deg] origin-left">
+                <div className="absolute inset-0 translate-x-[3px] translate-y-[3px] rounded-full bg-neutral-900/15 dark:bg-black/50 blur-[2px]" />
+                <div className="relative inline-flex items-center px-3.5 py-1.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg ring-1 ring-white/35">
                   <span className="text-[10px] sm:text-xs font-black tracking-wider">Ibrahim</span>
                 </div>
-                <div className="absolute -bottom-2 left-3 w-3 h-3 rounded-full bg-white dark:bg-neutral-900 border border-primary/30 shadow" />
-                <div className="absolute -bottom-[3px] left-[15px] w-1 h-1 rounded-full bg-primary/70" />
+                <div className="absolute left-4 top-full mt-1 w-px h-5 bg-primary/40" />
+                <div className="absolute left-[15px] top-[calc(100%+20px)] w-3.5 h-3.5 rounded-full bg-white dark:bg-neutral-900 border border-primary/30 shadow" />
+                <div className="absolute left-[19px] top-[calc(100%+24px)] w-1.5 h-1.5 rounded-full bg-primary/70" />
               </div>
             </div>
             <h1
